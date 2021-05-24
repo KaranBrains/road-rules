@@ -2,7 +2,7 @@ const User = require("../models/User");
 
 exports.getUsers = (req, res) => {
     try {
-        User.find({ $or: [{ role: 'user' }, { role: 'driver' }] }, (err, users) => {
+        User.find({ role: 'user' }, (err, users) => {
             if (err) {
                 return res.status(400).json({ msg: err });
             }

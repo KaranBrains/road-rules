@@ -3,7 +3,8 @@ const routes = [
     'auth',
     'verify',
     'admin',
-    'contact'
+    'contact',
+    'slot'
 ];
 
 module.exports = {
