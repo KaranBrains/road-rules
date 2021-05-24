@@ -1,6 +1,5 @@
 const JwtStrategy = require('passport-jwt').Strategy;
 const ExtractJwt = require('passport-jwt').ExtractJwt;
-var winston = require('../config/winston');
 
 const config = require('../config/config');
 const User = require('../models/user');
