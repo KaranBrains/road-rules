@@ -1,16 +1,158 @@
 html,
-body {
-  padding: 0;
+body {  
+  font-size: 100%;
+  overflow-x: hidden !important;
+  scroll-behavior: smooth;
+}
+
+/* Root variables */
+:root {
+  --primaryColor: #1e4c6b;
+  --secondaryColor: #00AFF5;
+  --tertiaryColor: #e0f6ff;
+}
+
+/* Srollbar */
+::-webkit-scrollbar {
+  width: 10px;
+}
+::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.3);
+  border-radius: 10px;
+}
+::-webkit-scrollbar-thumb {
+  background: var(--primaryColor);
+  border-radius: 10px;
+}
+
+/* Placeholder */
+::placeholder{
+  font-family: Avenir-demi;
+  font-size: 16px;
+}
+
+/* Font family */
+@font-face {
+  font-family: Avenir-bold;
+  src: url(../public/fonts/AvenirNextLTPro-Bold.otf);
+  font-display: swap;
+}
+@font-face {
+  font-family: Avenir-demi;
+  src: url(../public/fonts/AvenirNextLTPro-Demi.otf);
+  font-display: swap;
+}
+@font-face {
+  font-family: Avenir-medium;
+  src: url(../public/fonts/AvenirNextLTPro-Medium.otf);
+  font-display: swap;
+}
+@font-face {
+  font-family: Avenir-regular;
+  src: url(../public/fonts/AvenirNextLTPro-Regular.otf);
+  font-display: swap;
+}
+
+/* Font weight */
+.font-bold {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
-    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+  font-family: Avenir-bold !important;
+}
+.font-demi {
+  margin: 0;
+  font-family: Avenir-demi;
+}
+.font-medium {
+  margin: 0;
+  font-family: Avenir-medium;
+}
+.font-regular {
+  margin: 0;
+  font-family: Avenir-regular;
 }
 
-a {
-  color: inherit;
+/* Font size */
+.font-12{
+  font-size: 12px;
+}
+.font-14{
+  font-size: 14px;
+}
+.font-15{
+  font-size: 15px;
+}
+.font-16{
+  font-size: 16px;
+}
+.font-17{
+  font-size: 17px;
+}
+.font-18{
+  font-size: 18px;
+}
+.font-19{
+  font-size: 19px;
+}
+.font-20{
+  font-size: 20px;
+}
+.font-25{
+  font-size: 25px;
+}
+
+/* Font colour */
+.text-primaryColor{
+  color: var(--primaryColor) !important;
+}
+.text-secondaryColor{
+  color: var(--secondaryColor)
+}
+
+/* Background color */
+.bg-primaryColor{
+  background: var(--primaryColor) !important;
+}
+.bg-secondaryColor{
+  background: var(--secondaryColor);
+}
+.bg-tertiaryColor{
+  background: var(--tertiaryColor) !important;
+}
+.gradient-background{
+  background-image: linear-gradient(130deg, #eff7fa 20%,#e3e8eb 40%, #dbe3e9 50%, #e3eaf0 60% )
+}
+
+/* Utility Classes */
+.card{
+  border: none !important;
+  background: transparent !important;
+}
+.form-control {
+  display: block;
+  width: 100%;
+  padding: 10px 20px !important;
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.5;
+  color: var(--primaryColor) !important;
+  background-color: var(--tertiaryColor) !important;
+  background-clip: padding-box;
+  border: none !important;
+  border-radius: 10px !important;
+}
+.btn-blue {
+  padding: 0px 24px;
+  border: 1px solid transparent;
+  border-radius: 48px;
+  font-size: 16px;
+  line-height: 1;
+  text-align: center;
   text-decoration: none;
+  cursor: pointer;
+  height: 48px;
+  min-width: 48px;
+  transition: all 0.5s ease-in;
 }
-
-* {
-  box-sizing: border-box;
+.btn-blue:hover{
+  background: #138FC1;
 }
