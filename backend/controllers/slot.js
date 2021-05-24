@@ -57,6 +57,18 @@ exports.getSlots = (req, res) => {
     })
 };
 
+exports.searchSlotByDate = (req, res) => {
+    if ( !req.query.date ) {
+        return res.status(400).json({ msg: 'Invalid data' });
+    }
+    Slot.find({ date:req.query.date } , (err,slots) => {
+        if (err) {
+            return res.status(400).json({ msg: err });
+        }
+        return res.status(201).json({slots: slots});
+    })
+};
+
 exports.getSlotById = (req, res) => {
     Slot.findById(req.query.id , (err,slot) => {
         if (err) {
