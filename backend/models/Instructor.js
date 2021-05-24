@@ -1,22 +1,22 @@
 const mongoose = require('mongoose');
 
 const RatingSchema = new mongoose.Schema({
-    ride: {
-      type: String,
-      required: true,
-    },
-    stars: {
-      type: String,
-      required: true,
-    }
-  });
+  ride: {
+    type: String,
+    required: true,
+  },
+  stars: {
+    type: String,
+    required: true,
+  }
+});
 
 const InstructorSchema = new mongoose.Schema({
   fullName: {
     type: String,
     required: true,
   },
-  picture: {
+  img: {
     type: String,
     required: true,
   },
