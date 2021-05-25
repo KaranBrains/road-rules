@@ -156,3 +156,11 @@ body {
 .btn-blue:hover{
   background: #138FC1;
 }
+
+.RFS-StepperContainer {
+  display: flex;
+  padding: 15px !important;
+  align-items: flex-start;
+  font-family: Avenir-medium !important;
+  flex-direction: row;
+}

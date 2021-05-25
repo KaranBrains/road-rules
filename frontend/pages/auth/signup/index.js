@@ -1,6 +1,9 @@
 import { useState } from "react";
 import Link from "next/link";
 import styles from "../../../styles/Form.module.css";
+import { useDispatch } from "react-redux";
+import { useRouter } from "next/router";
+import { signUp } from "../../../redux/actions/auth";
 
 function Signup() {
   const initialState = {
@@ -11,8 +14,15 @@ function Signup() {
     dialcode: "1",
   };
   const [formData, setformData] = useState(initialState);
+  const dispatch = useDispatch();
+  const router = useRouter();
+
   const handleSubmit = (e) => {
     e.preventDefault();
+    formData.phone = formData.dialcode + formData.phone;
+    dispatch(signUp(formData, router));
+    localStorage.setItem("userProfile", JSON.stringify(formData));
+    setformData(initialState);
   };
 
   return (
