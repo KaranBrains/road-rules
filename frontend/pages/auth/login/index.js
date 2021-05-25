@@ -1,13 +1,20 @@
 import { useState } from "react";
 import Link from "next/link";
+import { useDispatch } from "react-redux";
+import { useRouter } from "next/router";
+import { signIn } from "../../../redux/actions/auth";
 import styles from "../../../styles/Form.module.css";
 
 function Login() {
   const initialState = { email: "", password: "" };
   const [formData, setformData] = useState(initialState);
+  const dispatch = useDispatch();
+  const router = useRouter();
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    dispatch(signIn(formData, router));
+    setformData(initialState);
   };
 
   return (

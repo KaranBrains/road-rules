@@ -3,7 +3,9 @@ const routes = [
     'auth',
     'verify',
     'admin',
-    'contact'
+    'contact',
+    'slot',
+    'instructor'
 ];
 
 module.exports = {
