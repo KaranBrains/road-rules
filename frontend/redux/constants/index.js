@@ -19,3 +19,5 @@ export const GET_RIDES = "GET_RIDES";
 export const GET_RIDE_BY_ID = "GET_RIDE_BY_ID";
 export const CONFIRM_RIDE = "CONFIRM_RIDE";
 export const BOOK_RIDE = "BOOK_RIDE";
+export const ADMIN_SLOT_ADD = "ADMIN_SLOT_ADD";
+export const ADMIN_INSTRUCTOR_ADD = "ADMIN_INSTRUCTOR_ADD"

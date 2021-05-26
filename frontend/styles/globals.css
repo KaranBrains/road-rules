@@ -329,3 +329,7 @@ body {
   font-family: Avenir-medium !important;
   flex-direction: row;
 }
+
+.hidden{
+  display: none;
+}

@@ -18,3 +18,6 @@ export const verifyPhoneOtp = (otp, email, phone) =>
   });
 export const changePassword = (body) =>
   axios.put(`${url}/change-password`, body);
+
+export const addSlot = (formdata) => axios.post(`${url}/add-slot`, formdata);
+export const addInstructor = (formdata) => axios.post(`${url}/add-instructor`, formdata);
