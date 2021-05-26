@@ -5,7 +5,7 @@ const fs = require('fs');
 exports.addInstructor = async (req,res,next) => {
     var matches = req.body.img.match(/^data:([A-Za-z-+/]+);base64,(.+)$/),
     response = {}; 
-    if (matches?.length !== 3) {
+    if (matches.length !== 3) {
         return res.status(400).send({
             msg: "Invalid Image"
         });
@@ -24,7 +24,8 @@ exports.addInstructor = async (req,res,next) => {
             ...req.body,
             img : "images/" +  fileName
         }
-        Instructor.save(product)
+        let instructor = Instructor(product);
+        instructor.save()
         .then((data,error)=>{
             if (error) {
                 return res.status(400).send({
@@ -37,9 +38,26 @@ exports.addInstructor = async (req,res,next) => {
             }); 
         });
     } catch (e) {
+        console.log(e);
         return res.status(400).send({
             msg: e
         });
     }
+}
+
+exports.getAll = async (req,res) => {
+    try {
+        Instructor.find({}, (err, instructors) => {
+            if (err) {
+                return res.status(400).json({ msg: err });
+            }
+
+            if (instructors) {
+                return res.status(200).json({ instructors: instructors });
+            }
+        });
+    } catch (e) {
+        return res.status(400).json({ msg: e });
+    } 
 }
 
