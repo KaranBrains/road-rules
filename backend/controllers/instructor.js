@@ -44,7 +44,7 @@ exports.addInstructor = async (req,res,next) => {
         });
     }
 }
-
+// get all
 exports.getAll = async (req,res) => {
     try {
         Instructor.find({}, (err, instructors) => {
