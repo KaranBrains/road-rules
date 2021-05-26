@@ -44,4 +44,20 @@ exports.addInstructor = async (req,res,next) => {
         });
     }
 }
+// get all
+exports.getAll = async (req,res) => {
+    try {
+        Instructor.find({}, (err, instructors) => {
+            if (err) {
+                return res.status(400).json({ msg: err });
+            }
+
+            if (instructors) {
+                return res.status(200).json({ instructors: instructors });
+            }
+        });
+    } catch (e) {
+        return res.status(400).json({ msg: e });
+    } 
+}
 
