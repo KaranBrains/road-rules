@@ -12,7 +12,9 @@ import {
 import jwt from "jwt-decode";
 import swal from "sweetalert";
 
-export const signIn = (formData, history) => async (dispatch) => {
+
+// SIGNIN
+export const signIn = (formData, router) => async (dispatch) => {
   try {
     const { data } = await api.signIn(formData);
     console.log(jwt(data.token));
@@ -20,12 +22,11 @@ export const signIn = (formData, history) => async (dispatch) => {
     const role = jwt(data.token).role;
     localStorage.setItem("isEmailVerified", jwt(data.token).isEmailVerified);
     localStorage.setItem("isNumberVerified", jwt(data.token).isNumberVerified);
-    localStorage.setItem("isIdSubmitted", jwt(data.token).isIdSubmitted);
     swal({
       text: `You are logged in as ${role}`,
       icon: "success",
     });
-    history.push("/");
+    router.push("/");
   } catch (e) {
     swal({
       text: e.response.data.msg,
@@ -34,8 +35,19 @@ export const signIn = (formData, history) => async (dispatch) => {
   }
 };
 
+
+// SIGNUP
 export const signUp = (formData, router) => async (dispatch) => {
   try {
+    try {
+      await api.getPhoneOtp(formData.phone);
+    } catch (e) {
+      swal({
+        text: "Wrong Number",
+        icon: "error",
+      });
+      return;
+    }
     const { data } = await api.signUp(formData);
     dispatch({ type: CLIENT_SIGN_UP, data });
     swal({
@@ -47,6 +59,27 @@ export const signUp = (formData, router) => async (dispatch) => {
     router.push("/auth/email");
   } catch (e) {
     console.log(e.response);
+    swal({
+      text: e.response.data.msg,
+      icon: "error",
+    });
+  }
+};
+
+
+// EMAIL OTP
+export const emailOtp = () => async (dispatch) => {
+  try {
+    const formData = JSON.parse(localStorage.getItem("userProfile"))
+      ? JSON.parse(localStorage.getItem("userProfile"))
+      : jwt(localStorage.getItem("token"));
+    const { data } = await api.getEmailOtp(formData.email);
+    swal({
+      text: "Code is send to your email successfully",
+      icon: "success",
+    });
+    dispatch({ type: EMAIL_OTP, data });
+  } catch (e) {
     swal({
       text: e.response.data.msg,
       icon: "error",
@@ -78,26 +111,7 @@ export const verifyEmailOtp = (otp, router) => async (dispatch) => {
   }
 };
 
-export const verifyForgotEmailOtp = (otp, history) => async (dispatch) => {
-  try {
-    const formData = localStorage.getItem("email");
-    console.log(formData);
-    const { data } = await api.verifyForgotEmailOtp(otp, formData);
-    dispatch({ type: VERIFY_FORGOT, data });
-    swal({
-      text: "OTP Verified",
-      icon: "success",
-    });
-    history.push("/change");
-  } catch (e) {
-    swal({
-      text: e.response.data.msg,
-      icon: "error",
-    });
-  }
-};
-
-export const changePassword = (password, history) => async (dispatch) => {
+export const changePassword = (password, router) => async (dispatch) => {
   try {
     const formData = localStorage.getItem("email");
     const token = localStorage.getItem("forgotToken");
@@ -112,7 +126,7 @@ export const changePassword = (password, history) => async (dispatch) => {
       text: "Password Changed",
       icon: "success",
     });
-    history.push("/login");
+    router.push("/login");
   } catch (e) {
     swal({
       text: e.response.data.msg,
@@ -121,7 +135,27 @@ export const changePassword = (password, history) => async (dispatch) => {
   }
 };
 
-export const verifyPhoneOtp = (otp, history) => async (dispatch) => {
+// PHONE OTP
+export const phoneOtp = () => async (dispatch) => {
+  try {
+    const formData = JSON.parse(localStorage.getItem("userProfile"))
+      ? JSON.parse(localStorage.getItem("userProfile"))
+      : jwt(localStorage.getItem("token"));
+    const { data } = await api.getPhoneOtp(formData.email);
+    swal({
+      text: "Code is send to your Phone successfully",
+      icon: "success",
+    });
+    dispatch({ type: PHONE_OTP, data });
+  } catch (e) {
+    swal({
+      text: e.response.data.msg,
+      icon: "error",
+    });
+  }
+};
+
+export const verifyPhoneOtp = (otp, router) => async (dispatch) => {
   try {
     const formData = JSON.parse(localStorage.getItem("userProfile"))
       ? JSON.parse(localStorage.getItem("userProfile"))
@@ -137,8 +171,7 @@ export const verifyPhoneOtp = (otp, history) => async (dispatch) => {
       icon: "success",
     });
     localStorage.setItem("isNumberVerified", "true");
-    localStorage.setItem("isIdSubmitted", "false");
-    history.push("/auth/login");
+    router.push("/auth/login");
   } catch (e) {
     swal({
       text: e.response.data.msg,
@@ -147,62 +180,8 @@ export const verifyPhoneOtp = (otp, history) => async (dispatch) => {
   }
 };
 
-export const emailOtp = () => async (dispatch) => {
-  try {
-    const formData = JSON.parse(localStorage.getItem("userProfile"))
-      ? JSON.parse(localStorage.getItem("userProfile"))
-      : jwt(localStorage.getItem("token"));
-    const { data } = await api.getEmailOtp(formData.email);
-    swal({
-      text: "Code is send to your email successfully",
-      icon: "success",
-    });
-    dispatch({ type: EMAIL_OTP, data });
-  } catch (e) {
-    swal({
-      text: e.response.data.msg,
-      icon: "error",
-    });
-  }
-};
 
-export const forgotEmailOtp = (formData, history) => async (dispatch) => {
-  try {
-    const { data } = await api.getEmailOtp(formData.email);
-    localStorage.setItem("email", formData.email);
-    swal({
-      text: "Code is send to your email successfully",
-      icon: "success",
-    });
-    dispatch({ type: EMAIL_OTP, data });
-    history.push("/forgot-otp");
-  } catch (e) {
-    swal({
-      text: e.response.data.msg,
-      icon: "error",
-    });
-  }
-};
-
-export const phoneOtp = () => async (dispatch) => {
-  try {
-    const formData = JSON.parse(localStorage.getItem("userProfile"))
-      ? JSON.parse(localStorage.getItem("userProfile"))
-      : jwt(localStorage.getItem("token"));
-    swal({
-      text: "Code is send to your Phone successfully",
-      icon: "success",
-    });
-    console.log("qryyyyyyyyyyyyyyyy");
-    dispatch({ type: PHONE_OTP, data });
-  } catch (e) {
-    swal({
-      text: e.response.data.msg,
-      icon: "error",
-    });
-  }
-};
-
+// CHECKING AUTHENTICATION
 export const isAuthenticated = () => {
   try {
     const token = localStorage.getItem("token");
@@ -247,22 +226,6 @@ export const isNumberVerified = () => {
       return "";
     } else {
       return isNumberVerified;
-    }
-  } catch (e) {
-    swal({
-      text: e.message,
-      icon: "error",
-    });
-  }
-};
-
-export const isIdSubmitted = () => {
-  try {
-    const isIdSubmitted = localStorage.getItem("isIdSubmitted");
-    if (!isIdSubmitted) {
-      return "";
-    } else {
-      return isIdSubmitted;
     }
   } catch (e) {
     swal({

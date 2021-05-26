@@ -164,3 +164,9 @@ body {
   font-family: Avenir-medium !important;
   flex-direction: row;
 }
+
+.center{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
