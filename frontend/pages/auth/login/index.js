@@ -60,7 +60,7 @@ function Login() {
                   />
                 </div>
                 <div className="d-flex justify-content-between">
-                  <Link href="/client/signup">
+                  <Link href="/auth/signup">
                     <div
                       className={`font-demi text-primaryColor mt-4 py-3 px-3 ${styles.greyHover}`}
                     >
@@ -68,7 +68,7 @@ function Login() {
                       <span className="ml-2 text-secondaryColor">Signup</span>
                     </div>
                   </Link>
-                  <Link href="/forgot">
+                  <Link href="/auth/forgotpassword">
                     <p
                       className={`text-secondaryColor font-demi mt-4 py-3 px-3 ${styles.greyHover}`}
                     >
