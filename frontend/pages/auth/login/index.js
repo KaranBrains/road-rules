@@ -21,13 +21,14 @@ function Login() {
     <>
       <div className="container my-5">
         <div className="row d-flex justify-content-center">
-          <div className="col-lg-8 col-md-8 col-sm-12 col-12">
-            <div className="card">
+          <div className="col-lg-6 col-md-8 col-sm-12 col-12">
+            <div className="card shadow px-2 px-lg-5 py-5">
               <h1 className="text-center font-bold text-primaryColor mb-4">
                 Sign in to your account
               </h1>
               <form onSubmit={handleSubmit}>
-                <div className="input-group mt-4">
+                <div className="mt-4">
+                  <label className="font-demi text-primaryColor">Email</label>
                   <input
                     required
                     value={formData.email}
@@ -40,10 +41,20 @@ function Login() {
                     name="email"
                     type="text"
                     className="form-control"
-                    placeholder="Email/Number"
                   />
                 </div>
-                <div className="input-group mt-4">
+                <div className="mt-4">
+                  <div className="d-flex justify-content-between">
+                    <label className="font-demi text-primaryColor">
+                      Password
+                    </label>
+                    <Link href="/auth/forgotpassword">
+                      <p className={`text-secondaryColor font-demi`}>
+                        Forgot Password?
+                      </p>
+                    </Link>
+                  </div>
+
                   <input
                     required
                     value={formData.password}
@@ -56,29 +67,11 @@ function Login() {
                     name="password"
                     type="password"
                     className="form-control"
-                    placeholder="Password"
                   />
                 </div>
-                <div className="d-flex justify-content-between">
-                  <Link href="/auth/signup">
-                    <div
-                      className={`font-demi text-primaryColor mt-4 py-3 px-3 ${styles.greyHover}`}
-                    >
-                      Become a member{" "}
-                      <span className="ml-2 text-secondaryColor">Signup</span>
-                    </div>
-                  </Link>
-                  <Link href="/auth/forgotpassword">
-                    <p
-                      className={`text-secondaryColor font-demi mt-4 py-3 px-3 ${styles.greyHover}`}
-                    >
-                      Forgot Password
-                    </p>
-                  </Link>
-                </div>
-                <div className="text-center mt-5">
+                <div className="text-center mt-5 mb-3">
                   <button
-                    className="text-white bg-secondaryColor font-demi btn-blue submit-button"
+                    className="text-white bg-secondaryColor font-demi btn-blue w-100 submit-button"
                     type="submit"
                   >
                     Signin
@@ -86,6 +79,14 @@ function Login() {
                 </div>
               </form>
             </div>
+            <Link href="/auth/signup">
+              <div
+                className={`font-demi text-primaryColor mt-4 py-3 px-3 text-center ${styles.greyHover}`}
+              >
+                Become a member{" "}
+                <span className="ml-2 text-secondaryColor">Signup</span>
+              </div>
+            </Link>
           </div>
         </div>
       </div>

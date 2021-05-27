@@ -21,13 +21,14 @@ function ForgotPassword() {
     <>
       <div className="container my-5">
         <div className="row d-flex justify-content-center">
-          <div className="col-lg-8 col-md-8 col-sm-12 col-12">
-            <div className="card">
-              <h4 className="text-center font-bold text-primaryColor mb-4">
+          <div className="col-lg-6 col-md-8 col-sm-12 col-12">
+            <div className="card shadow px-2 px-lg-5 py-5">
+              <h1 className="text-center font-bold text-primaryColor mb-4">
                 Enter the New Password
-              </h4>
+              </h1>
               <form onSubmit={handleSubmit}>
-                <div className="input-group mt-4">
+                <div className="mt-4">
+                  <label className="text-primaryColor font-demi">Password</label>
                   <input
                     required
                     value={formData.password}
@@ -39,13 +40,12 @@ function ForgotPassword() {
                     }}
                     name="password"
                     type="password"
-                    className="form-control"
-                    placeholder="Password"
+                    className="form-control"                    
                   />
                 </div>
-                <div className="text-center mt-5">
+                <div className="text-center mt-5 mb-3">
                   <button
-                    className="text-white bg-secondaryColor font-demi btn-blue submit-button"
+                    className="text-white bg-secondaryColor font-demi w-100 btn-blue submit-button"
                     type="submit"
                   >
                     Submit

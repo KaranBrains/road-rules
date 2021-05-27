@@ -29,13 +29,16 @@ function Signup() {
     <>
       <div className="container my-5">
         <div className="row d-flex justify-content-center">
-          <div className="col-lg-8 col-md-8 col-sm-12 col-12">
-            <div className="card">
+          <div className="col-lg-6 col-md-8 col-sm-12 col-12">
+            <div className="card shadow px-2 px-lg-5 py-5">
               <h1 className="text-center font-bold text-primaryColor mb-4">
                 Welcome to RideSharing, Signup here...
               </h1>
               <form onSubmit={handleSubmit}>
-                <div className="input-group mt-4">
+                <div className="mt-4">
+                  <label className="font-demi text-primaryColor">
+                    Full Name
+                  </label>
                   <input
                     value={formData.fullName}
                     onChange={(e) => {
@@ -48,10 +51,10 @@ function Signup() {
                     name="fullName"
                     type="text"
                     className="form-control"
-                    placeholder="Full Name"
                   />
                 </div>
-                <div className="input-group mt-4">
+                <div className="mt-4">
+                  <label className="font-demi text-primaryColor">Email</label>
                   <input
                     value={formData.email}
                     onChange={(e) => {
@@ -64,46 +67,50 @@ function Signup() {
                     name="email"
                     type="email"
                     className="form-control"
-                    placeholder="Email"
                   />
                 </div>
-                <div className="input-group mt-4">
-                  <div className="input-group-prepend">
-                    <select
-                      name="dialcode"
-                      className={`${styles.formDropdown}`}
-                      value={formData.dialcode}
+                <div className="mt-4">
+                  <label className="font-demi text-primaryColor">
+                    Phone Number
+                  </label>
+                  <div className="input-group">
+                    <div className="input-group-prepend">
+                      <select
+                        name="dialcode"
+                        className={`${styles.formDropdown}`}
+                        value={formData.dialcode}
+                        onChange={(e) => {
+                          setformData({
+                            ...formData,
+                            [e.target.name]: e.target.value,
+                          });
+                        }}
+                      >
+                        <option value="1" selected>
+                          +1
+                        </option>
+                        <option value="91">+91</option>
+                        <option value="221">+221</option>
+                      </select>
+                    </div>
+                    <input
+                      value={formData.phone}
                       onChange={(e) => {
                         setformData({
                           ...formData,
                           [e.target.name]: e.target.value,
                         });
                       }}
-                    >
-                      <option value="1" selected>
-                        +1
-                      </option>
-                      <option value="91">+91</option>
-                      <option value="221">+221</option>
-                    </select>
+                      required
+                      name="phone"
+                      type="text"
+                      className="form-control mt-1"                      
+                      style={{ borderRadius: "0px 10px 10px 0px" }}
+                    />
                   </div>
-                  <input
-                    value={formData.phone}
-                    onChange={(e) => {
-                      setformData({
-                        ...formData,
-                        [e.target.name]: e.target.value,
-                      });
-                    }}
-                    required
-                    name="phone"
-                    type="text"
-                    className="form-control mt-1"
-                    placeholder="Phone Number"
-                    style={{ borderRadius: "0px 10px 10px 0px" }}
-                  />
                 </div>
-                <div className="input-group mt-4">
+                <div className="mt-4">
+                  <label className="font-demi text-primaryColor">Password</label>
                   <input
                     value={formData.password}
                     onChange={(e) => {
@@ -115,21 +122,12 @@ function Signup() {
                     required
                     name="password"
                     type="password"
-                    className="form-control"
-                    placeholder="Password"
+                    className="form-control"                    
                   />
                 </div>
-                <Link href="/auth/login">
-                  <div
-                    className={`font-demi text-primaryColor mt-4 py-3 px-3 ${styles.greyHover}`}
-                  >
-                    Already a member?{" "}
-                    <span className="ml-2 text-secondaryColor">Signin</span>
-                  </div>
-                </Link>
-                <div className="text-center mt-4">
+                <div className="text-center mt-5 mb-3">
                   <button
-                    className="text-white bg-secondaryColor font-demi btn-blue submit-button"
+                    className="text-white bg-secondaryColor font-demi btn-blue w-100 submit-button"
                     type="submit"
                   >
                     Signup
@@ -137,6 +135,14 @@ function Signup() {
                 </div>
               </form>
             </div>
+            <Link href="/auth/login">
+              <div
+                className={`font-demi text-primaryColor text-center mt-4 py-3 px-3 ${styles.greyHover}`}
+              >
+                Already a member?{" "}
+                <span className="ml-2 text-secondaryColor">Signin</span>
+              </div>
+            </Link>
           </div>
         </div>
       </div>
