@@ -138,7 +138,7 @@ body {
   background-color: var(--tertiaryColor) !important;
   background-clip: padding-box;
   border: none !important;
-  border-radius: 10px !important;
+  border-radius: 10px;
 }
 .btn-blue {
   padding: 0px 24px;
@@ -164,9 +164,18 @@ body {
   font-family: Avenir-medium !important;
   flex-direction: row;
 }
-
 .center{
   display: flex;
   justify-content: center;
   align-items: center;
+}
+.dropdown-toggle::after {
+  display: none !important;
+  margin-left: 0.255em;
+  vertical-align: 0.255em;
+  content: "";
+  border-top: 0.3em solid;
+  border-right: 0.3em solid transparent;
+  border-bottom: 0;
+  border-left: 0.3em solid transparent;
 }

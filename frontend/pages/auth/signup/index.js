@@ -100,6 +100,7 @@ function Signup() {
                     type="text"
                     className="form-control mt-1"
                     placeholder="Phone Number"
+                    style={{ borderRadius: "0px 10px 10px 0px" }}
                   />
                 </div>
                 <div className="input-group mt-4">

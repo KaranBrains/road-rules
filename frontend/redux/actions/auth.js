@@ -6,7 +6,6 @@ import {
   VERIFY_PHONE,
   EMAIL_OTP,
   PHONE_OTP,
-  VERIFY_FORGOT,
   CHANGE_PASSWORD,
 } from "../constants";
 import jwt from "jwt-decode";
@@ -113,10 +112,10 @@ export const verifyEmailOtp = (otp, router) => async (dispatch) => {
 
 export const changePassword = (password, router) => async (dispatch) => {
   try {
-    const formData = localStorage.getItem("email");
-    const token = localStorage.getItem("forgotToken");
+    const formData = JSON.parse(localStorage.getItem("userProfile"));
+    const token = localStorage.getItem("token");    
     const body = {
-      email: formData,
+      email: formData.email,
       token: token,
       pass: password,
     };
@@ -126,10 +125,10 @@ export const changePassword = (password, router) => async (dispatch) => {
       text: "Password Changed",
       icon: "success",
     });
-    router.push("/login");
+    router.push("/auth/login");
   } catch (e) {
     swal({
-      text: e.response.data.msg,
+      text: e.response?.data.msg,
       icon: "error",
     });
   }
@@ -149,7 +148,7 @@ export const phoneOtp = () => async (dispatch) => {
     dispatch({ type: PHONE_OTP, data });
   } catch (e) {
     swal({
-      text: e.response.data.msg,
+      text: e.response?.data.msg,
       icon: "error",
     });
   }

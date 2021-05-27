@@ -1,8 +1,10 @@
 import Image from "next/image";
+import styles from "./Home.module.css";
+
 function Work() {
   return (
     <>
-      <div className="mt-5">
+      <div>
         <div className="container py-section px-4">
           <h2 className="text-primaryColor font-bold sub-heading text-center">
             Our Happy Customers
@@ -44,15 +46,15 @@ function Work() {
         </div>
       </div>
       <div>
-        <div className="container px-4 mb-5">
-          <h2 className="text-primaryColor font-bold sub-heading text-center mb-lg-5 mb-0">
+        <div className="container px-4 my-5">
+          <h2 className="text-primaryColor font-bold sub-heading text-center">
             How it works
           </h2>
           <div className="row how-it-works pt-5">
             <div className="col-lg-4 mt-2 col-md-4 col-sm-12 col-12">
               <div className="d-flex justify-content-center">
                 <div
-                  className="work-number text-primaryColor font-bold center"
+                  className={`${styles.workNumber} text-primaryColor font-bold center`}
                   style={{ fontSize: "35px" }}
                 >
                   1
@@ -69,7 +71,7 @@ function Work() {
             <div className="col-lg-4 mt-2 col-md-4 col-sm-12 col-12">
               <div className="d-flex justify-content-center">
                 <div
-                  className="work-number text-primaryColor font-bold center"
+                  className={`${styles.workNumber} text-primaryColor font-bold center`}
                   style={{ fontSize: "35px" }}
                 >
                   2
@@ -86,7 +88,7 @@ function Work() {
             <div className="col-lg-4 mt-2 col-md-4 col-sm-12 col-12">
               <div className="d-flex justify-content-center">
                 <div
-                  className="work-number text-primaryColor font-bold center"
+                  className={`${styles.workNumber} text-primaryColor font-bold center`}
                   style={{ fontSize: "35px" }}
                 >
                   3

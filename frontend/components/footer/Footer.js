@@ -1,9 +1,9 @@
-import { Link } from "next/link";
-// import Logo from "../../public/images/logo.png";
+import Link from "next/link";
+import Image from "next/image";
 
 function Footer() {
   return (
-    <div className="gradient-background ">
+    <div className="gradient-background pt-5">
       <div className="container py-section">
         <div className="row">
           <div className="col-lg-4 col-md-4 col-sm-12 col-12 mt-4">
@@ -14,22 +14,22 @@ function Footer() {
               >
                 Company
               </h3>
-              <Link to="">
+              <Link href="/">
                 <div className="text-primaryColor font-demi font-15 mb-lg-3 mb-2">
                   Join Our Facebook Community
                 </div>
               </Link>
-              <Link to="">
+              <Link href="/">
                 <div className="text-primaryColor font-demi font-15 mb-lg-3 mb-2">
                   Work with us
                 </div>
               </Link>
-              <Link to="">
+              <Link href="/">
                 <div className="text-primaryColor font-demi font-15 mb-lg-3 mb-2">
                   Privacy Notice
                 </div>
               </Link>
-              <Link to="">
+              <Link href="/">
                 <div className="text-primaryColor font-demi font-15 mb-lg-3 mb-2">
                   Term of Service
                 </div>
@@ -44,24 +44,23 @@ function Footer() {
               >
                 Support
               </h3>
-              <Link to="">
+              <Link href="/">
                 <div className="text-primaryColor font-demi font-15 mb-lg-3 mb-2">
                   Help Center
                 </div>
               </Link>
 
-              <Link to="">
+              <Link href="/">
                 <div className="text-primaryColor font-demi font-15 mb-lg-3 mb-2">
                   Contact Us
                 </div>
               </Link>
-              <Link to="">
+              <Link href="/">
                 <div className="text-primaryColor font-demi font-15 mb-lg-3 mb-2">
                   Request a New Feature
                 </div>
               </Link>
-
-              <Link to="">
+              <Link href="/">
                 <div className="text-primaryColor font-demi font-15 mb-lg-3 mb-2">
                   Report an Outage
                 </div>
@@ -74,15 +73,21 @@ function Footer() {
                 className="text-primaryColor font-bold mb-4"
                 style={{ fontSize: "30px" }}
               >
-                {/* <img src={Logo} alt="logo" className="img-fluid mt-20 logo" /> */}
+                <Image
+                  src="/images/logo.png"
+                  alt="logo"
+                  className="img-fluid logo"
+                  width={300}
+                  height={200}
+                />
               </h3>
-              <Link to="">
-                <div className="text-primaryColor font-demi font-15 mb-lg-3 mb-2">
-                  @ 2021 All rights reserved
-                </div>
-              </Link>
             </div>
           </div>
+          <Link href="/">
+            <div className="text-primaryColor text-center font-demi font-15 mb-lg-3 mb-2">
+              @ 2021 All rights reserved
+            </div>
+          </Link>
         </div>
       </div>
     </div>

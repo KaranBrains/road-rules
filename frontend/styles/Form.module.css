@@ -9,13 +9,13 @@
 .formDropdown {
   width: 100%;
   margin-top: 5px;
-  padding: 12px 20px;
+  padding: 13px 20px;
   font-size: 1rem;
   font-weight: 400;
   line-height: 1.5;
   color: var(--primaryColor);
   background-color: var(--tertiaryColor);
   border: none;
-  border-radius: 10px;
+  border-radius: 10px 0px 0px 10px;
   outline: none !important;
 }
