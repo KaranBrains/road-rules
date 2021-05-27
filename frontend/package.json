@@ -8,12 +8,16 @@
     "start": "next start"
   },
   "dependencies": {
+    "@fullcalendar/daygrid": "^5.7.0",
+    "@fullcalendar/react": "^5.7.0",
     "axios": "^0.21.1",
     "bootstrap": "^5.0.1",
     "jwt-decode": "^3.1.2",
+    "moment": "^2.29.1",
     "next": "10.2.2",
     "next-redux-wrapper": "^6.0.2",
     "react": "17.0.2",
+    "react-big-calendar": "^0.33.4",
     "react-bootstrap": "^1.6.0",
     "react-dom": "17.0.2",
     "react-form-stepper": "^1.4.1",

@@ -1,3 +1,13 @@
+import Features from "../components/home/Features";
+import HomeMain from "../components/home/Main";
+import Work from "../components/home/Work";
+
 export default function Home() {
-  return <h1>Carpooling</h1>;
+  return (
+    <>
+      <HomeMain />
+      <Features />
+      <Work />
+    </>
+  );
 }
