@@ -52,8 +52,7 @@ function NavbarComponent() {
             >
               Contact Us
             </Nav.Link>
-            <NavDropdown
-              eventKey={1}
+            <NavDropdown              
               title={
                 <div className={`${styles.pullLeft}`}>
                   <img
@@ -70,7 +69,7 @@ function NavbarComponent() {
               }
               id="basic-nav-dropdown"
             >
-              <NavDropdown.Item eventKey={1.3}>
+              <NavDropdown.Item>
                 <i className="fa fa-sign-out"></i>&nbsp;Logout
               </NavDropdown.Item>
             </NavDropdown>
