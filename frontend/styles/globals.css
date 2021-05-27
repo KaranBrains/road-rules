@@ -333,3 +333,9 @@ body {
 .hidden{
   display: none;
 }
+
+.instructor_image{
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+}

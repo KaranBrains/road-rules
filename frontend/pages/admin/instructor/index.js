@@ -1,20 +1,32 @@
 import dynamic from 'next/dynamic';
-import { useState } from "react";
-import { useDispatch } from "react-redux";
+import { useState, useContext, useEffect } from "react";
+import { useDispatch , useSelector} from "react-redux";
+import { ReactReduxContext } from 'react-redux'
 import { useRouter } from "next/router";
-const Sidebar = dynamic(() => import('../../../shared/sidebar/sidebar'), { ssr: false });
 import { Modal } from "react-bootstrap";
-import { AddInstructor } from "../../../redux/actions/instructor";
+import { AddInstructor, AllInstructor, RemoveInstructor } from "../../../redux/actions/instructor";
+import {baseUrl} from "../../../redux/api/index"
+const Sidebar = dynamic(() => import('../../../shared/sidebar/sidebar'), { ssr: false });
 
 export default function Instructor() {
+  var i = 0;
+  const dispatch = useDispatch();
+
+  useEffect(() =>{
+    dispatch(AllInstructor());
+  },[])
+
+  const allInstructors = useSelector(state => state.instructor?.AllData?.instructors);
 
   const initialState = { fullName: "", img: "", phone: "", email:""};
   const [showModal, setShowModal] = useState(false);
   const [formData, setformData] = useState(initialState);
   const [fileOneValue, setFileOneValue] = useState('');
   const [fileOne, setFileOne] = useState("");
-  const dispatch = useDispatch();
   const router = useRouter();
+  // const {store} = useContext(ReactReduxContext);
+  // console.log("store");
+  // console.log(JSON.stringify(store.getState().instructor));
 
   const handleShow = () => setShowModal(true);
   const handleClose = () => {
@@ -28,12 +40,22 @@ export default function Instructor() {
     dispatch(AddInstructor(formData, router))
     .then(() =>{
       handleClose();
+      dispatch(AllInstructor());
     }).catch(() =>{
       console.log("Error")
     });
     setformData(initialState);
     setFileOne("");
   };
+
+  const deleteInstructor = (id) => {
+    console.log(id)
+    dispatch(RemoveInstructor(id))
+    .then(() =>{
+      dispatch(AllInstructor());
+    });
+  }
+
 
   const toBase64 = file => new Promise((resolve, reject) => {
     const reader = new FileReader();
@@ -52,7 +74,7 @@ export default function Instructor() {
             </Modal.Title>
           </Modal.Header>
           <Modal.Body>
-          <form onSubmit={handleSubmit}>
+          <form>
                 <div className="form-group mt-4">
                 <label className="font-20 py-2">Full Name</label>
                   <input
@@ -73,23 +95,21 @@ export default function Instructor() {
                 <div className="form-group">
                   <label className="font-20 py-2">Image</label>
                   <img src={fileOne} className="img-fluid"/>
-                  <button className="font-20 font-bold bg-tertiaryColor w-100 mt-2" onClick={()=>document.getElementById('upload')?.click()}>Upload</button>
+                  <div className="btn font-20 font-bold bg-tertiaryColor w-100 mt-2" onClick={()=>document.getElementById('uploading')?.click()}>Upload</div>
                   <input
                     onChange={(e) =>{
                       setFileOne(URL.createObjectURL(e.target.files[0]));
                       toBase64(e.target.files[0]).then(res=>{
                         setFileOneValue(res);
-                        console.log(res);
                         setformData({
                           ...formData,
                           img: res
                         });
                       })
-                      console.log(formData);
                     }}
                     type="file"
                     class="hidden"
-                    id="upload"
+                    id="uploading"
                     accept=".png, .jpg, .jpeg"
                     placeholder="Instructor Image"
                     required
@@ -133,6 +153,7 @@ export default function Instructor() {
                   <button
                     className="text-white bg-secondaryColor font-demi btn-blue submit-button"
                     type="submit"
+                    onClick={handleSubmit}
                   >
                     Submit
                   </button>
@@ -145,32 +166,51 @@ export default function Instructor() {
       )}
         <Sidebar />
         <div class="container padding-left-mobile">
+          <div class="d-flex justify-content-between">
           <h3>Instructor</h3>
           <button class="btn btn-primary" onClick={handleShow}>
                 Add Instructor
-              </button>
-          <div class="row mb-5 mt-3 user-table">
-            <table class="table table-striped font-bold table-responsive-sm">
+          </button>
+          </div>
+          <div class="row mb-5 mt-3 user-table  table-responsive">
+            <table class="table table-striped font-bold">
               <thead>
-                <tr className="font-16">
+                <tr className="font-16  align-middle">
                   <th scope="col">S.No</th>
                   <th scope="col">Image</th>    
                   <th scope="col">Name</th>
                   <th scope="col">Email</th>  
                   <th scope="col">Phone</th>   
-                  <th scope="col">Ratings</th>                    
+                  <th scope="col">Ratings</th>   
+                  <th scope="col">Action</th>                 
                 </tr>
               </thead>
               <tbody>
-              <tr className="font-demi">
-                  <td>1</td>
-                  <td><img></img></td>
-                  <td>Ayush</td>
-                  <td>ayush@gmail.com</td>
-                  <td>9335639735</td>
-                  <td>4/5</td>
-                  <td><button class="btn btn-danger">Remove</button></td>
-              </tr>   
+              {allInstructors? (
+                        allInstructors.map(val => {
+                          i++;
+                            return (
+                              <tr className="font-demi align-middle" key={val._id}>
+                              <td>{i}</td>
+                              <td>
+                              <img
+                              className="instructor_image"
+                              src={baseUrl + val.img}
+                              alt={val.fullName + " image"}
+                              />
+                              </td>
+                              <td>{val.fullName}</td>
+                              <td>{val.email}</td>
+                              <td>{val.phone}</td>
+                              <td>Ratings</td>
+                              <td><div class="btn btn-primary" >View Details</div></td>
+                              <td><div class="btn btn-danger" onClick={()=>deleteInstructor(val._id)}>Remove</div></td>
+                          </tr>
+                            )
+                        })
+                    ) : (
+                        ''
+                    )}   
               </tbody>
             </table>
           </div>

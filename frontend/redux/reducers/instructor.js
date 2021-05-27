@@ -1,9 +1,13 @@
-import {ADMIN_INSTRUCTOR_ADD} from "../constants/index"
+import {ADMIN_INSTRUCTOR_ADD, ADMIN_ALL_INSTRUCTORS, ADMIN_REMOVE_INSTRUCTOR} from "../constants/index"
 
-export default (state = { slotData: null, showdata: false}, action) => {
+export default (state = { AllData: null}, action) => {
     switch (action.type) {
       case ADMIN_INSTRUCTOR_ADD:
-        return { ...state, showdata : false};
+        return { ...state};
+      case ADMIN_ALL_INSTRUCTORS:
+        return { AllData: action?.data};
+      case ADMIN_REMOVE_INSTRUCTOR:
+        return { ...state};
       default:
         return state;
     }

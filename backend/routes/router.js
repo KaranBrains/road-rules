@@ -5,7 +5,8 @@ const routes = [
     'admin',
     'contact',
     'slot',
-    'instructor'
+    'instructor',
+    'payment',
 ];
 
 module.exports = {

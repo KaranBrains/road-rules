@@ -1,13 +1,14 @@
-import { useState } from "react";
-import { useDispatch } from "react-redux";
+import { useState, useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { useRouter } from "next/router";
 import dynamic from 'next/dynamic';
 const Sidebar = dynamic(() => import('../../../shared/sidebar/sidebar'), { ssr: false });
 import { Modal } from "react-bootstrap";
-import { AddSlot } from "../../../redux/actions/slot";
+import { AddSlot, AllSlots, RemoveSlot } from "../../../redux/actions/slot";
+import { AllInstructor } from "../../../redux/actions/instructor";
 
 export default function Slots() {
-
+  let i = 0;
   const initialState = { date: "", time: "", clientLimit: "", instructor:"", bookings:""};
   const [showModal, setShowModal] = useState(false);
   const [formData, setformData] = useState(initialState);
@@ -20,14 +21,31 @@ export default function Slots() {
     setformData(initialState);
   }
 
+  useEffect(() =>{
+    dispatch(AllInstructor());
+    dispatch(AllSlots());
+  },[])
+
+  const allInstructors = useSelector(state => state.instructor?.AllData?.instructors);
+  const allSlots = useSelector(state => state.slot?.slotData?.slots);
+
   const handleSubmit = (e) => {
     e.preventDefault();
     dispatch(AddSlot(formData, router))
     .then(() =>{
       handleClose();
+      dispatch(AllSlots());
     });
     setformData(initialState);
   };
+
+  const deleteSlot = (id) => {
+    console.log(id)
+    dispatch(RemoveSlot(id))
+    .then(() =>{
+      dispatch(AllSlots());
+    });
+  }
 
 
     return (
@@ -94,8 +112,8 @@ export default function Slots() {
                 </div>
                 <div className="form-group mt-4">
                 <label className="font-20 py-2">Instructor</label>
-                  <input
-                    required
+                <select
+                    name="instructor"
                     value={formData.instructor}
                     onChange={(e) => {
                       setformData({
@@ -103,11 +121,14 @@ export default function Slots() {
                         [e.target.name]: e.target.value,
                       });
                     }}
-                    name="instructor"
-                    type="text"
                     className="form-control"
-                    placeholder="Instructor"
-                  />
+                    required
+                  >
+                    {allInstructors && allInstructors.length>0 ? 
+                    allInstructors.map((c,i)=>{
+                       return <option value={c.fullName} key={i}>{c.fullName}</option>
+                    }): ''}
+                  </select>
                 </div>
                 <div className="text-center mt-5">
                   <button
@@ -125,30 +146,44 @@ export default function Slots() {
       )}
         <Sidebar />
         <div class="container padding-left-mobile">
-          <h3>Slots</h3>
+        <div class="d-flex justify-content-between">
+        <h3>Slots</h3>
           <button class="btn btn-primary" onClick={handleShow}>
-                Add Slots
-              </button>
-          <div class="row mb-5 mt-3 user-table">
-            <table class="table table-striped font-bold table-responsive-sm">
+            Add Slots
+          </button>
+        </div>
+          <div class="row mb-5 mt-3 user-table table-responsive">
+            <table class="table table-striped font-bold">
               <thead>
-                <tr className="font-16">
+                <tr className="font-16 align-middle">
+                  <th scope="col">S.No</th>
                   <th scope="col">Date</th>
                   <th scope="col">Time</th>    
                   <th scope="col">Client Limit</th>
                   <th scope="col">Instructor</th>  
                   <th scope="col">Bookings</th>   
+                  <th scope="col">Action</th>
                 </tr>
               </thead>
               <tbody>
-              <tr className="font-demi">
-                  <td>11/10/19</td>
-                  <td>09:10</td>
-                  <td>4</td>
-                  <td>Abhi</td>
-                  <td>2</td>
-                  <td><button class="btn btn-danger">Remove</button></td>
-              </tr>   
+              {allSlots? (
+                        allSlots.map(val => {
+                          i++;
+                            return (
+                              <tr className="font-demi align-middle" key={val._id}>
+                               <td>{i}</td>
+                               <td>{val.date}</td>
+                               <td>{val.time}</td>
+                               <td>{val.clientLimit}</td>
+                               <td>{val.instructor}</td>
+                               <td>{val.bookings}</td>
+                               <td><button class="btn btn-danger" onClick={() => deleteSlot(val._id)}>Remove</button></td>
+                              </tr>
+                            )
+                       })
+                ) : (
+                      ''
+                    )}   
               </tbody>
             </table>
           </div>
