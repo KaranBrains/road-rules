@@ -23,11 +23,8 @@
     "next": "10.2.2",
     "next-redux-wrapper": "^6.0.2",
     "react": "17.0.2",
-<<<<<<< HEAD
     "react-apexcharts": "^1.3.9",
-=======
     "react-big-calendar": "^0.33.4",
->>>>>>> 6eac2c70ba99495a03bb358c0731b02bdd479709
     "react-bootstrap": "^1.6.0",
     "react-dom": "17.0.2",
     "react-form-stepper": "^1.4.1",
