@@ -4,6 +4,7 @@ import { useDispatch } from "react-redux";
 import { useRouter } from "next/router";
 import { phoneOtp, verifyPhoneOtp } from "../../../redux/actions/auth";
 import { Stepper } from "react-form-stepper";
+import styles from "../../../styles/Form.module.css";
 import swal from "sweetalert";
 
 function Phone() {
@@ -38,8 +39,7 @@ function Phone() {
             <Stepper
               steps={[
                 { label: "Step 1" },
-                { label: "Step 2" },
-                { label: "Step 3" },
+                { label: "Step 2" },                
               ]}
               connectorStateColors={true}
               className="text-primaryColor"
@@ -99,7 +99,7 @@ function Phone() {
                   </button>
                 </div>
               </form>
-              <div className="text-center mt-5">
+              <div className={`text-center mt-5 p-3 font-demi text-primaryColor ${styles.greyHover}`}>
                 Did not recieve the OTP yet ?{" "}
                 <span
                   onClick={resendOtp}
