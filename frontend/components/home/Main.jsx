@@ -34,72 +34,242 @@ function HomeMain() {
           <div className="row center h-100">
             <div className="col-lg-7 col-md-8 col-sm-12 col-12">
               <div className="card bg-white shadow py-5 px-3 px-lg-5">
+              <div className="d-flex justify-content-end">
+                  <div className="text-center">
+                    <button
+                      className="text-white bg-secondaryColor font-demi px-5 btn-blue submit-button"
+                      type="submit"
+                    >
+                      View All
+                    </button>
+                  </div>
+                </div>
+                <hr />
                 <table class="table">
                   <thead>
                     <tr>
-                      <th scope="col">#</th>
-                      <th scope="col">First</th>
-                      <th scope="col">Last</th>
-                      <th scope="col">Handle</th>
+                      <th scope="col">
+                        <div className="font-bold text-primaryColor text-center">
+                          Mon
+                          <br />
+                          <div className="font-25">28</div>
+                        </div>
+                      </th>
+                      <th scope="col">
+                        <div className="font-bold text-primaryColor text-center">
+                          Tues
+                          <br />
+                          <div className="font-25">29</div>
+                        </div>
+                      </th>
+                      <th scope="col">
+                        <div className="font-bold text-primaryColor text-center">
+                          Wed
+                          <br />
+                          <div className="font-25">30</div>
+                        </div>
+                      </th>
+                      <th scope="col">
+                        <div className="font-bold text-primaryColor text-center">
+                          Thur
+                          <br />
+                          <div className="font-25">31</div>
+                        </div>
+                      </th>
+                      <th scope="col">
+                        <div className="font-bold text-primaryColor text-center">
+                          Fri
+                          <br />
+                          <div className="font-25">1</div>
+                        </div>
+                      </th>
+                      <th scope="col">
+                        <div className="font-bold text-primaryColor text-center">
+                          Sat
+                          <br />
+                          <div className="font-25">2</div>
+                        </div>
+                      </th>
+                      <th scope="col">
+                        <div className="font-bold text-primaryColor text-center">
+                          Sun
+                          <br />
+                          <div className="font-25">3</div>
+                        </div>
+                      </th>
                     </tr>
                   </thead>
                   <tbody>
                     <tr className="mb-2">
-                      <th scope="row">1</th>
-                      <td className="">Mark</td>
-                      <td className="">Otto</td>
-                      <td className="">@mdo</td>
-                      <td className="">Mark</td>
-                      <td className="">Otto</td>
-                      <td className="">@mdo</td>
+                      <td>
+                        <div className="text-primaryColor font-demi py-2 text-center calendar-event">
+                          Event
+                        </div>
+                      </td>
+                      <td>
+                        <div className="text-primaryColor font-demi py-2 text-center calendar-event">
+                          Event
+                        </div>
+                      </td>
+                      <td>
+                        <div className="text-primaryColor font-demi py-2 text-center calendar-event">
+                          Event
+                        </div>
+                      </td>
+                      <td>
+                        <div className="text-primaryColor font-demi py-2 text-center calendar-event">
+                          Event
+                        </div>
+                      </td>
+                      <td>
+                        <div className="text-primaryColor font-demi py-2 text-center calendar-event">
+                          Event
+                        </div>
+                      </td>
+                      <td>
+                        <div className="text-primaryColor font-demi py-2 text-center calendar-event">
+                          Event
+                        </div>
+                      </td>
+                      <td>
+                        <div className="text-primaryColor font-demi py-2 text-center calendar-event">
+                          Event
+                        </div>
+                      </td>
                     </tr>
                     <tr className="mb-2">
-                      <th scope="row">2</th>
-                      <td className="">Jacob</td>
-                      <td className="">Thornton</td>
-                      <td className="">@fat</td>
-                      <td className="">Jacob</td>
-                      <td className="">Thornton</td>
-                      <td className="">@fat</td>
+                      <td>
+                        <div className="text-primaryColor font-demi py-2 text-center calendar-event">
+                          Event
+                        </div>
+                      </td>
+                      <td>
+                        <div className="text-primaryColor font-demi py-2 text-center calendar-event">
+                          Event
+                        </div>
+                      </td>
+                      <td>
+                        <div className="text-primaryColor font-demi py-2 text-center calendar-event">
+                          Event
+                        </div>
+                      </td>
+                      <td>
+                        <div className="text-primaryColor font-demi py-2 text-center calendar-event">
+                          Event
+                        </div>
+                      </td>
+                      <td>
+                        <div className="text-primaryColor font-demi py-2 text-center calendar-event">
+                          Event
+                        </div>
+                      </td>
+                      <td>
+                        <div className="text-primaryColor font-demi py-2 text-center calendar-event">
+                          Event
+                        </div>
+                      </td>
+                      <td>
+                        <div className="text-primaryColor font-demi py-2 text-center calendar-event">
+                          Event
+                        </div>
+                      </td>
                     </tr>
                     <tr className="mb-2">
-                      <th scope="row">3</th>
-                      <td className="">Larry</td>
-                      <td className="">the Bird</td>
-                      <td className="">@twitter</td>
-                      <td className="">Larry</td>
-                      <td className="">the Bird</td>
-                      <td className="">@twitter</td>
+                      <td>
+                        <div className="text-primaryColor font-demi py-2 text-center calendar-event">
+                          Event
+                        </div>
+                      </td>
+                      <td>
+                        <div className="text-primaryColor font-demi py-2 text-center calendar-event">
+                          Event
+                        </div>
+                      </td>
+                      <td>
+                        <div className="text-primaryColor font-demi py-2 text-center calendar-event">
+                          Event
+                        </div>
+                      </td>
+                      <td>
+                        <div className="text-primaryColor font-demi py-2 text-center calendar-event">
+                          Event
+                        </div>
+                      </td>
+                      <td></td>
+                      <td>
+                        <div className="text-primaryColor font-demi py-2 text-center calendar-event">
+                          Event
+                        </div>
+                      </td>
+                      <td>
+                        <div className="text-primaryColor font-demi py-2 text-center calendar-event">
+                          Event
+                        </div>
+                      </td>
                     </tr>
                     <tr className="mb-2">
-                      <th scope="row">1</th>
-                      <td className="">Mark</td>
-                      <td className="">Otto</td>
-                      <td className="">@mdo</td>
-                      <td className="">Mark</td>
-                      <td className="">Otto</td>
-                      <td className="">@mdo</td>
+                      <td>
+                        <div className="text-primaryColor font-demi py-2 text-center calendar-event">
+                          Event
+                        </div>
+                      </td>
+                      <td>
+                        <div className="text-primaryColor font-demi py-2 text-center calendar-event">
+                          Event
+                        </div>
+                      </td>
+                      <td>
+                        <div className="text-primaryColor font-demi py-2 text-center calendar-event">
+                          Event
+                        </div>
+                      </td>
+                      <td></td>
+                      <td></td>
+                      <td>
+                        <div className="text-primaryColor font-demi py-2 text-center calendar-event">
+                          Event
+                        </div>
+                      </td>
+                      <td>
+                        <div className="text-primaryColor font-demi py-2 text-center calendar-event">
+                          Event
+                        </div>
+                      </td>
                     </tr>
                     <tr className="mb-2">
-                      <th scope="row">2</th>
-                      <td className="">Jacob</td>
-                      <td className="">Thornton</td>
-                      <td className="">@fat</td>
-                      <td className="">Jacob</td>
-                      <td className="">Thornton</td>
-                      <td className="">@fat</td>
+                      <td>
+                        <div className="text-primaryColor font-demi py-2 text-center calendar-event">
+                          Event
+                        </div>
+                      </td>
+                      <td>
+                        <div className="text-primaryColor font-demi py-2 text-center calendar-event">
+                          Event
+                        </div>
+                      </td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td>
+                        <div className="text-primaryColor font-demi py-2 text-center calendar-event">
+                          Event
+                        </div>
+                      </td>
+                      <td></td>
                     </tr>
-                    <tr className="mb-2">
-                      <th scope="row">3</th>
-                      <td className="">Larry</td>
-                      <td className="">the Bird</td>
-                      <td className="">@twitter</td>
-                      <td className="">Larry</td>
-                      <td className="">the Bird</td>
-                      <td className="">@twitter</td>
-                    </tr>
-                  </tbody>
+                    </tbody>
                 </table>
+                <hr />
+                <div className="d-flex justify-content-end">
+                  <div className="text-center">
+                    <button
+                      className="text-white bg-secondaryColor font-demi px-5 btn-blue submit-button"
+                      type="submit"
+                    >
+                      Next
+                    </button>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
