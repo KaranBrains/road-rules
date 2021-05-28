@@ -1,5 +1,5 @@
 import * as api from "../api";
-import { ADMIN_SLOT_ADD, ADMIN_ALL_SLOT, ADMIN_REMOVE_SLOT } from "../constants/index";
+import { ADMIN_SLOT_ADD, ADMIN_ALL_SLOT, ADMIN_REMOVE_SLOT, ADMIN_UPDATE_BY_ID } from "../constants/index";
 import swal from "sweetalert";
 
 export const AddSlot = (formData, router) => async (dispatch) => {
@@ -50,6 +50,23 @@ export const RemoveSlot = (id) => async (dispatch) => {
   });
 }
 };
+
+export const UpdateSlot = (id, editFormData) => async (dispatch) => {
+  try {
+    const { data } = await api.updateSlotById(id, editFormData);
+    dispatch({ type: ADMIN_UPDATE_BY_ID, data });
+    swal({
+      text: "Slot Updated",
+      icon: "success",
+    });
+  } catch (e) {
+    console.log(e.response);
+    swal({
+      text:"Error",
+      icon: "error",
+  });
+}
+}
 
 
   

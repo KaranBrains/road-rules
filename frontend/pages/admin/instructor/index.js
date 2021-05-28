@@ -7,6 +7,7 @@ import { Modal } from "react-bootstrap";
 import { AddInstructor, AllInstructor, RemoveInstructor } from "../../../redux/actions/instructor";
 import {baseUrl} from "../../../redux/api/index"
 const Sidebar = dynamic(() => import('../../../shared/sidebar/sidebar'), { ssr: false });
+import Link from "next/link";
 
 export default function Instructor() {
   var i = 0;
@@ -203,7 +204,13 @@ export default function Instructor() {
                               <td>{val.email}</td>
                               <td>{val.phone}</td>
                               <td>Ratings</td>
-                              <td><div class="btn btn-primary" >View Details</div></td>
+                              <td>
+                              <Link href={'/admin/instructor/'+val._id}>
+                                <a>
+                                <div class="btn btn-primary" onClick={() => router.push('/admin/instructor/'+val._id)} >View Details</div>
+                                </a>
+                              </Link>
+                              </td>
                               <td><div class="btn btn-danger" onClick={()=>deleteInstructor(val._id)}>Remove</div></td>
                           </tr>
                             )

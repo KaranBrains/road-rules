@@ -363,6 +363,15 @@ body {
 
 td{
   background: var(--tertiaryColor) !important;
-  border-radius: 4px;
   margin-top: 10px;
+}
+
+table tbody{
+  border-radius: 5px;
+}
+
+.user-img{
+  border-radius: 50%;
+  height: 220px !important;
+  width: 190px;
 }

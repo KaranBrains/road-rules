@@ -1,13 +1,15 @@
-import {ADMIN_SLOT_ADD, ADMIN_ALL_SLOT, ADMIN_REMOVE_SLOT} from "../constants/index"
+import {ADMIN_SLOT_ADD, ADMIN_ALL_SLOT, ADMIN_REMOVE_SLOT, ADMIN_UPDATE_BY_ID} from "../constants/index"
 
-export default (state = { slotData: null}, action) => {
+export default (state = { slotData: null, slotDataById : null}, action) => {
     switch (action.type) {
       case ADMIN_SLOT_ADD:
         return { ...state};
       case ADMIN_ALL_SLOT:
-          return { slotData: action?.data};
+          return { ...state, slotData: action?.data};
       case ADMIN_REMOVE_SLOT:
           return { ...state};
+      case ADMIN_UPDATE_BY_ID:
+        return { ...state, slotDataById:  action?.data};
       default:
         return state;
     }
