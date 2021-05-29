@@ -1,5 +1,10 @@
 import * as api from "../api";
-import { ADMIN_INSTRUCTOR_ADD, ADMIN_ALL_INSTRUCTORS, ADMIN_REMOVE_INSTRUCTOR, ADMIN_GET_INSTRUCTOR_BY_ID } from "../constants/index";
+import { 
+  ADMIN_INSTRUCTOR_ADD,
+  ADMIN_ALL_INSTRUCTORS, 
+  ADMIN_REMOVE_INSTRUCTOR, 
+  ADMIN_GET_INSTRUCTOR_BY_ID, 
+  ADMIN_INSTRUCTOR_UPDATE } from "../constants/index";
 import swal from "sweetalert";
 
 export const AddInstructor = (formData, router) => async (dispatch) => {
@@ -56,10 +61,26 @@ export const GetInstructorById = (id) => async (dispatch) => {
     dispatch({ type: ADMIN_GET_INSTRUCTOR_BY_ID, data });
   } catch (e) {
     console.log(e.response);
-    console.log(id + " Sonal")
     swal({
       text:"Error",
       icon: "error",
   });
 }
+}
+
+export const UpdateInstructorById = (id,formData) => async (dispatch) => {
+  try {
+    const { data } = await api.updateInstructor(id,formData);
+    dispatch({ type: ADMIN_INSTRUCTOR_UPDATE, data });
+    swal({
+      text: "Instructor Updated",
+      icon: "success",
+    });
+  } catch (e) {
+    console.log(e.response);
+    swal({
+      text: "Error Occured",
+      icon: "error",
+    });
+  }
 }

@@ -28,3 +28,4 @@ export const addInstructor = (formdata) => axios.post(`${url}/add-instructor`, f
 export const allInstructor = () => axios.get(`${url}/get-instructors`);
 export const removeInstructor = (id) => axios.delete(`${url}/delete-instructor?id=${id}`);
 export const getInstructorById = (id) => axios.get(`${url}/instructor?id=${id}`)
+export const updateInstructor = (id, formdata) => axios.put(`${url}/update-instructor?id=${id}`, formdata);

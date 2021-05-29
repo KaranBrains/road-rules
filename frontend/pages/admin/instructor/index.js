@@ -207,7 +207,7 @@ export default function Instructor() {
                               <td>
                               <Link href={'/admin/instructor/'+val._id}>
                                 <a>
-                                <div class="btn btn-primary" onClick={() => router.push('/admin/instructor/'+val._id)} >View Details</div>
+                                <div class="btn btn-primary" onClick={() => router.push('/admin/instructor/'+[val._id])} >View Details</div>
                                 </a>
                               </Link>
                               </td>
