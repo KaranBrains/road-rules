@@ -28,7 +28,7 @@ export const signIn = (formData, router) => async (dispatch) => {
     router.push("/");
   } catch (e) {
     swal({
-      text: e.response.data.msg,
+      text: e.response?.data.msg,
       icon: "error",
     });
   }
@@ -59,7 +59,7 @@ export const signUp = (formData, router) => async (dispatch) => {
   } catch (e) {
     console.log(e.response);
     swal({
-      text: e.response.data.msg,
+      text: e.response?.data.msg,
       icon: "error",
     });
   }
@@ -80,7 +80,7 @@ export const emailOtp = () => async (dispatch) => {
     dispatch({ type: EMAIL_OTP, data });
   } catch (e) {
     swal({
-      text: e.response.data.msg,
+      text: e.response?.data.msg,
       icon: "error",
     });
   }
@@ -104,7 +104,7 @@ export const verifyEmailOtp = (otp, router) => async (dispatch) => {
   } catch (e) {
     console.log(e.response);
     swal({
-      text: e.response.data.msg,
+      text: e.response?.data.msg,
       icon: "error",
     });
   }
@@ -173,7 +173,7 @@ export const verifyPhoneOtp = (otp, router) => async (dispatch) => {
     router.push("/auth/login");
   } catch (e) {
     swal({
-      text: e.response.data.msg,
+      text: e.response?.data.msg,
       icon: "error",
     });
   }
