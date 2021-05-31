@@ -14,7 +14,7 @@ const SlotSchema = new mongoose.Schema({
     required: true,
   },
   instructor: {
-    type: Number,
+    type: String,
     required: true,
   },
   bookings :[{

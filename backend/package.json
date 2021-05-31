@@ -22,6 +22,7 @@
     "nodemailer": "^6.6.0",
     "nodemon": "^2.0.7",
     "paydunya": "^1.0.11",
+    "stripe": "^8.150.0",
     "twilio": "^3.61.0"
   }
 }
