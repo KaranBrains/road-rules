@@ -61,3 +61,23 @@ exports.getAll = async (req,res) => {
     } 
 }
 
+exports.getInstructorById = (req, res) => {
+    Instructor.findById(req.query.id , (err, instructor) => {
+        if (err) {
+            return res.status(400).json({ msg: err });
+        }
+        return res.status(201).json({instructor: instructor});
+    })
+};
+
+exports.deleteInstructor = (req, res) => {
+    if ( !req.query.id ) {
+        return res.status(400).json({ msg: 'Invalid data' });
+    }
+    Instructor.findByIdAndDelete(req.query.id , (err,instructor) => {
+        if (err) {
+            return res.status(400).json({ msg: err });
+        }
+        return res.status(201).json(instructor);
+    })
+};

@@ -8,7 +8,7 @@ const path        = require('path');
 
 const app = express();
 
-mongoose.connect(config.db, { useNewUrlParser: true, useCreateIndex: true , useUnifiedTopology: true });
+mongoose.connect(config.db, { useNewUrlParser: true, useCreateIndex: true , useUnifiedTopology: true })
 
 app.use(cors());
 app.use(express.json({limit: '50mb'}));

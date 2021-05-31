@@ -1,27 +1,31 @@
 const mongoose = require('mongoose');
 
 const RideSchema = new mongoose.Schema({
-  client: {
+  client : {
     type: String,
     required: true,
   },
-  instructor: {
+  instructor : {
     type: String,
     required: true,
   },
-  slot: {
+  slot : {
     type: String,
     required: true,
   },
-  status :{
+  status : {
     type: String,
     required: true,
   },
-  feedback :{
+  modeOfPayment : {
+    type: String,
+    required: true,
+  },
+  feedback : {
     type: String,
   },
   rating: {
-    type: String,
+    type: Number,
   }
 });
 

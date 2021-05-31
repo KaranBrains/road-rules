@@ -15,9 +15,9 @@ function MyApp({ Component, pageProps }) {
         ></script>
         <meta name="theme-color" content="#1e4c6b" />
       </Head>
-      <NavbarComponent />
+      {/* <NavbarComponent /> */}
       <Component {...pageProps} />
-      <Footer />
+      {/* <Footer /> */}
     </>
   );
 }
