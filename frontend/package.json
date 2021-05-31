@@ -8,14 +8,10 @@
     "start": "next start"
   },
   "dependencies": {
-    "@fullcalendar/core": "^5.7.0",
     "@material-ui/core": "^4.11.4",
     "@material-ui/icons": "^4.11.2",
     "@stripe/stripe-js": "^1.15.0",
     "apexcharts": "^3.26.3",
-    "@fullcalendar/daygrid": "^5.7.0",
-    "@fullcalendar/react": "^5.7.0",
-    "@fullcalendar/timegrid": "^5.7.0",
     "axios": "^0.21.1",
     "base64-img": "^1.0.4",
     "bootstrap": "^5.0.1",

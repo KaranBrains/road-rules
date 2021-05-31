@@ -1,8 +1,12 @@
-function Calendar() {
+import { Calendar, momentLocalizer } from "react-big-calendar";
+import moment from "moment";
+
+function MyCalendar() {
+  const localizer = momentLocalizer(moment);
   const myEventsList = [
     {
       id: 1,
-      color: "#fd3153",
+      color: "#00000",
       from: "2019-05-02T18:00:00+00:00",
       to: "2019-05-05T19:00:00+00:00",
       title: "This is an event",
@@ -23,7 +27,17 @@ function Calendar() {
     },
   ];
 
-  return <></>;
+  return (
+    <div className="container my-5 text-primaryColor font-bold" id="#home">
+      <Calendar
+        localizer={localizer}
+        events={myEventsList}
+        startAccessor="start"
+        endAccessor="end"
+        style={{ height: 500 }}
+      />
+    </div>
+  );
 }
 
-export default Calendar;
+export default MyCalendar;
