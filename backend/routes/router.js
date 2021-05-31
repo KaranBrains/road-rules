@@ -7,6 +7,7 @@ const routes = [
     'slot',
     'instructor',
     'payment',
+    'ride'
 ];
 
 module.exports = {
