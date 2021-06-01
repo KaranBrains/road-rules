@@ -34,9 +34,7 @@ export default function InstructorId() {
 
   const handleShow = () => 
   { dispatch(GetInstructorById(router.query.id))
-    console.log(formData.img+"before");
     setformData(initialState);
-    console.log(formData.img+"After");
     setFileOne(baseUrl + instructorById?.img);
     setShowModal(true);
   }
@@ -54,7 +52,6 @@ export default function InstructorId() {
       handleClose();
       dispatch(GetInstructorById(router.query.id));
     }).catch(() =>{
-      console.log("Error")
     });
   };
 

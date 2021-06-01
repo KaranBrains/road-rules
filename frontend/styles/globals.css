@@ -171,7 +171,8 @@ body {
 
 @media(max-width: 600px){
   .padding-left-mobile{
-      padding-left: 60px !important;
+      padding-left: 80px !important;
+      padding-right: 20px !important;
   }
 }
 .aside{

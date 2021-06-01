@@ -277,8 +277,8 @@ export default function Slots() {
       )}
         <Sidebar />
         <div class="container padding-left-mobile">
-        <div class="d-flex justify-content-between">
-        <h3>Slots</h3>
+        <div class="d-flex justify-content-between align-items-center">
+          <h3>Slots</h3>
           <button class="btn btn-primary" onClick={handleShow}>
             Add Slots
           </button>

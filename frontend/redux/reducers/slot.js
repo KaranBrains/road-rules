@@ -5,9 +5,9 @@ export default (state = { slotData: null, slotDataById : null}, action) => {
       case ADMIN_SLOT_ADD:
         return { ...state};
       case ADMIN_ALL_SLOT:
-          return { ...state, slotData: action?.data};
+        return { ...state, slotData: action?.data};
       case ADMIN_REMOVE_SLOT:
-          return { ...state};
+        return { ...state};
       case ADMIN_UPDATE_BY_ID:
         return { ...state, slotDataById:  action?.data};
       default:
