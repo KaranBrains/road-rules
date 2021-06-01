@@ -51,7 +51,7 @@ function NavbarComponent() {
               All Rides
             </Nav.Link>
             <Nav.Link
-              href="/client/contact"
+              href="/contact"
               className="font-demi font-17
                   px-3 navbar-item text-primaryColor text-center"
             >
@@ -80,7 +80,7 @@ function NavbarComponent() {
                 </NavDropdown.Item>
               </NavDropdown>
             ) : (
-              <NavDropdown                
+              <NavDropdown
                 title={
                   <div className={`${styles.pullLeft}`}>
                     <img
