@@ -18,11 +18,11 @@ function Login() {
   };
 
   return (
-    <>
+    <div className="auth-bg">
       <div className="container my-5">
         <div className="row d-flex justify-content-center">
           <div className="col-lg-6 col-md-8 col-sm-12 col-12">
-            <div className="card shadow px-2 px-lg-5 py-5">
+            <div className="card shadow px-3 px-lg-5 py-5 bg-white">
               <h1 className="text-center font-bold text-primaryColor mb-4">
                 Sign in to your account
               </h1>
@@ -48,7 +48,7 @@ function Login() {
                     <label className="font-demi text-primaryColor">
                       Password
                     </label>
-                    <Link href="/auth/forgotpassword">
+                    <Link href="/auth/forgot/email">
                       <p className={`text-secondaryColor font-demi`}>
                         Forgot Password?
                       </p>
@@ -81,7 +81,7 @@ function Login() {
             </div>
             <Link href="/auth/signup">
               <div
-                className={`font-demi text-primaryColor mt-4 py-3 px-3 text-center ${styles.greyHover}`}
+                className={`font-demi text-primaryColor mt-4 py-3 px-3 text-center bg-white ${styles.greyHover}`}
               >
                 Become a member{" "}
                 <span className="ml-2 text-secondaryColor">Signup</span>
@@ -90,7 +90,7 @@ function Login() {
           </div>
         </div>
       </div>
-    </>
+    </div>
   );
 }
 

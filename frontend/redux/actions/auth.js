@@ -180,6 +180,45 @@ export const verifyPhoneOtp = (otp, router) => async (dispatch) => {
 };
 
 
+export const forgotEmailOtp = (formData, router) => async (dispatch) => {
+  try {
+    const { data } = await api.getEmailOtp(formData.email);
+    localStorage.setItem("email", formData.email);
+    swal({
+      text: "Code is send to your email successfully",
+      icon: "success",
+    });
+    dispatch({ type: EMAIL_OTP, data });
+    router.push("/auth/forgot/otp");
+  } catch (e) {
+    swal({
+      text: e.response?.data.msg,
+      icon: "error",
+    });
+  }
+};
+
+export const verifyForgotEmailOtp = (otp, router) => async (dispatch) => {
+  try {
+    const formData = localStorage.getItem("email");
+    console.log(formData);
+    const { data } = await api.verifyForgotEmailOtp(otp, formData);
+    dispatch({ type: VERIFY_FORGOT, data });
+    swal({
+      text: "OTP Verified",
+      icon: "success",
+    });
+    router.push("/auth/forgot/password");
+  } catch (e) {
+    swal({
+      text: e.response?.data.msg,
+      icon: "error",
+    });
+  }
+};
+
+
+
 // CHECKING AUTHENTICATION
 export const isAuthenticated = () => {
   try {

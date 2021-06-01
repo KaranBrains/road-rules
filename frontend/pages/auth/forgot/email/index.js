@@ -1,19 +1,17 @@
-import { useState } from "react";
-import Link from "next/link";
+import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { useRouter } from "next/router";
-import { changePassword } from "../../../redux/actions/auth";
+import { forgotEmailOtp } from "../../../../redux/actions/auth";
 
-
-function ForgotPassword() {
-  const initialState = { password: "" };
+function Forgot() {
+  const initialState = { email: "" };
   const [formData, setformData] = useState(initialState);
   const dispatch = useDispatch();
   const router = useRouter();
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    dispatch(changePassword(formData.password, router));
+    dispatch(forgotEmailOtp(formData, router));
     setformData(initialState);
   };
 
@@ -21,34 +19,34 @@ function ForgotPassword() {
     <>
       <div className="container my-5">
         <div className="row d-flex justify-content-center">
-          <div className="col-lg-6 col-md-8 col-sm-12 col-12">
-            <div className="card shadow px-2 px-lg-5 py-5">
+          <div className="col-lg-8 col-md-8 col-sm-12 col-12">
+            <div className="card">
               <h1 className="text-center font-bold text-primaryColor mb-4">
-                Enter the New Password
+                Enter the E-mail associated with your account
               </h1>
               <form onSubmit={handleSubmit}>
-                <div className="mt-4">
-                  <label className="text-primaryColor font-demi">Password</label>
+                <div className="input-group mt-4">
                   <input
                     required
-                    value={formData.password}
+                    value={formData.email}
                     onChange={(e) => {
                       setformData({
                         ...formData,
                         [e.target.name]: e.target.value,
                       });
                     }}
-                    name="password"
-                    type="password"
-                    className="form-control"                    
+                    name="email"
+                    type="email"
+                    className="form-control"
+                    placeholder="Email"
                   />
                 </div>
-                <div className="text-center mt-5 mb-3">
+                <div className="text-center mt-5">
                   <button
-                    className="text-white bg-secondaryColor font-demi w-100 btn-blue submit-button"
+                    className="text-white bg-secondaryColor font-demi btn-blue submit-button"
                     type="submit"
                   >
-                    Submit
+                    Send OTP
                   </button>
                 </div>
               </form>
@@ -60,4 +58,4 @@ function ForgotPassword() {
   );
 }
 
-export default ForgotPassword;
+export default Forgot;

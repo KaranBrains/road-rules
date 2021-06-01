@@ -8,20 +8,20 @@ import styles from "./Navbar.module.css";
 function NavbarComponent() {
   let isLoggedIn;
   useEffect(() => {
-    isLoggedIn = localStorage.getItem("token");    
-  }, []);  
+    isLoggedIn = localStorage.getItem("token");
+  }, []);
   return (
     <>
       <Navbar
         expand="lg"
-        className="nav-background  py-2 px-3"
+        className="nav-background  py-2 px-5"
         sticky="top"
         collapseOnSelect={true}
         variant="light"
       >
         <Navbar.Brand href="/" className="mx-0">
           <img
-            src="/images/logo.png"
+            src="/images/logo.svg"
             alt="logo"
             className={`img-fluid py-0 my-0 ${styles.logo}`}
           />
@@ -37,20 +37,6 @@ function NavbarComponent() {
               Company
             </Nav.Link>
             <Nav.Link
-              href="/driver/add-ride"
-              className="font-demi font-17 px-3 navbar-item
-                text-primaryColor text-center"
-            >
-              Add Ride
-            </Nav.Link>
-            <Nav.Link
-              href="/driver/all-ride"
-              className="font-demi font-17 px-3 navbar-item
-                text-primaryColor text-center"
-            >
-              All Rides
-            </Nav.Link>
-            <Nav.Link
               href="/contact"
               className="font-demi font-17
                   px-3 navbar-item text-primaryColor text-center"
@@ -59,15 +45,16 @@ function NavbarComponent() {
             </Nav.Link>
             {isLoggedIn ? (
               <NavDropdown
+                eventKey={1}
                 title={
-                  <div className={`${styles.pullLeft}`}>
+                  <div className="pull-left hidden-mobile">
                     <img
                       className="thumbnail-image text-center"
                       src="/images/profile_avatar.png"
                       alt="user pic"
                       width="30"
                       height="30"
-                      className="mr-5"
+                      className="mr-1"
                       alt=""
                       style={{ borderRadius: "50%" }}
                     />
@@ -76,13 +63,16 @@ function NavbarComponent() {
                 id="basic-nav-dropdown"
               >
                 <NavDropdown.Item>
-                  <i className="fa fa-sign-out"></i>&nbsp;Logout
+                  <div className="font-demi text-primaryColor">
+                    <i className="fas fa-sign-out-alt mr-2"></i>
+                    Logout
+                  </div>
                 </NavDropdown.Item>
               </NavDropdown>
             ) : (
               <NavDropdown
                 title={
-                  <div className={`${styles.pullLeft}`}>
+                  <div className="pull-left">
                     <img
                       className="thumbnail-image"
                       src="/images/profile_avatar.png"

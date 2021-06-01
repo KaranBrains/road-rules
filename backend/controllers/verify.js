@@ -123,7 +123,7 @@ exports.phoneOtpCheck = async (req, res) => {
   }
 };
 
-exports.forgotEmailOtpSend = (req, res) => {
+exports.forgotEmailOtpSend = (req, res) => {  
   if (!req.query.email) {
     return res.status(400).send({ msg: 'You need to send email' });
   }
@@ -161,6 +161,7 @@ exports.forgotEmailOtpSend = (req, res) => {
 };
 
 exports.forgotOtpCheck = async (req, res) => {
+  console.log(req.body);
   if (!req.body.email || !req.body.otp) {
     return res.status(400).send({ msg: 'You need to send email and otp' });
   }
@@ -174,7 +175,7 @@ exports.forgotOtpCheck = async (req, res) => {
       return res.status(400).json({ msg: 'The user does not exist' });
     }
     if (user.emailOtp == req.body.otp) {
-      user.emailOtp = null;
+      console.log(user.emailOtp);      
       user.save()
       .then(result=>{
         res.status(200).send({msg: "Email verified successfully",token: createToken(result)})

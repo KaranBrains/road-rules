@@ -26,11 +26,11 @@ function Signup() {
   };
 
   return (
-    <>
+    <div className="auth-bg">
       <div className="container my-5">
         <div className="row d-flex justify-content-center">
           <div className="col-lg-6 col-md-8 col-sm-12 col-12">
-            <div className="card shadow px-2 px-lg-5 py-5">
+            <div className="card shadow px-lg-5 py-5 px-3 bg-white">
               <h1 className="text-center font-bold text-primaryColor mb-4">
                 Welcome to RideSharing, Signup here...
               </h1>
@@ -104,13 +104,15 @@ function Signup() {
                       required
                       name="phone"
                       type="text"
-                      className="form-control mt-1"                      
+                      className="form-control mt-1"
                       style={{ borderRadius: "0px 10px 10px 0px" }}
                     />
                   </div>
                 </div>
                 <div className="mt-4">
-                  <label className="font-demi text-primaryColor">Password</label>
+                  <label className="font-demi text-primaryColor">
+                    Password
+                  </label>
                   <input
                     value={formData.password}
                     onChange={(e) => {
@@ -122,7 +124,7 @@ function Signup() {
                     required
                     name="password"
                     type="password"
-                    className="form-control"                    
+                    className="form-control"
                   />
                 </div>
                 <div className="text-center mt-5 mb-3">
@@ -137,7 +139,7 @@ function Signup() {
             </div>
             <Link href="/auth/login">
               <div
-                className={`font-demi text-primaryColor text-center mt-4 py-3 px-3 ${styles.greyHover}`}
+                className={`font-demi text-primaryColor text-center mt-4 py-3 px-3 bg-white ${styles.greyHover}`}
               >
                 Already a member?{" "}
                 <span className="ml-2 text-secondaryColor">Signin</span>
@@ -146,7 +148,7 @@ function Signup() {
           </div>
         </div>
       </div>
-    </>
+    </div>
   );
 }
 
