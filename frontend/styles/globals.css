@@ -1,3 +1,5 @@
+
+
 html,
 body {  
   font-size: 100%;
@@ -14,7 +16,7 @@ body {
 
 /* Srollbar */
 ::-webkit-scrollbar {
-  width: 10px;
+  width: 5px;
 }
 ::-webkit-scrollbar-track {
   box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.3);
@@ -362,9 +364,15 @@ body {
   box-shadow: inset 0 0 0 9999px var(--bs-table-accent-bg);
 }
 
-td{
+.calendar-event{
   background: var(--tertiaryColor) !important;
-  margin-top: 10px;
+  border-radius: 4px;  
+  cursor: pointer;
+  transition: all 0.4s ease-in-out;
+}
+.calendar-event:hover{
+  background: var(--secondaryColor) !important;
+  color: #ffffff !important;
 }
 
 table tbody{
@@ -375,4 +383,15 @@ table tbody{
   border-radius: 50%;
   height: 220px !important;
   width: 190px;
+}
+
+.rbc-toolbar button:active, .rbc-toolbar button.rbc-active {
+  background-image: none;
+  box-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
+  background-color: var(--primaryColor) !important;
+  border-color: #adadad;
+  color: white !important;
+}
+.rbc-month-header {
+  background: var(--tertiaryColor);
 }

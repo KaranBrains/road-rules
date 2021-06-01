@@ -19,7 +19,6 @@ exports.addSlot = (req, res) => {
 };
 
 exports.deleteSlot = (req, res) => {
-    console.log(req.query)
     if ( !req.query.id ) {
         return res.status(400).json({ msg: 'Invalid data' });
     }

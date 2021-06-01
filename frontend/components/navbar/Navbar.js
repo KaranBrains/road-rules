@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import Navbar from "react-bootstrap/Navbar";
 import Nav from "react-bootstrap/Nav";
 import NavDropdown from "react-bootstrap/NavDropdown";
@@ -5,6 +6,10 @@ import Link from "next/link";
 import styles from "./Navbar.module.css";
 
 function NavbarComponent() {
+  let isLoggedIn;
+  useEffect(() => {
+    isLoggedIn = localStorage.getItem("token");    
+  }, []);  
   return (
     <>
       <Navbar
@@ -52,62 +57,64 @@ function NavbarComponent() {
             >
               Contact Us
             </Nav.Link>
-            <NavDropdown              
-              title={
-                <div className={`${styles.pullLeft}`}>
-                  <img
-                    className="thumbnail-image text-center"
-                    src="/images/profile_avatar.png"
-                    alt="user pic"
-                    width="30"
-                    height="30"
-                    className="mr-5"
-                    alt=""
-                    style={{ borderRadius: "50%" }}
-                  />
-                </div>
-              }
-              id="basic-nav-dropdown"
-            >
-              <NavDropdown.Item>
-                <i className="fa fa-sign-out"></i>&nbsp;Logout
-              </NavDropdown.Item>
-            </NavDropdown>
-            <NavDropdown
-              eventKey={1}
-              title={
-                <div className={`${styles.pullLeft}`}>
-                  <img
-                    className="thumbnail-image"
-                    src="/images/profile_avatar.png"
-                    alt="user pic"
-                    width="30"
-                    height="30"
-                    className="mr-5"
-                    alt=""
-                    style={{ borderRadius: "50%" }}
-                  />
-                </div>
-              }
-              id="basic-nav-dropdown"
-            >
-              <NavDropdown.Item>
-                <Link href="/auth/login">
-                  <div className="font-demi text-primaryColor">
-                    <i className="fas fa-sign-in-alt mr-2"></i>
-                    &nbsp;Login
+            {isLoggedIn ? (
+              <NavDropdown
+                title={
+                  <div className={`${styles.pullLeft}`}>
+                    <img
+                      className="thumbnail-image text-center"
+                      src="/images/profile_avatar.png"
+                      alt="user pic"
+                      width="30"
+                      height="30"
+                      className="mr-5"
+                      alt=""
+                      style={{ borderRadius: "50%" }}
+                    />
                   </div>
-                </Link>
-              </NavDropdown.Item>
-              <NavDropdown.Item>
-                <Link href="/auth/signup">
-                  <div className="font-demi text-primaryColor">
-                    <i className="fas fa-user-circle mr-2"></i>
-                    &nbsp;Signup
+                }
+                id="basic-nav-dropdown"
+              >
+                <NavDropdown.Item>
+                  <i className="fa fa-sign-out"></i>&nbsp;Logout
+                </NavDropdown.Item>
+              </NavDropdown>
+            ) : (
+              <NavDropdown                
+                title={
+                  <div className={`${styles.pullLeft}`}>
+                    <img
+                      className="thumbnail-image"
+                      src="/images/profile_avatar.png"
+                      alt="user pic"
+                      width="30"
+                      height="30"
+                      className="mr-5"
+                      alt=""
+                      style={{ borderRadius: "50%" }}
+                    />
                   </div>
-                </Link>
-              </NavDropdown.Item>
-            </NavDropdown>
+                }
+                id="basic-nav-dropdown"
+              >
+                <NavDropdown.Item>
+                  <Link href="/auth/login">
+                    <div className="font-demi text-primaryColor">
+                      <i className="fas fa-sign-in-alt mr-2"></i>
+                      &nbsp;Login
+                    </div>
+                  </Link>
+                </NavDropdown.Item>
+                <NavDropdown.Item>
+                  <Link href="/auth/signup">
+                    <div className="font-demi text-primaryColor">
+                      <i className="fas fa-user-circle mr-2"></i>
+                      &nbsp;Signup
+                    </div>
+                  </Link>
+                </NavDropdown.Item>
+              </NavDropdown>
+            )}
           </Nav>
         </Navbar.Collapse>
       </Navbar>

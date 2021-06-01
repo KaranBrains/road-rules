@@ -8,6 +8,9 @@ const RatingSchema = new mongoose.Schema({
   stars: {
     type: String,
     required: true,
+  },
+  feedback: {
+    type: String,
   }
 });
 

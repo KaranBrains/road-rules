@@ -17,9 +17,9 @@ const SlotSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
-  bookings :[{
+  booking :{
     type: String,
-  }]
+  }
 });
 
 module.exports = mongoose.model('Slot', SlotSchema);
