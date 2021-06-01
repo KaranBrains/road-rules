@@ -6,8 +6,10 @@ import { useRouter } from "next/router";
 import { Modal } from "react-bootstrap";
 import { AddInstructor, AllInstructor, RemoveInstructor } from "../../../redux/actions/instructor";
 import {baseUrl} from "../../../redux/api/index"
-const Sidebar = dynamic(() => import('../../../shared/sidebar/sidebar'), { ssr: false });
 import Link from "next/link";
+const Sidebar = dynamic(() => import('../../../shared/sidebar/sidebar'), { ssr: false, loading: () => <div class="main-loader-div">
+  <div class="loader">Loading...</div>
+</div> });
 
 export default function Instructor() {
   var i = 0;

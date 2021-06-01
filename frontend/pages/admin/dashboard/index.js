@@ -1,5 +1,7 @@
 import dynamic from 'next/dynamic';
-const Sidebar = dynamic(() => import('../../../shared/sidebar/sidebar'), { ssr: false });
+const Sidebar = dynamic(() => import('../../../shared/sidebar/sidebar'), { ssr: false, loading: () => <div class="main-loader-div">
+  <div class="loader">Loading...</div>
+</div> });
 const Chart = dynamic(() => import('react-apexcharts'), { ssr: false });
 
 export default function Dashboard() {
