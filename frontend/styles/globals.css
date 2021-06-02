@@ -99,6 +99,15 @@ body {
 .font-25{
   font-size: 25px;
 }
+.text-green {
+  color: green;
+} 
+.selected {
+  background: var(--secondaryColor) !important;
+  border-radius: 4px;  
+  cursor: pointer;
+  transition: all 0.4s ease-in-out;
+}
 
 /* Font colour */
 .text-primaryColor{
@@ -176,6 +185,19 @@ body {
   .padding-left-mobile{
       padding-left: 80px !important;
       padding-right: 20px !important;
+  }
+}
+@media(max-width: 426px){
+  .rbc-event-content{
+    font-size: 12px !important;
+  }
+  .rbc-toolbar{
+    font-size: 14px !important;
+  }
+}
+@media(max-width: 376px){
+  .rbc-toolbar{
+    font-size: 8px !important;
   }
 }
 .aside{

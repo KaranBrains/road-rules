@@ -3,10 +3,12 @@ import { Calendar, momentLocalizer, Views } from "react-big-calendar";
 import moment from "moment";
 import { useDispatch, useSelector } from "react-redux";
 import { AllSlots } from "../../redux/actions/slot";
+import { useRouter } from 'next/router';
 
 
 function MyCalendar() {
   const dispatch = useDispatch();
+  const router = useRouter()
   useEffect(() => {
     dispatch(AllSlots());
   }, []);
@@ -15,13 +17,16 @@ function MyCalendar() {
   const myEventsList = [];
   const allSlots = useSelector((state) => state.slot?.slotData?.slots);
   if (allSlots) {
-    const filterSlots = allSlots.map((slot) =>
-      myEventsList.push({
+    const filterSlots = allSlots.map((slot) =>{
+      const startDate = new Date(slot.date +'T'+ slot.time); 
+      const endDate = new Date(startDate.getTime()+ 60*1000*60); 
+      return myEventsList.push({
         id: slot._id,
-        start: new Date(slot.date),
-        end: new Date(slot.date),
+        start: (startDate),
+        end: (endDate),
         title: slot.time,
       })
+    }
     );
   }
 
@@ -37,7 +42,7 @@ function MyCalendar() {
         localizer={localizer}
         events={myEventsList}
         onSelectEvent={(e)=>{
-          console.log(e);
+          router.push('/slot-details/'+e.id)
         }}
         startAccessor="start"
         endAccessor="end"
