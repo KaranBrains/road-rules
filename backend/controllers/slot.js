@@ -18,7 +18,7 @@ exports.addSlot = async (req, res) => {
     let newSlot = Slot(inputSlot);
     newSlot.save((err, slot) => {
         if (err) {
-            return res.status(400).json({ msg: err });
+            return res.status(400).json({ msg: err.message });
         }
         return res.status(201).json(slot);
     });
@@ -30,7 +30,7 @@ exports.deleteSlot = (req, res) => {
     }
     Slot.findByIdAndDelete(req.query.id , (err,slot) => {
         if (err) {
-            return res.status(400).json({ msg: err });
+            return res.status(400).json({ msg: err.message });
         }
         return res.status(201).json(slot);
     })
@@ -53,7 +53,7 @@ exports.modifySlot = async (req, res) => {
     }
     Slot.findByIdAndUpdate(req.query.id, updateSlot , (err,slot) => {
         if (err) {
-            return res.status(400).json({ msg: err });
+            return res.status(400).json({ msg: err.message });
         }
         return res.status(201).json({ msg: 'Updated slot successfully' });
     })
@@ -62,7 +62,7 @@ exports.modifySlot = async (req, res) => {
 exports.getSlots = (req, res) => {
     Slot.find({} , (err,slots) => {
         if (err) {
-            return res.status(400).json({ msg: err });
+            return res.status(400).json({ msg: err.message });
         }
         return res.status(201).json({slots: slots});
     })
@@ -74,7 +74,7 @@ exports.searchSlotByDate = (req, res) => {
     }
     Slot.find({ date:req.query.date } , (err,slots) => {
         if (err) {
-            return res.status(400).json({ msg: err });
+            return res.status(400).json({ msg: err.message });
         }
         return res.status(201).json({slots: slots});
     })
@@ -83,7 +83,7 @@ exports.searchSlotByDate = (req, res) => {
 exports.getSlotById = (req, res) => {
     Slot.findById(req.query.id , (err,slot) => {
         if (err) {
-            return res.status(400).json({ msg: err });
+            return res.status(400).json({ msg: err.message });
         }
         return res.status(201).json({slot: slot});
     })
