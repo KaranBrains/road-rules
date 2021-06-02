@@ -95,7 +95,7 @@ body {
   font-size: 19px;
 }
 .font-20{
-  font-size: 20px;
+  font-size: 20px !important;
 }
 .font-25{
   font-size: 25px;
@@ -386,8 +386,8 @@ table tbody{
 
 .user-img{
   border-radius: 50%;
-  height: 220px !important;
-  width: 190px;
+  height: 180px !important;
+  width: 170px;
 }
 
 .rbc-toolbar button:active, .rbc-toolbar button.rbc-active {
@@ -673,4 +673,8 @@ color: rgb(8, 0, 0);
 
 .user-name{
   min-width: 120px !important; 
+}
+
+.font-weight-bold{
+  font-weight: 600 !important;
 }

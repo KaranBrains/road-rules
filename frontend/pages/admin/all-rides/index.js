@@ -50,7 +50,7 @@ export default function AllRides() {
                               <tr className="font-demi align-middle" key={val._id}>
                               <td>{i}</td>
                               <td className="user-name">{val.clientName}</td>
-                              <td>{val.instructorName}</td>
+                              <td className="user-name">{val.instructorName}</td>
                               <td>{val.slot}</td>
                               <td>{val.status}</td>
                               <td>{val.modeOfPayment}</td>

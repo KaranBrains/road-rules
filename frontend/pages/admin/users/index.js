@@ -1,6 +1,8 @@
 import dynamic from 'next/dynamic';
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
+import Link from "next/link";
+import { useRouter } from "next/router";
 import { AllUser } from "../../../redux/actions/user";
 const Sidebar = dynamic(() => import('../../../shared/sidebar/sidebar'), { ssr: false, loading: () => <div class="main-loader-div">
   <div class="loader">Loading...</div>
@@ -9,6 +11,7 @@ const Sidebar = dynamic(() => import('../../../shared/sidebar/sidebar'), { ssr: 
 export default function Users() {
   var i = 0;
   const dispatch = useDispatch();
+  const router = useRouter();
 
   useEffect(() =>{
     dispatch(AllUser());
@@ -30,6 +33,7 @@ export default function Users() {
                   <th scope="col">Email</th>  
                   <th scope="col">Phone</th>   
                   <th scope="col">Role</th>                 
+                  <th scope="col">Action</th>
                 </tr>
               </thead>
               <tbody>
@@ -43,6 +47,13 @@ export default function Users() {
                               <td>{val.email}</td>
                               <td>{val.phone}</td>
                               <td>{val.role}</td>
+                              <td>
+                              <Link href={'/admin/users/'+val._id}>
+                                <a>
+                                <div class="btn btn-primary user-button" onClick={() => router.push('/admin/users/'+[val._id])} >View Details</div>
+                                </a>
+                              </Link>
+                              </td>
                           </tr>
                           )
                         })
