@@ -1,11 +1,14 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import styles from "./Home.module.css";
 import { AllSlots } from "../../redux/actions/slot";
 import Link from "next/link";
+import { useRouter } from 'next/router';
 
 function HomeMain() {
   const dispatch = useDispatch();
+  const [selected, setselected] = useState('');
+  const router = useRouter()
   let weekSlots;
   useEffect(() => {
     dispatch(AllSlots());
@@ -100,7 +103,17 @@ function HomeMain() {
                             <td>
                             {weekSlots?.map((weekSlot) => (
                               weekSlot.date == weekDate.date ? (
-                                <div className="text-primaryColor font-demi py-2 text-center calendar-event mt-4">
+                                <div 
+                                className="text-primaryColor font-demi py-2 text-center all-slot calendar-event mt-4" 
+                                id={weekSlot._id} 
+                                onClick={async (e)=>{
+                                  e.preventDefault();
+                                  document.getElementById(selected)?.classList.toggle("calendar-event"); 
+                                  document.getElementById(selected)?.classList.toggle("selected"); 
+                                  setselected(weekSlot._id)
+                                  document.getElementById(weekSlot._id).classList.toggle("calendar-event"); 
+                                  document.getElementById(weekSlot._id).classList.toggle("selected"); 
+                                }}>
                                 {weekSlot.time}
                               </div>
                               ) : ''
@@ -117,6 +130,11 @@ function HomeMain() {
                     <button
                       className="text-white bg-secondaryColor font-demi px-lg-5 btn-blue submit-button"
                       type="submit"
+                      onClick={()=>{
+                        if (selected) {
+                          router.push('/slot-details/'+selected)
+                        }
+                      }}
                     >
                       Next
                     </button>
