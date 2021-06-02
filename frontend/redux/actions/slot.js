@@ -15,7 +15,7 @@ export const AddSlot = (formData, router) => async (dispatch) => {
     } catch (e) {
       console.log(e.response);
       swal({
-        text: e.response.data.msg,
+        text: e.response?.data.msg,
         icon: "error",
       });
     }
@@ -28,7 +28,7 @@ export const AllSlots = () => async (dispatch) => {
   } catch (e) {
     console.log(e.response);
     swal({
-      text: e.response.data.msg,
+      text: e.response?.data.msg,
       icon: "error",
   });
 }
@@ -45,7 +45,7 @@ export const RemoveSlot = (id) => async (dispatch) => {
   } catch (e) {
     console.log(e.response);
     swal({
-      text:e.response.data.msg ,
+      text:e.response?.data.msg ,
       icon: "error",
   });
 }
@@ -62,7 +62,7 @@ export const UpdateSlot = (id, editFormData) => async (dispatch) => {
   } catch (e) {
     console.log(e.response);
     swal({
-      text: e.response.data.msg,
+      text: e.response?.data.msg,
       icon: "error",
   });
 }

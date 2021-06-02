@@ -26,6 +26,7 @@ export default function InstructorId() {
   },[id])
 
   const instructorById = useSelector(state => state.instructor?.instructorById?.instructor);
+  console.log(instructorById)
 
   const initialState = { fullName: instructorById?.fullName, img: instructorById?.img, phone: instructorById?.phone, email:instructorById?.email};
   const [showModal, setShowModal] = useState(false);

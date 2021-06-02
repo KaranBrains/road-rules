@@ -19,7 +19,7 @@ export const AddInstructor = (formData, router) => async (dispatch) => {
     } catch (e) {
       console.log(e.response);
       swal({
-        text: e.response.data.msg,
+        text: e.response?.data.msg,
         icon: "error",
       });
     }
@@ -32,7 +32,7 @@ export const AllInstructor = () => async (dispatch) => {
   } catch (e) {
     console.log(e.response);
     swal({
-      text: e.response.data.msg,
+      text: e.response?.data.msg,
       icon: "error",
   });
 }
@@ -49,7 +49,7 @@ export const RemoveInstructor = (id) => async (dispatch) => {
   } catch (e) {
     console.log(e.response);
     swal({
-      text: e.response.data.msg,
+      text: e.response?.data.msg,
       icon: "error",
   });
 }
@@ -62,7 +62,7 @@ export const GetInstructorById = (id) => async (dispatch) => {
   } catch (e) {
     console.log(e.response);
     swal({
-      text: e.response.data.msg,
+      text: e.response?.data.msg,
       icon: "error",
   });
 }
@@ -79,7 +79,7 @@ export const UpdateInstructorById = (id,formData) => async (dispatch) => {
   } catch (e) {
     console.log(e.response);
     swal({
-      text: e.response.data.msg,
+      text: e.response?.data.msg,
       icon: "error",
     });
   }

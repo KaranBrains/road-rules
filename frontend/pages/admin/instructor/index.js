@@ -180,11 +180,12 @@ export default function Instructor() {
                   <th scope="col">Email</th>  
                   <th scope="col">Phone</th>   
                   <th scope="col">Ratings</th>   
-                  <th scope="col">Action</th>                 
+                  <th scope="col">Action</th>  
+                  <th scope="col">Remove</th>               
                 </tr>
               </thead>
               <tbody>
-              {allInstructors? (
+              {allInstructors && allInstructors.length>0 ? (
                         allInstructors.map(val => {
                           i++;
                             return (

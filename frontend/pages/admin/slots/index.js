@@ -298,10 +298,11 @@ export default function Slots() {
                   <th scope="col">Instructor</th>  
                   <th scope="col">Bookings</th>   
                   <th scope="col">Action</th>
+                  <th scope="col">Remove</th>               
                 </tr>
               </thead>
               <tbody>
-              {allSlots? (
+              {allSlots && allSlots.length>0 ? (
                         allSlots.map(val => {
                           i++;
                             return (
@@ -310,7 +311,7 @@ export default function Slots() {
                                <td className="user-name">{val.date}</td>
                                <td>{val.time}</td>
                                <td>{val.clientLimit}</td>
-                               <td>{val.instructor}</td>
+                               <td>{val.instructorName}</td>
                                <td>{val.bookings}</td>
                                <td><button class="btn btn-primary" onClick={() => EditSlot(val._id, val.date, val.time, val.clientLimit , val.instructor)}>Edit</button></td>
                                <td><button class="btn btn-danger" onClick={() => deleteSlot(val._id)}>Remove</button></td>
