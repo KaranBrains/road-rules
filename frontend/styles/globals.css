@@ -165,6 +165,9 @@ body {
 .btn-blue:hover{
   background: #138FC1;
 }
+.padding-left-mobile-table{
+  padding-left:70px !important;
+}
 .rbc-btn-group > button:not(:first-child):not(:last-child) {
   display: none;
 }
