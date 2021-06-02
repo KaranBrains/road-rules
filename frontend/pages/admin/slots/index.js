@@ -280,7 +280,7 @@ export default function Slots() {
         ""
       )}
         <Sidebar />
-        <div class="container padding-left-mobile">
+        <div class="container padding-left-mobile-table">
         <div class="d-flex justify-content-between align-items-center">
           <h3>Slots</h3>
           <button class="btn btn-primary" onClick={handleShow}>
@@ -307,7 +307,7 @@ export default function Slots() {
                             return (
                               <tr className="font-demi align-middle" key={val._id}>
                                <td>{i}</td>
-                               <td>{val.date}</td>
+                               <td className="user-name">{val.date}</td>
                                <td>{val.time}</td>
                                <td>{val.clientLimit}</td>
                                <td>{val.instructor}</td>

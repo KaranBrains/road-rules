@@ -31,3 +31,4 @@ export const removeInstructor = (id) => axios.delete(`${url}/delete-instructor?i
 export const getInstructorById = (id) => axios.get(`${url}/instructor?id=${id}`)
 export const updateInstructor = (id, formdata) => axios.put(`${url}/update-instructor?id=${id}`, formdata);
 export const payment = () => axios.post(paymentUrl);
+export const allUser = () => axios.get(`${url}/admin/get-users`); 

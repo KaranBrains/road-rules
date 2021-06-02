@@ -16,7 +16,8 @@ body {
 
 /* Srollbar */
 ::-webkit-scrollbar {
-  width: 5px;
+  height: 3px !important;  
+  width: 3px !important;
 }
 ::-webkit-scrollbar-track {
   box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.3);
@@ -165,9 +166,10 @@ body {
 }
 
 
-@media(max-width: 1000px){
+@media(max-width: 991px){
   .padding-left-mobile{
-      padding-left: 75px !important;
+      padding-left: 140px !important;
+      padding-right: 60px !important;
   }
 }
 
@@ -177,6 +179,11 @@ body {
       padding-right: 20px !important;
   }
 }
+
+.padding-left-mobile-table{
+  padding-left:70px !important;
+}
+
 .aside{
   width: 270px;
   position: fixed;
@@ -471,4 +478,12 @@ table tbody{
     -webkit-transform: rotate(360deg);
     transform: rotate(360deg);
   }
+}
+
+.user-button{
+  min-width: 142px !important;
+}
+
+.user-name{
+  min-width: 120px !important; 
 }

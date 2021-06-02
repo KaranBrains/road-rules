@@ -163,14 +163,14 @@ export default function Instructor() {
         ""
       )}
         <Sidebar />
-        <div class="container padding-left-mobile">
+        <div class="container padding-left-mobile-table">
           <div class="d-flex justify-content-between align-items-center">
           <h3>Instructor</h3>
           <button class="btn btn-primary" onClick={handleShow}>
                 Add Instructor
           </button>
           </div>
-          <div class="row mb-5 mt-3 user-table  table-responsive">
+          <div class="row mb-5 mt-3 user-table table-responsive">
             <table class="table table-striped font-bold">
               <thead>
                 <tr className="font-16  align-middle">
@@ -197,14 +197,14 @@ export default function Instructor() {
                               alt={val.fullName + " image"}
                               />
                               </td>
-                              <td>{val.fullName}</td>
+                              <td className="user-name">{val.fullName}</td>
                               <td>{val.email}</td>
                               <td>{val.phone}</td>
                               <td>Ratings</td>
                               <td>
                               <Link href={'/admin/instructor/'+val._id}>
                                 <a>
-                                <div class="btn btn-primary" onClick={() => router.push('/admin/instructor/'+[val._id])} >View Details</div>
+                                <div class="btn btn-primary user-button" onClick={() => router.push('/admin/instructor/'+[val._id])} >View Details</div>
                                 </a>
                               </Link>
                               </td>
