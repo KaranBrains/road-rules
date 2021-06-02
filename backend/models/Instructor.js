@@ -1,3 +1,4 @@
+  
 const mongoose = require('mongoose');
 
 const RatingSchema = new mongoose.Schema({
@@ -6,6 +7,10 @@ const RatingSchema = new mongoose.Schema({
     required: true,
   },
   stars: {
+    type: String,
+    required: true,
+  },
+  clientName : {
     type: String,
     required: true,
   },

@@ -1,4 +1,4 @@
 module.exports = {
     jwtSecret: 'roadrules',
-    db: 'mongodb://localhost:27017/roadrules'
+    db: 'mongodb+srv://roadrules:roadrules@cluster0.xmzxo.mongodb.net/road-rules'
 };
