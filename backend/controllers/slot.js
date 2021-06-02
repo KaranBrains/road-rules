@@ -1,6 +1,7 @@
 const Slot = require("../models/Slot");
+const Instructor = require("../models/Instructor");
 
-exports.addSlot = (req, res) => {
+exports.addSlot = async (req, res) => {
     if (
         !req.body.date ||
         !req.body.time ||
@@ -9,7 +10,12 @@ exports.addSlot = (req, res) => {
     ) {
         return res.status(400).json({ msg: 'Invalid data' });
     }
-    let newSlot = Slot(req.body);
+    const instructor = await Instructor.findById(req.body.instructor);
+    const inputSlot = {
+        ...req.body,
+        instructorName : instructor.fullName
+    }
+    let newSlot = Slot(inputSlot);
     newSlot.save((err, slot) => {
         if (err) {
             return res.status(400).json({ msg: err });
@@ -30,7 +36,7 @@ exports.deleteSlot = (req, res) => {
     })
 };
 
-exports.modifySlot = (req, res) => {
+exports.modifySlot = async (req, res) => {
     if ( 
         !req.query.id ||
         !req.body.date ||
@@ -40,7 +46,12 @@ exports.modifySlot = (req, res) => {
          ) {
         return res.status(400).json({ msg: 'Invalid data' });
     }
-    Slot.findByIdAndUpdate(req.query.id, req.body , (err,slot) => {
+    const instructor = await Instructor.findById(req.body.instructor);
+    const updateSlot = {
+        ...req.body,
+        instructorName : instructor.fullName
+    }
+    Slot.findByIdAndUpdate(req.query.id, updateSlot , (err,slot) => {
         if (err) {
             return res.status(400).json({ msg: err });
         }

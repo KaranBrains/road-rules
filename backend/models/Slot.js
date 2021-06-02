@@ -17,6 +17,10 @@ const SlotSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
+  instructorName: {
+    type: String,
+    required: true,
+  },
   booking :{
     type: String,
   }
