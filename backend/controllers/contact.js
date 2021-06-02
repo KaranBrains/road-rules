@@ -3,15 +3,18 @@ const sgMail = require('@sendgrid/mail');
 sgMail.setApiKey(process.env.SENDGRID_API_KEY)
 
 exports.contactUs = (req, res) => {
-  if (!req.body.email || !req.body.name || !req.body.message) {
+  const { formData } = req.body;
+  console.log(formData);
+  if (!formData.email || !formData.name || !formData.message) {    
     return res.status(400).send({ msg: 'You need to send all entries' });
   }
+  console.log(formData.email);
   const msg = {
-  to: req.body.email,
+  to: formData.email,
   from: process.env.SENDGRID_EMAIL, // Change to your verified sender
-  subject: `Query from ${req.body.name} (${req.body.email})`,
+  subject: `Query from ${formData.name} (${formData.email})`,
   text: 'Contact Message',
-  html: ` <pre>${req.body.message}</pre>`,
+  html: ` <pre>${formData.message}</pre>`,
   }
   sgMail.send(msg)
   .then(info => {

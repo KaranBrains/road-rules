@@ -4,7 +4,7 @@
   transition: all 0.3s ease-in;
 }
 .greyHover:hover {
-  background-color: rgb(237, 237, 237);
+  background-color: rgb(237, 237, 237) !important;
 }
 .formDropdown {
   width: 100%;

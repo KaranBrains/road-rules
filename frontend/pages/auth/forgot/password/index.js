@@ -2,8 +2,7 @@ import { useState } from "react";
 import Link from "next/link";
 import { useDispatch } from "react-redux";
 import { useRouter } from "next/router";
-import { changePassword } from "../../../redux/actions/auth";
-
+import { changePassword } from "../../../../redux/actions/auth";
 
 function ForgotPassword() {
   const initialState = { password: "" };
@@ -18,17 +17,19 @@ function ForgotPassword() {
   };
 
   return (
-    <>
+    <div className="auth-bg">
       <div className="container my-5">
         <div className="row d-flex justify-content-center">
           <div className="col-lg-6 col-md-8 col-sm-12 col-12">
-            <div className="card shadow px-2 px-lg-5 py-5">
+            <div className="card shadow px-2 px-lg-5 py-5 bg-white">
               <h1 className="text-center font-bold text-primaryColor mb-4">
                 Enter the New Password
               </h1>
               <form onSubmit={handleSubmit}>
                 <div className="mt-4">
-                  <label className="text-primaryColor font-demi">Password</label>
+                  <label className="text-primaryColor font-demi">
+                    Password
+                  </label>
                   <input
                     required
                     value={formData.password}
@@ -40,7 +41,7 @@ function ForgotPassword() {
                     }}
                     name="password"
                     type="password"
-                    className="form-control"                    
+                    className="form-control"
                   />
                 </div>
                 <div className="text-center mt-5 mb-3">
@@ -56,7 +57,7 @@ function ForgotPassword() {
           </div>
         </div>
       </div>
-    </>
+    </div>
   );
 }
 
