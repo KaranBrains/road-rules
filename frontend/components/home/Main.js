@@ -1,7 +1,28 @@
+import { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import styles from "./Home.module.css";
+import { AllSlots } from "../../redux/actions/slot";
 import Link from "next/link";
 
 function HomeMain() {
+  const dispatch = useDispatch();
+  let weekSlots;
+  useEffect(() => {
+    dispatch(AllSlots());
+  }, []);
+
+  const today = new Date();
+  const weekDate = new Date(today.getTime() + 7 * 24 * 60 * 60 * 1000);
+  const allSlots = useSelector((state) => state.slot?.slotData?.slots);
+  console.log(allSlots);
+  if (allSlots) {
+    const filterSlots = allSlots.filter(
+      (slot) =>
+        new Date(slot.date) >= Date.now() && new Date(slot.date) <= weekDate
+    );
+    weekSlots = filterSlots;
+  }
+
   return (
     <>
       <div className={`${styles.home}`}>

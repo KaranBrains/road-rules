@@ -25,6 +25,7 @@ export const AllSlots = () => async (dispatch) => {
   try {
     const { data } = await api.allSlot();
     dispatch({ type: ADMIN_ALL_SLOT, data });
+    console.log(data);
   } catch (e) {
     console.log(e.response);
     swal({
