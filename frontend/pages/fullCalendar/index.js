@@ -17,7 +17,7 @@ function MyCalendar() {
   if (allSlots) {
     const filterSlots = allSlots.map((slot) =>
       myEventsList.push({
-        id: slot.id,
+        id: slot._id,
         start: new Date(slot.date),
         end: new Date(slot.date),
         title: slot.time,
@@ -32,9 +32,13 @@ function MyCalendar() {
   return (
     <div className="container my-5 text-primaryColor font-bold" id="#home">
       <Calendar
+        selectable
         views={allViews}
         localizer={localizer}
         events={myEventsList}
+        onSelectEvent={(e)=>{
+          console.log(e);
+        }}
         startAccessor="start"
         endAccessor="end"
         style={{ height: 500 }}

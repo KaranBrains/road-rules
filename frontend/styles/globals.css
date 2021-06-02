@@ -156,6 +156,9 @@ body {
 .btn-blue:hover{
   background: #138FC1;
 }
+.rbc-btn-group > button:not(:first-child):not(:last-child) {
+  display: none;
+}
 @media(max-width: 1900px){
   .padding-left-mobile{
       padding-left: 80px !important;
