@@ -25,12 +25,13 @@ export const AllSlots = () => async (dispatch) => {
   try {
     const { data } = await api.allSlot();
     dispatch({ type: ADMIN_ALL_SLOT, data });
+    console.log(data);
   } catch (e) {
     console.log(e.response);
     swal({
       text: e.response?.data.msg,
       icon: "error",
-  });
+    });
 }
 };
 
@@ -47,7 +48,7 @@ export const RemoveSlot = (id) => async (dispatch) => {
     swal({
       text:e.response?.data.msg ,
       icon: "error",
-  });
+    });
 }
 };
 
@@ -64,7 +65,7 @@ export const UpdateSlot = (id, editFormData) => async (dispatch) => {
     swal({
       text: e.response?.data.msg,
       icon: "error",
-  });
+    });
 }
 }
 

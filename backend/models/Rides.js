@@ -5,7 +5,15 @@ const RideSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
+  clientName : {
+    type: String,
+    required: true,
+  },
   instructor : {
+    type: String,
+    required: true,
+  },
+  instructorName : {
     type: String,
     required: true,
   },

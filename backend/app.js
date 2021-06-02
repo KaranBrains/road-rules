@@ -9,6 +9,9 @@ const path        = require('path');
 const app = express();
 
 mongoose.connect(config.db, { useNewUrlParser: true, useCreateIndex: true , useUnifiedTopology: true })
+.then(()=>{
+    console.log("Mongo DB connected")
+})
 
 app.use(cors());
 app.use(express.json({limit: '50mb'}));
@@ -22,5 +25,3 @@ app.listen(8080,()=>{
     // run this to create a admin only once on the first run
     // createAdmin.createAdmin();
 })
-
-  
