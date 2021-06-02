@@ -32,13 +32,18 @@ function HomeMain() {
   const today = new Date();
   const weekDate = new Date(today.getTime() + 7 * 24 * 60 * 60 * 1000);
   const allSlots = useSelector((state) => state.slot?.slotData?.slots);
-  console.log(allSlots);
   if (allSlots) {
-    const filterSlots = allSlots.filter(
+    const filterSlots = allSlots?.filter(
       (slot) =>
         new Date(slot.date) >= Date.now() && new Date(slot.date) <= weekDate
     );
-    weekSlots = filterSlots;
+    weekSlots = filterSlots.map(f=>{
+      return {
+        ...f,
+        date: new Date(f.date).getDate()
+      }
+    });
+    console.log(weekSlots);
   }
 
   const weekDates = [];
@@ -78,7 +83,7 @@ function HomeMain() {
                   <table className="table">
                     <thead>
                       <tr>
-                        {weekDates.map((weekDate) => (
+                        {weekDates?.map((weekDate) => (
                           <th scope="col">
                             <div className="font-bold text-primaryColor text-center">
                               {getDay(weekDate.day)}
@@ -90,167 +95,19 @@ function HomeMain() {
                       </tr>
                     </thead>
                     <tbody>
-                      {/* <tr>
-                        {weekSlots.map((weekSlot) => (
-                          <td>
-                            <div className="text-primaryColor font-demi py-2 text-center calendar-event">
-                              {weekSlot.time}
-                            </div>
-                          </td>
-                        ))}
-                      </tr> */}
-                      <tr className="mb-2">
-                        <td>
-                          <div className="text-primaryColor font-demi py-2 text-center calendar-event">
-                            Event
-                          </div>
-                        </td>
-                        <td>
-                          <div className="text-primaryColor font-demi py-2 text-center calendar-event">
-                            Event
-                          </div>
-                        </td>
-                        <td>
-                          <div className="text-primaryColor font-demi py-2 text-center calendar-event">
-                            Event
-                          </div>
-                        </td>
-                        <td>
-                          <div className="text-primaryColor font-demi py-2 text-center calendar-event">
-                            Event
-                          </div>
-                        </td>
-                        <td>
-                          <div className="text-primaryColor font-demi py-2 text-center calendar-event">
-                            Event
-                          </div>
-                        </td>
-                        <td>
-                          <div className="text-primaryColor font-demi py-2 text-center calendar-event">
-                            Event
-                          </div>
-                        </td>
-                      </tr>
-                      <tr className="mb-2">
-                        <td>
-                          <div className="text-primaryColor font-demi py-2 text-center calendar-event">
-                            Event
-                          </div>
-                        </td>
-                        <td>
-                          <div className="text-primaryColor font-demi py-2 text-center calendar-event">
-                            Event
-                          </div>
-                        </td>
-                        <td>
-                          <div className="text-primaryColor font-demi py-2 text-center calendar-event">
-                            Event
-                          </div>
-                        </td>
-                        <td>
-                          <div className="text-primaryColor font-demi py-2 text-center calendar-event">
-                            Event
-                          </div>
-                        </td>
-                        <td>
-                          <div className="text-primaryColor font-demi py-2 text-center calendar-event">
-                            Event
-                          </div>
-                        </td>
-                        <td>
-                          <div className="text-primaryColor font-demi py-2 text-center calendar-event">
-                            Event
-                          </div>
-                        </td>
-                        <td>
-                          <div className="text-primaryColor font-demi py-2 text-center calendar-event">
-                            Event
-                          </div>
-                        </td>
-                      </tr>
-                      <tr className="mb-2">
-                        <td>
-                          <div className="text-primaryColor font-demi py-2 text-center calendar-event">
-                            Event
-                          </div>
-                        </td>
-                        <td>
-                          <div className="text-primaryColor font-demi py-2 text-center calendar-event">
-                            Event
-                          </div>
-                        </td>
-                        <td>
-                          <div className="text-primaryColor font-demi py-2 text-center calendar-event">
-                            Event
-                          </div>
-                        </td>
-                        <td>
-                          <div className="text-primaryColor font-demi py-2 text-center calendar-event">
-                            Event
-                          </div>
-                        </td>
-                        <td></td>
-                        <td>
-                          <div className="text-primaryColor font-demi py-2 text-center calendar-event">
-                            Event
-                          </div>
-                        </td>
-                        <td>
-                          <div className="text-primaryColor font-demi py-2 text-center calendar-event">
-                            Event
-                          </div>
-                        </td>
-                      </tr>
-                      <tr className="mb-2">
-                        <td>
-                          <div className="text-primaryColor font-demi py-2 text-center calendar-event">
-                            Event
-                          </div>
-                        </td>
-                        <td>
-                          <div className="text-primaryColor font-demi py-2 text-center calendar-event">
-                            Event
-                          </div>
-                        </td>
-                        <td>
-                          <div className="text-primaryColor font-demi py-2 text-center calendar-event">
-                            Event
-                          </div>
-                        </td>
-                        <td></td>
-                        <td></td>
-                        <td>
-                          <div className="text-primaryColor font-demi py-2 text-center calendar-event">
-                            Event
-                          </div>
-                        </td>
-                        <td>
-                          <div className="text-primaryColor font-demi py-2 text-center calendar-event">
-                            Event
-                          </div>
-                        </td>
-                      </tr>
-                      <tr className="mb-2">
-                        <td>
-                          <div className="text-primaryColor font-demi py-2 text-center calendar-event">
-                            Event
-                          </div>
-                        </td>
-                        <td>
-                          <div className="text-primaryColor font-demi py-2 text-center calendar-event">
-                            Event
-                          </div>
-                        </td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td>
-                          <div className="text-primaryColor font-demi py-2 text-center calendar-event">
-                            Event
-                          </div>
-                        </td>
-                        <td></td>
-                      </tr>
+                        <tr>
+                        {weekDates?.map((weekDate) => (
+                            <td>
+                            {weekSlots?.map((weekSlot) => (
+                              weekSlot.date == weekDate.date ? (
+                                <div className="text-primaryColor font-demi py-2 text-center calendar-event mt-4">
+                                {weekSlot.time}
+                              </div>
+                              ) : ''
+                              ))}
+                            </td>
+                          ))}
+                        </tr>
                     </tbody>
                   </table>
                 </div>
