@@ -2,14 +2,16 @@ import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useRouter } from "next/router";
 import dynamic from 'next/dynamic';
-const Sidebar = dynamic(() => import('../../../shared/sidebar/sidebar'), { ssr: false });
 import { Modal } from "react-bootstrap";
 import { AddSlot, AllSlots, RemoveSlot, UpdateSlot } from "../../../redux/actions/slot";
 import { AllInstructor } from "../../../redux/actions/instructor";
+const Sidebar = dynamic(() => import('../../../shared/sidebar/sidebar'), { ssr: false, loading: () => <div class="main-loader-div">
+  <div class="loader">Loading...</div>
+</div> });
 
 export default function Slots() {
   let i = 0;
-  const initialState = { date: "", time: "", clientLimit: "", instructor:"", bookings:""};
+  const initialState = { date: "", time: "", clientLimit: "", instructor: "", bookings:""};
   const [showModal, setShowModal] = useState(false);
   const [editModal, setEditModal] = useState(false);
   const [formData, setformData] = useState(initialState);
@@ -55,11 +57,12 @@ export default function Slots() {
     dispatch(AllSlots());
   },[])
 
-  const allInstructors = useSelector(state => state.instructor?.AllData?.instructors);
+  const allInstructors = useSelector(state => state.instructor?.AllData?.instructors)
   const allSlots = useSelector(state => state.slot?.slotData?.slots);
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    console.log(formData)
     dispatch(AddSlot(formData, router))
     .then(() =>{
       handleClose();
@@ -163,7 +166,7 @@ export default function Slots() {
                   >
                     {allInstructors && allInstructors.length>0 ? 
                     allInstructors.map((c,i)=>{
-                       return <option value={c.fullName} key={i}>{c.fullName}</option>
+                       return <option value={c._id} key={i}>{c.fullName}</option>
                     }): ''}
                   </select>
                 </div>
@@ -255,9 +258,10 @@ export default function Slots() {
                     className="form-control"
                     required
                   >
+                    <option className="hidden" value=""></option>
                     {allInstructors && allInstructors.length>0 ? 
                     allInstructors.map((c,i)=>{
-                       return <option value={c.fullName} key={i}>{c.fullName}</option>
+                       return <option value={c._id} key={i}>{c.fullName}</option>
                     }): ''}
                   </select>
                 </div>
@@ -277,8 +281,8 @@ export default function Slots() {
       )}
         <Sidebar />
         <div class="container padding-left-mobile">
-        <div class="d-flex justify-content-between">
-        <h3>Slots</h3>
+        <div class="d-flex justify-content-between align-items-center">
+          <h3>Slots</h3>
           <button class="btn btn-primary" onClick={handleShow}>
             Add Slots
           </button>

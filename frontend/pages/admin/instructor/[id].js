@@ -6,7 +6,9 @@ import { Modal } from "react-bootstrap";
 import { GetInstructorById, UpdateInstructorById } from "../../../redux/actions/instructor";
 import {baseUrl} from "../../../redux/api/index"
 import dynamic from 'next/dynamic';
-const Sidebar = dynamic(() => import('../../../shared/sidebar/sidebar'), { ssr: false });
+const Sidebar = dynamic(() => import('../../../shared/sidebar/sidebar'), { ssr: false, loading: () => <div class="main-loader-div">
+  <div class="loader">Loading...</div>
+</div> });
 
 export default function InstructorId() {
 
@@ -34,9 +36,7 @@ export default function InstructorId() {
 
   const handleShow = () => 
   { dispatch(GetInstructorById(router.query.id))
-    console.log(formData.img+"before");
     setformData(initialState);
-    console.log(formData.img+"After");
     setFileOne(baseUrl + instructorById?.img);
     setShowModal(true);
   }
@@ -54,7 +54,6 @@ export default function InstructorId() {
       handleClose();
       dispatch(GetInstructorById(router.query.id));
     }).catch(() =>{
-      console.log("Error")
     });
   };
 

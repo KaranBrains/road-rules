@@ -2,6 +2,7 @@ import axios from "axios";
 
 export const url = "http://localhost:8080/api";
 export const baseUrl = "http://localhost:8080/";
+export const paymentUrl ="http://localhost:8080/api/create-checkout-session";
 
 export const signIn = (formData) => axios.post(`${url}/login`, formData);
 export const signUp = (formData) => axios.post(`${url}/signup`, formData);
@@ -32,3 +33,4 @@ export const updateInstructor = (id, formdata) => axios.put(`${url}/update-instr
 export const contactUs = (formData) =>
   axios.post(`${url}/contact-us`, { formData });
 
+export const payment = () => axios.post(paymentUrl);

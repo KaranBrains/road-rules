@@ -6,8 +6,10 @@ import { useRouter } from "next/router";
 import { Modal } from "react-bootstrap";
 import { AddInstructor, AllInstructor, RemoveInstructor } from "../../../redux/actions/instructor";
 import {baseUrl} from "../../../redux/api/index"
-const Sidebar = dynamic(() => import('../../../shared/sidebar/sidebar'), { ssr: false });
 import Link from "next/link";
+const Sidebar = dynamic(() => import('../../../shared/sidebar/sidebar'), { ssr: false, loading: () => <div class="main-loader-div">
+  <div class="loader">Loading...</div>
+</div> });
 
 export default function Instructor() {
   var i = 0;
@@ -25,9 +27,6 @@ export default function Instructor() {
   const [fileOneValue, setFileOneValue] = useState('');
   const [fileOne, setFileOne] = useState("");
   const router = useRouter();
-  // const {store} = useContext(ReactReduxContext);
-  // console.log("store");
-  // console.log(JSON.stringify(store.getState().instructor));
 
   const handleShow = () => setShowModal(true);
   const handleClose = () => {
@@ -43,14 +42,12 @@ export default function Instructor() {
       handleClose();
       dispatch(AllInstructor());
     }).catch(() =>{
-      console.log("Error")
     });
     setformData(initialState);
     setFileOne("");
   };
 
   const deleteInstructor = (id) => {
-    console.log(id)
     dispatch(RemoveInstructor(id))
     .then(() =>{
       dispatch(AllInstructor());
@@ -167,7 +164,7 @@ export default function Instructor() {
       )}
         <Sidebar />
         <div class="container padding-left-mobile">
-          <div class="d-flex justify-content-between">
+          <div class="d-flex justify-content-between align-items-center">
           <h3>Instructor</h3>
           <button class="btn btn-primary" onClick={handleShow}>
                 Add Instructor
