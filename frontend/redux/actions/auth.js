@@ -7,6 +7,7 @@ import {
   EMAIL_OTP,
   PHONE_OTP,
   CHANGE_PASSWORD,
+  VERIFY_FORGOT,
 } from "../constants";
 import jwt from "jwt-decode";
 import swal from "sweetalert";
@@ -202,8 +203,8 @@ export const verifyForgotEmailOtp = (otp, router) => async (dispatch) => {
   try {
     const formData = localStorage.getItem("email");
     console.log(formData);
-    const { data } = await api.verifyForgotEmailOtp(otp, formData);
-    dispatch({ type: VERIFY_FORGOT, data });
+    const { data } = await api.verifyForgotEmailOtp(otp, formData);    
+    dispatch({ type: VERIFY_FORGOT, data });    
     swal({
       text: "OTP Verified",
       icon: "success",

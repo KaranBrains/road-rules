@@ -48,8 +48,9 @@ export default (state = { authData: null }, action) => {
       return { ...state, authData: action?.data };
     case VERIFY_FORGOT:
       console.log(action?.data);
+      console.log("abc");
       action.data.token &&
-        localStorage.setItem("forgotTokesn", action?.data.token);
+        localStorage.setItem("forgotToken", action?.data.token);
       return { ...state, authData: action?.data };
     case CHANGE_PASSWORD:
       localStorage.clear();

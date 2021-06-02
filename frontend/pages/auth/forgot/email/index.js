@@ -16,11 +16,11 @@ function Forgot() {
   };
 
   return (
-    <>
+    <div className="auth-bg">
       <div className="container my-5">
         <div className="row d-flex justify-content-center">
-          <div className="col-lg-8 col-md-8 col-sm-12 col-12">
-            <div className="card">
+          <div className="col-lg-6 col-md-8 col-sm-12 col-12">
+            <div className="card shadow px-2 px-lg-5 py-5 bg-white">
               <h1 className="text-center font-bold text-primaryColor mb-4">
                 Enter the E-mail associated with your account
               </h1>
@@ -54,7 +54,7 @@ function Forgot() {
           </div>
         </div>
       </div>
-    </>
+    </div>
   );
 }
 

@@ -47,7 +47,7 @@ function NavbarComponent() {
               <NavDropdown
                 eventKey={1}
                 title={
-                  <div className="pull-left hidden-mobile">
+                  <div className="pull-left text-center">
                     <img
                       className="thumbnail-image text-center"
                       src="/images/profile_avatar.png"
