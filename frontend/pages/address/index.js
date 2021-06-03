@@ -78,21 +78,6 @@ function Address() {
                         </div>
                       </div>
                       <div className="d-flex">
-                        {" "}
-                        <div
-                          className="font-medium mt-3 w-50"
-                          style={{ marginRight: "20px" }}
-                        >
-                          <div
-                            required
-                            name="Name"
-                            type="text"
-                            className="bg-white px-3 py-2"
-                          >
-                            {" "}
-                            {add?.house}
-                          </div>
-                        </div>
                         <div className="w-100 font-medium mt-3 w-50">
                           <div
                             required
@@ -100,7 +85,7 @@ function Address() {
                             type="text"
                             className="bg-white px-3 py-2"
                           >
-                            {add?.pincode}
+                            {add?.postalCode}
                           </div>
                         </div>
                       </div>
