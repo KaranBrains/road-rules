@@ -12,6 +12,7 @@ const Sidebar = dynamic(() => import('../../../shared/sidebar/sidebar'), { ssr: 
 export default function AllRides() {
   var i = 0;
   const dispatch = useDispatch();
+  const router = useRouter();
 
   useEffect(() =>{
     dispatch(AllRidesDetails());
@@ -33,10 +34,8 @@ export default function AllRides() {
                   <th scope="col">S.No</th>
                   <th scope="col">Client</th>    
                   <th scope="col">Instructor</th>
-                  <th scope="col">Slot</th>  
                   <th scope="col">Status</th>   
-                  <th scope="col">Payment Mode</th>   
-                  <th scope="col">Feedback</th> 
+                  <th scope="col">Payment</th>   
                   <th scope="col">Ratings</th> 
                   <th scope="col">Action</th>  
                   <th scope="col">Refund</th>             
@@ -51,11 +50,9 @@ export default function AllRides() {
                               <td>{i}</td>
                               <td className="user-name">{val.clientName}</td>
                               <td className="user-name">{val.instructorName}</td>
-                              <td>{val.slot}</td>
                               <td>{val.status}</td>
                               <td>{val.modeOfPayment}</td>
-                              <td>{val.feedback}</td>
-                              <td>{val.rating}</td>
+                              <td>{val.rating?(<span>{val.rating} &#9733;</span>):"No Ratings"}</td>
                               <td>
                               <Link href={'/admin/all-rides/'+val._id}>
                                 <a>

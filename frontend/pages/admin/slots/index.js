@@ -156,10 +156,10 @@ export default function Slots() {
                 <label className="font-20 py-2">Price</label>
                   <input
                     required
-                    value={editFormData.clientLimit}
+                    value={editFormData.price}
                     onChange={(e) => {
                       setEditFormData({
-                        ...formData,
+                        ...editFormData,
                         [e.target.name]: e.target.value,
                       });
                     }}
