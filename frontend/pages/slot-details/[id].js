@@ -35,6 +35,23 @@ export default function InstructorId() {
                             <hr className="grey-hr" />
                             <div className="d-flex justify-content-between px-3 mt-1">
                             <div className="text-muted font-demi font-18">
+                                Date
+                            </div>
+                            <div className="text-primaryColor font-bold font-18">
+                                {slot.date}
+                            </div>
+                            </div>
+                            <div className="d-flex justify-content-between px-3 mt-3 mb-1">
+                            <div className="text-muted font-demi font-18">
+                                Time
+                            </div>
+                            <div className="text-primaryColor font-bold font-18">
+                                {slot.time}
+                            </div>
+                            </div>
+                            <hr className="grey-hr" />
+                            <div className="d-flex justify-content-between px-3 mt-1">
+                            <div className="text-muted font-demi font-18">
                                 Instructor
                             </div>
                             <div className="text-primaryColor font-bold font-18">
@@ -46,7 +63,7 @@ export default function InstructorId() {
                                 Price
                             </div>
                             <div className="text-green font-bold font-18">
-                                &#36;500
+                                &#36;{slot.price}
                             </div>
                             </div>
                             <hr className="grey-hr" />
