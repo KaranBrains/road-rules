@@ -31,53 +31,45 @@ function Address() {
             <form>
               {user?.address.map((add) => (
                 <>
-                  <div className="bg-tertiaryColor h-100 py-5 px-3 mb-3">
-                    <div className="input-group font-medium mt-3">
-                      <input
+                  <div className="bg-tertiaryColor h-100 py-3 px-3 mb-4 shadow">
+                    <div className="w-100 font-medium mt-3">
+                      <div
                         required
                         name="Name"
-                        type="text"
-                        value={add?.city}
-                        className="form-control"
-                        disabled
-                      />
+                        type="text"                        
+                        className="bg-white px-3 py-2"                    
+                      >{add?.city}</div>
                     </div>
                     <div className="d-flex">
                       {" "}
                       <div
-                        className="input-group font-medium mt-3 w-50"
+                        className="font-medium mt-3 w-50"
                         style={{ marginRight: "20px" }}
                       >
-                        <input
+                        <div
                           required
                           name="Name"
-                          type="text"
-                          value={add?.house}
-                          className="form-control"
-                          disabled
-                        />
+                          type="text"                          
+                          className="bg-white px-3 py-2"                        
+                        > {add?.house}</div>
                       </div>
-                      <div className="input-group font-medium mt-3 w-50">
-                        <input
+                      <div className="w-100 font-medium mt-3 w-50">
+                        <div
                           required
                           name="Name"
-                          type="text"
-                          value={add?.pincode}
-                          className="form-control"
-                          disabled
-                        />
+                          type="text"                          
+                          className="bg-white px-3 py-2"                        
+                        >{add?.pincode}</div>
                       </div>
                     </div>
 
-                    <div className="input-group font-medium mt-3">
-                      <input
+                    <div className="w-100 font-medium mt-3">
+                      <div
                         required
                         name="Name"
-                        type="text"
-                        value={add?.province}
-                        className="form-control"
-                        disabled
-                      />
+                        type="text"                        
+                        className="bg-white px-3 py-2"                        
+                      >{add?.province}</div>
                     </div>
                   </div>
                 </>
