@@ -9,7 +9,7 @@ export default function InstructorId() {
     const dispatch = useDispatch();
     const router = useRouter();
     const id = router.query.id;
-    const ride = useSelector(state => {return state.ride?.rideData?.ride});
+    let ride = useSelector(state => {return state.ride?.rideData?.ride});
     const instructorById = useSelector(state => state.instructor?.instructorById?.instructor);
     useEffect(() =>{
         const id = router.query.id;
@@ -28,7 +28,7 @@ export default function InstructorId() {
             <>
             <div className="container">
               <div className="row d-flex justify-content-center">
-                <div className="col-lg-10 col-md-8 col-sm-2 col-12">
+                <div className="col-lg-10 col-md-12 col-sm-12 col-12">
                 <h2
                     className="card my-3 text-primaryColor text-center font-bold"
                     style={{ fontSize: "35px" }}
@@ -68,6 +68,15 @@ export default function InstructorId() {
                     </div>
                     <hr className="grey-hr-confirm" />
                     <div className="d-flex justify-content-between px-3">
+                      <div className="text-muted font-demi font-18 mt-2 mobile-hidden">
+                        Pickup
+                      </div>
+                      <div className="text-primary font-bold font-18 mt-2 mobile-hidden">
+                        {ride.address}
+                      </div>
+                    </div>
+                    <hr className="grey-hr-confirm" />
+                    <div className="d-flex justify-content-between px-3">
                       <div className="text-muted font-demi font-18 mt-2">
                         Instructor
                       </div>
@@ -84,10 +93,10 @@ export default function InstructorId() {
                       </div>
                     </div>
                     <div className="d-flex justify-content-between px-3">
-                      <div className="text-muted font-demi font-18 mt-2">
+                      <div className="text-muted font-demi font-18 mt-2 mobile-hidden">
                         Email
                       </div>
-                      <div className="text-primaryColor font-bold font-18 mt-2">
+                      <div className="text-primaryColor font-bold font-18 mt-2 mobile-hidden">
                       {instructorById?.email}
                       </div>
                     </div>

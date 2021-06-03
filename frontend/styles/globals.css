@@ -199,6 +199,10 @@ body {
   .rbc-toolbar{
     font-size: 14px !important;
   }
+
+  .mobile-hidden{
+    display: none !important;
+  }
 }
 @media(max-width: 376px){
   .rbc-toolbar{
