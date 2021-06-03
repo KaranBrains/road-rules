@@ -4,9 +4,12 @@ import "../node_modules/react-big-calendar/lib/css/react-big-calendar.css";
 import { wrapper } from "../redux/store";
 import Head from "next/head";
 import Footer from "../components/footer/Footer";
+import { useRouter } from "next/router";
 import NavbarComponent from "../components/navbar/Navbar";
 
 function MyApp({ Component, pageProps }) {
+  const router = useRouter();
+  const route = router.route.slice(1,6);
   return (
     <>
       <Head>
@@ -16,9 +19,15 @@ function MyApp({ Component, pageProps }) {
         ></script>
         <meta name="theme-color" content="#1e4c6b" />
       </Head>
-      <NavbarComponent />
-      <Component {...pageProps} />
-      <Footer />
+      { route == 'admin' ? (
+        <Component {...pageProps} />
+      ) : (
+        <> 
+          <NavbarComponent />
+          <Component {...pageProps} />
+          <Footer />
+        </>
+      )}
     </>
   );
 }

@@ -21,11 +21,23 @@ const RideSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
+  date : {
+    type: String,
+    required: true,
+  },
+  time : {
+    type: String,
+    required: true,
+  },
   status : {
     type: String,
     required: true,
   },
   modeOfPayment : {
+    type: String,
+    required: true,
+  },
+  price : {
     type: String,
     required: true,
   },

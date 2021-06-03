@@ -100,6 +100,15 @@ body {
 .font-25{
   font-size: 25px;
 }
+.text-green {
+  color: green;
+} 
+.selected {
+  background: var(--secondaryColor) !important;
+  border-radius: 4px;  
+  cursor: pointer;
+  transition: all 0.4s ease-in-out;
+}
 
 /* Font colour */
 .text-primaryColor{
@@ -157,6 +166,12 @@ body {
 .btn-blue:hover{
   background: #138FC1;
 }
+.padding-left-mobile-table{
+  padding-left:70px !important;
+}
+.rbc-btn-group > button:not(:first-child):not(:last-child) {
+  display: none;
+}
 @media(max-width: 1900px){
   .padding-left-mobile{
       padding-left: 80px !important;
@@ -177,11 +192,19 @@ body {
       padding-right: 20px !important;
   }
 }
-
-.padding-left-mobile-table{
-  padding-left:70px !important;
+@media(max-width: 426px){
+  .rbc-event-content{
+    font-size: 12px !important;
+  }
+  .rbc-toolbar{
+    font-size: 14px !important;
+  }
 }
-
+@media(max-width: 376px){
+  .rbc-toolbar{
+    font-size: 8px !important;
+  }
+}
 .aside{
   width: 270px;
   position: fixed;
