@@ -44,6 +44,10 @@ const RideSchema = new mongoose.Schema({
   feedback : {
     type: String,
   },
+  address : {
+    type: String,
+    required: true,
+  },
   rating: {
     type: Number,
   }

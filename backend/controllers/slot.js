@@ -13,7 +13,8 @@ exports.addSlot = async (req, res) => {
     const instructor = await Instructor.findById(req.body.instructor);
     const inputSlot = {
         ...req.body,
-        instructorName : instructor.fullName
+        instructorName : instructor.fullName,
+        status : 'scheduled'
     }
     let newSlot = Slot(inputSlot);
     newSlot.save((err, slot) => {

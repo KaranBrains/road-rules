@@ -9,7 +9,8 @@ import {
   CHANGE_PASSWORD,
   VERIFY_FORGOT,
   ADD_ADDRESS,
-  GET_USER_BY_EMAIL
+  GET_USER_BY_EMAIL,
+  GET_LOGGED_IN_USER,
 } from "../constants";
 import jwt from "jwt-decode";
 import swal from "sweetalert";
@@ -200,6 +201,7 @@ export const verifyPhoneOtp = (otp, router) => async (dispatch) => {
     });
     localStorage.setItem("isNumberVerified", "true");
     router.push("/auth/login");
+    window.location.reload();
   } catch (e) {
     swal({
       text: e.response?.data.msg,
@@ -241,6 +243,22 @@ export const forgotEmailOtp = (formData, router) => async (dispatch) => {
       text: e.response?.data.msg,
       icon: "error",
     });
+  }
+};
+
+// LOGGED IN USER
+export const getLoggedInUser= () => async (dispatch) => {
+  try {
+    const formData = jwt(localStorage.getItem("token"));
+    console.log(formData)
+      const { data } = await api.getUserById(formData.id);
+      dispatch({ type: GET_LOGGED_IN_USER, data });
+  } catch (e) {
+      swal({
+          text: e.response?.data.msg,
+          icon: "error",
+      });
+
   }
 };
 

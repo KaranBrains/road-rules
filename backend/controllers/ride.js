@@ -7,12 +7,14 @@ exports.addRideCash = async (req, res) => {
     try {
         if (
             !req.body.slot ||
-            !req.body.client
+            !req.body.client ||
+            !req.query.address
         ) {
             return res.status(400).json({ msg: 'Invalid data' });
         }
         const slot = await Slot.findById(req.body.slot);
         const client = await User.findById(req.body.client);
+        const address = client.address.filter(a=> a==req.query.address)[0];
         if (slot.booking) {
             return res.status(400).json({ msg: "Slot already booked!" });
         }
@@ -26,21 +28,28 @@ exports.addRideCash = async (req, res) => {
             price : slot.price,
             time : slot.time,
             date : slot.date,
-            instructorName: slot.instructorName
+            instructorName: slot.instructorName,
+            address : address.street + ',' + address.province + ',' + address.city + ',' +  address.postalCode
         }
-        let newRide = Ride(ride); 
-        newRide.save((err, ride) => {
+        slot.status = "booked";
+        slot.save((err,s)=>{
             if (err) {
                 return res.status(400).json({ msg: err.message });
             }
-            slot.booking = ride._id;
-            slot.save((err, slot) => {
+            let newRide = Ride(ride); 
+            newRide.save((err, ride) => {
                 if (err) {
                     return res.status(400).json({ msg: err.message });
                 }
-                return res.status(201).json(ride);
-            })
-        });
+                slot.booking = ride._id;
+                slot.save((err, slot) => {
+                    if (err) {
+                        return res.status(400).json({ msg: err.message });
+                    }
+                    return res.status(201).json(ride);
+                })
+            });
+        })
     } catch (err) {
         return res.status(400).json({ msg: err.message });
     }

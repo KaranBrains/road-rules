@@ -18,7 +18,7 @@ function NavbarComponent() {
   const [isLoggedIn, setisLoggedIn] = useState(null);
   useEffect(() => {
     setisLoggedIn(localStorage.getItem("token"));
-  }, []);
+  }, [isLoggedIn]);
   return (
     <>
       <Navbar
@@ -52,7 +52,6 @@ function NavbarComponent() {
             >
               Contact Us
             </Nav.Link>
-            {console.log(isLoggedIn)}
             {isLoggedIn != null ? (
               <NavDropdown
                 eventKey={1}

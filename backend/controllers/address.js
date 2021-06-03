@@ -5,8 +5,7 @@ exports.addAddress = (req, res) => {
     !req.body.city ||
     !req.body.province ||
     !req.body.street ||
-    !req.body.pincode ||
-    !req.body.house ||
+    !req.body.postalCode ||
     !req.query.email
   ) {
     return res.status(400).json({ msg: 'Please send all entries' });
