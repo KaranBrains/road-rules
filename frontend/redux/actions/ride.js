@@ -10,7 +10,8 @@ export const confirmRideCash = (slot ,router) => async (dispatch) => {
             slot : slot,
             client: user.id
         }
-        const { data } = await api.confirmRideCash(formData);
+        const address = localStorage.getItem("address");
+        const { data } = await api.confirmRideCash(formData,address);
         dispatch({ type: CONFIRM_RIDE_CASH, data });
         swal({
             text: "Ride Booked",

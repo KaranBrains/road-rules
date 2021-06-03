@@ -34,13 +34,18 @@ function HomeMain() {
   };
   const today = new Date();
   const weekDate = new Date(today.getTime() + 7 * 24 * 60 * 60 * 1000);
-  const allSlots = useSelector((state) => state.slot?.slotData?.slots);
+  let allSlots = useSelector((state) => state.slot?.slotData?.slots);
   if (allSlots) {
+    allSlots = allSlots.filter(a=>{
+      if(a.status==="scheduled") {
+        return a;
+      }
+    });
     const filterSlots = allSlots?.filter(
       (slot) =>
         new Date(slot.date) >= Date.now() && new Date(slot.date) <= weekDate
     );
-    weekSlots = filterSlots.map(f=>{
+    weekSlots = filterSlots?.map(f=>{
       return {
         ...f,
         date: new Date(f.date).getDate()

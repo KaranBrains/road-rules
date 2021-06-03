@@ -43,8 +43,8 @@ export const contactUs = (formData) =>
   axios.post(`${url}/contact-us`, { formData });
 export const getUserByEmail = (email) =>
   axios.get(`${url}/user-email?email=${email}`);
-export const confirmRideCash = (formData) =>
-  axios.post(`${url}/add-ride-cash`, formData);
+export const confirmRideCash = (formData,address) =>
+  axios.post(`${url}/add-ride-cash?address=${address}`, formData);
 export const confirmRideOnline = (session) =>
   axios.post(`${url}/confirm-ride-online?id=${session}`);
 export const payment = (formData) => axios.post(paymentUrl, formData);
