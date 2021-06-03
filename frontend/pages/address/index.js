@@ -17,7 +17,7 @@ function Address() {
     router.push("/add-new-address/address");
   };
   return (
-    <div className="auth-bg">
+    <div>
       <div className="d-flex justify-content-between">
         <div className="col-lg-2 col-md-3 hidden-mobile-sidebar">
           <div>
@@ -64,7 +64,8 @@ function Address() {
           <div className="row my-5 d-flex justify-content-center">
             <div className="col-lg-9 col-md-8 col-sm-12 col-12">
               <form>
-                {user?.address.map((add) => (
+                  
+                {user ? user?.address.map((add) => (
                   <>
                     <div className="bg-tertiaryColor h-100 py-3 px-3 mb-4 shadow">
                       <div className="w-100 font-medium mt-3">
@@ -117,7 +118,7 @@ function Address() {
                       </div>
                     </div>
                   </>
-                ))}
+                )): 'No address'}
               </form>
             </div>
           </div>

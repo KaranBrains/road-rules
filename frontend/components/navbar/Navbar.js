@@ -18,7 +18,7 @@ function NavbarComponent() {
   const [isLoggedIn, setisLoggedIn] = useState(null);
   useEffect(() => {
     setisLoggedIn(localStorage.getItem("token"));
-  }, []);
+  }, [isLoggedIn]);
   return (
     <>
       <Navbar

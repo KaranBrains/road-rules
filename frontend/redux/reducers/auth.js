@@ -53,6 +53,7 @@ export default (state = { authData: null }, action) => {
         text: `You are logged out`,
         icon: "success",
       });
+      window.location.reload();
       return { ...state, authData: null };
     case PHONE_OTP:
       console.log(action?.data);
