@@ -1,10 +1,7 @@
-import { useState, useContext, useEffect } from "react";
+import { useEffect } from "react";
 import { useDispatch , useSelector} from "react-redux";
-import { ReactReduxContext } from 'react-redux';
 import { useRouter } from "next/router";
-import { Modal } from "react-bootstrap";
 import { GetSlotById } from "../../redux/actions/slot";
-import dynamic from 'next/dynamic';
 
 export default function InstructorId() {
 
@@ -15,11 +12,11 @@ export default function InstructorId() {
     useEffect(() =>{
         const id = router.query.id;
         if(id) {
-            dispatch(GetSlotById(id));
+            dispatch(GetSlotById(id))
         }
     },[id])
     const openModal = ()=>{
-        
+        router.push("/confirm-address/"+id)
     }
 
     return(

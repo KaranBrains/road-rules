@@ -1,6 +1,29 @@
 const mongoose = require('mongoose');
 const bcrypt = require('bcrypt');
 
+const AddressSchema = new mongoose.Schema({
+  city: {
+    type: String,
+    required: true,
+  },
+  province: {
+    type: String,
+    required: true,
+  },
+  street: {
+    type: String,
+    required: true,
+  },
+  pincode: {
+    type: String,
+    required: true,
+  },
+  house :{
+    type: String,
+    required: true
+  },
+});
+
 const ClientSchema = new mongoose.Schema({
   email: {
     type: String,
@@ -39,7 +62,8 @@ const ClientSchema = new mongoose.Schema({
   isEmailVerified: {
     type: Boolean,
     required: true,
-  }
+  },
+  address: [AddressSchema]
 });
 
 ClientSchema.pre('save', function (next) {

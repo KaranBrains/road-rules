@@ -8,6 +8,8 @@ import {
   PHONE_OTP,
   CHANGE_PASSWORD,
   VERIFY_FORGOT,
+  ADD_ADDRESS,
+  GET_USER_BY_EMAIL
 } from "../constants";
 import jwt from "jwt-decode";
 import swal from "sweetalert";
@@ -57,6 +59,32 @@ export const signUp = (formData, router) => async (dispatch) => {
     await api.getEmailOtp(formData.email);
     localStorage.setItem("isEmailVerified", "false");
     router.push("/auth/email");
+  } catch (e) {
+    console.log(e.response);
+    swal({
+      text: e.response?.data.msg,
+      icon: "error",
+    });
+  }
+};
+
+//Add Address
+export const addAddress = (formData, id, router) => async (dispatch) => {
+  try {
+    const user = JSON.parse(localStorage.getItem("userProfile"))
+    ? JSON.parse(localStorage.getItem("userProfile"))
+    : jwt(localStorage.getItem("token"));
+    const { data } = await api.addAddress(formData,user.email);
+    dispatch({ type: ADD_ADDRESS, data });
+    swal({
+      text: "Address Added Successfully",
+      icon: "success",
+    });
+    if (id=="address") {
+      router.push("/");
+    } else {
+      router.push("/confirm-address/"+id);
+    }
   } catch (e) {
     console.log(e.response);
     swal({
@@ -172,6 +200,23 @@ export const verifyPhoneOtp = (otp, router) => async (dispatch) => {
     });
     localStorage.setItem("isNumberVerified", "true");
     router.push("/auth/login");
+  } catch (e) {
+    swal({
+      text: e.response?.data.msg,
+      icon: "error",
+    });
+  }
+};
+
+export const getUserByEmail = () => async (dispatch) => {
+  try {
+    const formData = JSON.parse(localStorage.getItem("userProfile"))
+      ? JSON.parse(localStorage.getItem("userProfile"))
+      : jwt(localStorage.getItem("token"));
+    const { data } = await api.getUserByEmail(
+      formData.email
+    );
+    dispatch({ type: GET_USER_BY_EMAIL, data });
   } catch (e) {
     swal({
       text: e.response?.data.msg,
