@@ -10,8 +10,7 @@ function Signup() {
     city: "Torronto",
     province: "",
     street: "",
-    house: "",
-    pincode: "",
+    postalCode: "",
   };
   const [formData, setformData] = useState(initialState);
   const dispatch = useDispatch();
@@ -71,7 +70,7 @@ function Signup() {
                   />
                 </div>
                 <div className="mt-4">
-                  <label className="font-demi text-primaryColor mb-2">Street</label>
+                  <label className="font-demi text-primaryColor mb-2">Street Address</label>
                   <input
                     value={formData.street}
                     onChange={(e) => {
@@ -88,10 +87,10 @@ function Signup() {
                 </div>
                 <div className="mt-4">
                   <label className="font-demi text-primaryColor mb-2">
-                   House
+                  Postal Code
                   </label>
                   <input
-                    value={formData.password}
+                    value={formData.postalCode}
                     onChange={(e) => {
                       setformData({
                         ...formData,
@@ -99,25 +98,7 @@ function Signup() {
                       });
                     }}
                     required
-                    name="house"
-                    type="text"
-                    className="form-control"
-                  />
-                </div>
-                <div className="mt-4">
-                  <label className="font-demi text-primaryColor mb-2">
-                   Pincode
-                  </label>
-                  <input
-                    value={formData.password}
-                    onChange={(e) => {
-                      setformData({
-                        ...formData,
-                        [e.target.name]: e.target.value,
-                      });
-                    }}
-                    required
-                    name="pincode"
+                    name="postalCode"
                     type="text"
                     className="form-control"
                   />
