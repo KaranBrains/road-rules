@@ -30,6 +30,7 @@ export const signIn = (formData, router) => async (dispatch) => {
       icon: "success",
     });
     router.push("/");
+    window.location.reload();
   } catch (e) {
     swal({
       text: e.response?.data.msg,
@@ -201,7 +202,6 @@ export const verifyPhoneOtp = (otp, router) => async (dispatch) => {
     });
     localStorage.setItem("isNumberVerified", "true");
     router.push("/auth/login");
-    window.location.reload();
   } catch (e) {
     swal({
       text: e.response?.data.msg,
