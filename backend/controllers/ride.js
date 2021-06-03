@@ -13,9 +13,9 @@ exports.addRideCash = async (req, res) => {
         }
         const slot = await Slot.findById(req.body.slot);
         const client = await User.findById(req.body.client);
-        if (slot.booking) {
-            return res.status(400).json({ msg: "Slot already booked!" });
-        }
+        // if (slot.booking) {
+        //     return res.status(400).json({ msg: "Slot already booked!" });
+        // }
         const ride = {
             client : client._id,
             clientName : client.fullName,
@@ -24,6 +24,8 @@ exports.addRideCash = async (req, res) => {
             status : "scheduled",
             modeOfPayment : "cash",
             price : slot.price,
+            time : slot.time,
+            date : slot.date,
             instructorName: slot.instructorName
         }
         let newRide = Ride(ride); 
