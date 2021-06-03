@@ -15,8 +15,13 @@ function MyCalendar() {
 
   const now = new Date();
   const myEventsList = [];
-  const allSlots = useSelector((state) => state.slot?.slotData?.slots);
+  let allSlots = useSelector((state) => state.slot?.slotData?.slots);
   if (allSlots) {
+    allSlots = allSlots.filter(a=>{
+      if(a.status==="scheduled") {
+        return a;
+      }
+    });
     const filterSlots = allSlots.map((slot) =>{
       const startDate = new Date(slot.date +'T'+ slot.time); 
       const endDate = new Date(startDate.getTime()+ 60*1000*60); 

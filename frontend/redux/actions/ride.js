@@ -30,7 +30,8 @@ export const confirmRideCash = (slot ,router) => async (dispatch) => {
 export const confirmRideOnline = (router) => async (dispatch) => {
     try {
         const session = localStorage.getItem("session");
-        const { data } = await api.confirmRideOnline(session);
+        const address = localStorage.getItem("address");
+        const { data } = await api.confirmRideOnline(session,address);
         dispatch({ type: CONFIRM_RIDE_ONLINE, data });
         swal({
             text: "Ride Booked",

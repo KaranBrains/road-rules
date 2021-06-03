@@ -75,7 +75,7 @@ function ConfirmAddress() {
                           setSelected(a._id);
                         }}/>
                         <label class="form-check-label font-regular font-bold" for="flexRadioDefault1">
-                            {a.house + ',' + a.street + ',' + a.province + ',' + a.city}
+                            {a.street + ',' + a.province + ',' + a.city}
                         </label>
                         </div>
                       )
