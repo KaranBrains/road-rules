@@ -23,6 +23,7 @@ exports.addRideCash = async (req, res) => {
             slot : slot._id,
             status : "scheduled",
             modeOfPayment : "cash",
+            price : slot.price,
             instructorName: slot.instructorName
         }
         let newRide = Ride(ride); 
