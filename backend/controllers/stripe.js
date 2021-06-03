@@ -51,7 +51,7 @@ exports.checkout = async (req,res,next) => {
 
 exports.confirmRideOnline = async (req,res,next) => {
     try {
-        if (!req.query.id) {
+        if (!req.query.id || !req.query.address) {
             return res.status(400).json({ msg: "You need to send session id!" });
         }
         const session = await stripe.checkout.sessions.retrieve(
@@ -64,6 +64,7 @@ exports.confirmRideOnline = async (req,res,next) => {
                 return res.status(400).json({ msg: "Slot already booked!" });
             }
             const client = await User.findById(payment.client);
+            const address = client.address.filter(a=> a == req.query.address)[0];
             const ride = {
                 client : client._id,
                 clientName : client.fullName,
@@ -74,21 +75,28 @@ exports.confirmRideOnline = async (req,res,next) => {
                 price : slot.price,
                 time : slot.time,
                 date : slot.date,
-                instructorName: slot.instructorName
+                instructorName: slot.instructorName,
+                address : address.street + ',' + address.province + ',' + address.city + ',' +  address.postalCode
             }
-            let newRide = Ride(ride); 
-            newRide.save((err, ride) => {
+            slot.status = "booked";
+            slot.save((err,s)=>{
                 if (err) {
                     return res.status(400).json({ msg: err.message });
                 }
-                slot.booking = ride._id;
-                slot.save((err, slot) => {
+                let newRide = Ride(ride); 
+                newRide.save((err, ride) => {
                     if (err) {
                         return res.status(400).json({ msg: err.message });
                     }
-                    return res.status(201).json(ride);
-                })
-            });
+                    slot.booking = ride._id;
+                    slot.save((err, slot) => {
+                        if (err) {
+                            return res.status(400).json({ msg: err.message });
+                        }
+                        return res.status(201).json(ride);
+                    })
+                });
+            })
         }
     } catch (e) {
         return res.status(400).send({
