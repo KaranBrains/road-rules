@@ -34,7 +34,6 @@ function ConfirmAddress() {
 
   return (
     <>
-     
         <div className="container my-5">
           <div className="row d-flex justify-content-center mb-4">
             <div className="col-lg-10 col-sm-12 col-md-12 col-12 font-regular px-0">
