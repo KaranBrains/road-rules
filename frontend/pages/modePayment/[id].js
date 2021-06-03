@@ -22,7 +22,7 @@ function ModePayment() {
       return;
     } 
     if (selected === "online") {
-      dispatch(AddPayment());
+      dispatch(AddPayment(id));
     }
     if (selected === 'cash') {
       dispatch(confirmRideCash(id,router));

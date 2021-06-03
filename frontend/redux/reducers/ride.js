@@ -1,11 +1,15 @@
 import {
     CONFIRM_RIDE_CASH,
-    GET_RIDE_BY_ID
+    GET_RIDE_BY_ID,
+    CONFIRM_RIDE_ONLINE
   } from "../constants";
   
   export default (state = { rideData: null }, action) => {
     switch (action.type) {
       case CONFIRM_RIDE_CASH:
+        console.log(action?.data);
+        return { ...state, rideData: action?.data };
+    case CONFIRM_RIDE_ONLINE:
         console.log(action?.data);
         return { ...state, rideData: action?.data };
     case GET_RIDE_BY_ID:
