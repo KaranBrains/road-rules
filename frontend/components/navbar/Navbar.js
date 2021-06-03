@@ -85,7 +85,6 @@ function NavbarComponent() {
                     &nbsp;&nbsp;Logout
                   </div>
                 </NavDropdown.Item>
-                
               </NavDropdown>
             ) : (
               <NavDropdown
@@ -115,7 +114,7 @@ function NavbarComponent() {
                 </NavDropdown.Item>
                 <NavDropdown.Item>
                   <Link href="/auth/signup">
-                  <div className="font-demi text-primaryColor">
+                    <div className="font-demi text-primaryColor">
                       <i className="fas fa-user-circle mr-2"></i>
                       &nbsp;Signup
                     </div>
