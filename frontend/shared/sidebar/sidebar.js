@@ -21,6 +21,7 @@ import DashboardIcon from "@material-ui/icons/Dashboard";
 import GroupIcon from '@material-ui/icons/Group';
 import Link from "next/link";
 import BookIcon from '@material-ui/icons/Book';
+import MotorcycleIcon from '@material-ui/icons/Motorcycle';
 
 const drawerWidth = 240;
 
@@ -184,6 +185,16 @@ const useStyles = makeStyles((theme) => ({
               </ListItemIcon>
               <Link href="/admin/slots">
                 <a><ListItemText primary="Slots" /></a>
+              </Link>
+            </ListItem>
+            <ListItem button>
+              <ListItemIcon>
+                <Link href="/admin/all-rides">
+                  <a><MotorcycleIcon /></a>
+                </Link>
+              </ListItemIcon>
+              <Link href="/admin/all-rides">
+                <a><ListItemText primary="All Rides" /></a>
               </Link>
             </ListItem>
             {/* <ListItem button>

@@ -26,6 +26,7 @@ export default function InstructorId() {
   },[id])
 
   const instructorById = useSelector(state => state.instructor?.instructorById?.instructor);
+  console.log(instructorById)
 
   const initialState = { fullName: instructorById?.fullName, img: instructorById?.img, phone: instructorById?.phone, email:instructorById?.email};
   const [showModal, setShowModal] = useState(false);
@@ -166,7 +167,7 @@ export default function InstructorId() {
       )}
         <Sidebar />
        { showText ? (
-       <div class="container mb-5">
+       <div class="container mb-5 padding-left-mobile-table">
         <div className="row">
           <div class="d-flex justify-content-between mb-3">
             <div className="font-25 text-center font-demi text-primaryColor">
@@ -184,25 +185,45 @@ export default function InstructorId() {
             </div>
           </div>
           <div className="col-lg-9 col-md-8 col-sm-12 col-12">
-          <div className="bg-tertiaryColor h-100 py-5 px-5">
+          <div className="bg-tertiaryColor h-100 py-5 px-2">
             <div>
-              <h3>Name</h3>
-              <p className="font-20">{instructorById?.fullName}</p>
+            <input className="form-control font-20" value={instructorById?.fullName} disabled></input>
             </div>
-            <div className="d-flex">
-              <div>
-              <h3>Email</h3>
-              <p className="font-20">{instructorById?.email}</p>
-              </div>
-              <div className="px-5">
-              <h3>Phone</h3>
-              <p className="font-20">{instructorById?.phone}</p>
-              </div>
+            <div className="d-flex flex-column flex-lg-row flex-sm-column flex-md-column">
+              <input className="form-control font-20" value={instructorById?.email} disabled></input>
+              <input className="ml-2 form-control font-20" value={instructorById?.phone} disabled></input>
             </div>
           </div>
           </div>
+          <div className="font-25 mt-4 mb-2 text-center font-demi text-primaryColor">
+                Feedback and Ratings
+          </div>
+          <div>
+           {instructorById.rating && instructorById.rating.length > 0 ?
+           instructorById.rating.map((value)=>{
+             return (
+               <div className="col-lg-12 font-16 col-md-12 col-sm-12 col-12  bg-tertiaryColor px-1 px-md-2 px-lg-5 py-2">
+                 <div className="d-flex justify-content-between align-items-center">
+                   <div><input className="form-control font-weight-bold" value={value.clientName} disabled></input></div>
+                   <div className="font-weight-bold">{value.stars}	&#9733;</div>
+                 </div>
+                 <div className="">
+                 <input className="form-control d-inline" value={value.feedback} disabled></input>
+                 </div>
+               </div>
+             )
+           }) : (
+            <div className="col-lg-12 font-16 col-md-12 col-sm-12 col-12  bg-tertiaryColor px-5 py-2">
+            <div>
+             No Feedback Available
+            </div>
+          </div>
+           )
+          }
          </div>
-        </div> ) : (
+         </div>
+        </div>
+         ) : (
         ""
       )}
     </div>

@@ -46,7 +46,7 @@ export const RemoveSlot = (id) => async (dispatch) => {
   } catch (e) {
     console.log(e.response);
     swal({
-      text: e.response?.data.msg,
+      text:e.response?.data.msg ,
       icon: "error",
     });
 }
