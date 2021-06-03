@@ -27,7 +27,7 @@ exports.checkout = async (req,res,next) => {
             ],
             mode: 'payment',
             success_url: process.env.FRONT_END_URL + '/confirm-payment',
-            cancel_url: process.env.FRONT_END_URL + '/payment/cancel',
+            cancel_url: process.env.FRONT_END_URL + '/cancel-payment',
           });
         let payment = Payment({
             session: session.id,
