@@ -730,6 +730,11 @@ color: rgb(8, 0, 0);
   background: var(--primaryColor);
   border-radius: 0 0 0 100px;
 }
+
+.bg-customColor{
+  background-color: rgba(26, 69, 209, 0.06) !important;
+}
+
 ::placeholder{
   font-family: Avenir-regular;
 }

@@ -5,6 +5,7 @@ import dynamic from 'next/dynamic';
 import { Modal } from "react-bootstrap";
 import { AddSlot, AllSlots, RemoveSlot, UpdateSlot } from "../../../redux/actions/slot";
 import { AllInstructor } from "../../../redux/actions/instructor";
+import { allSlot } from "../../../redux/api";
 const Sidebar = dynamic(() => import('../../../shared/sidebar/sidebar'), { ssr: false, loading: () => <div class="main-loader-div">
   <div class="loader">Loading...</div>
 </div> });
@@ -15,6 +16,8 @@ export default function Slots() {
   const [showModal, setShowModal] = useState(false);
   const [editModal, setEditModal] = useState(false);
   const [formData, setformData] = useState(initialState);
+  const [sortedSlots, setSortedSlots] = useState({});
+  const [ascending, setAscending] = useState(true);
   const dispatch = useDispatch();
   const router = useRouter();
 
@@ -60,7 +63,23 @@ export default function Slots() {
   },[])
 
   const allInstructors = useSelector(state => state.instructor?.AllData?.instructors)
-  const allSlots = useSelector(state => state.slot?.slotData?.slots);
+  let allSlots = useSelector(state => state.slot?.slotData?.slots);
+
+  allSlots = sortedSlots.length > 0 ? sortedSlots : allSlots;
+  const sortDate = ()=>{
+    if (ascending) {
+        allSlots = allSlots.sort(function(a,b){
+            return  new Date(a.date) -  new Date(b.date);
+        });
+        setAscending(false);
+    } else {
+        allSlots = allSlots.sort(function(a,b){
+            return  new Date(b.date) -  new Date(a.date);
+        });
+        setAscending(true);
+    }
+    setSortedSlots(allSlots);
+}
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -156,10 +175,10 @@ export default function Slots() {
                 <label className="font-20 py-2">Price</label>
                   <input
                     required
-                    value={editFormData.clientLimit}
+                    value={editFormData.price}
                     onChange={(e) => {
                       setEditFormData({
-                        ...formData,
+                        ...editFormData,
                         [e.target.name]: e.target.value,
                       });
                     }}
@@ -328,7 +347,7 @@ export default function Slots() {
               <thead>
                 <tr className="font-16 align-middle">
                   <th scope="col">S.No</th>
-                  <th scope="col">Date</th>
+                  <th scope="col"  onClick={sortDate}>Date &#8645;</th>
                   <th scope="col">Time</th>    
                   <th scope="col">Client Limit</th>
                   <th scope="col">Price</th>

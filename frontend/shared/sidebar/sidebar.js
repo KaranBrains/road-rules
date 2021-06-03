@@ -21,7 +21,7 @@ import DashboardIcon from "@material-ui/icons/Dashboard";
 import GroupIcon from '@material-ui/icons/Group';
 import Link from "next/link";
 import BookIcon from '@material-ui/icons/Book';
-import MotorcycleIcon from '@material-ui/icons/Motorcycle';
+import DirectionsCarIcon from '@material-ui/icons/DirectionsCar';
 
 const drawerWidth = 240;
 
@@ -190,7 +190,7 @@ const useStyles = makeStyles((theme) => ({
             <ListItem button>
               <ListItemIcon>
                 <Link href="/admin/all-rides">
-                  <a><MotorcycleIcon /></a>
+                  <a><DirectionsCarIcon /></a>
                 </Link>
               </ListItemIcon>
               <Link href="/admin/all-rides">

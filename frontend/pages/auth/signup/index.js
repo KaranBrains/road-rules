@@ -20,9 +20,11 @@ function Signup() {
   const handleSubmit = (e) => {
     e.preventDefault();
     formData.phone = formData.dialcode + formData.phone;
-    dispatch(signUp(formData, router));
-    localStorage.setItem("userProfile", JSON.stringify(formData));
+    dispatch(signUp(formData, router))
+    .then(()=>{
     setformData(initialState);
+    });
+    localStorage.setItem("userProfile", JSON.stringify(formData));
   };
 
   return (
