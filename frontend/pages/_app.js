@@ -1,3 +1,4 @@
+import { useEffect, useState } from "react";
 import "../styles/globals.css";
 import "../node_modules/bootstrap/dist/css/bootstrap.min.css";
 import "../node_modules/react-big-calendar/lib/css/react-big-calendar.css";
@@ -6,10 +7,29 @@ import Head from "next/head";
 import Footer from "../components/footer/Footer";
 import { useRouter } from "next/router";
 import NavbarComponent from "../components/navbar/Navbar";
+import jwt_decode from "jwt-decode";
+import Home from "./index.js";
+
 
 function MyApp({ Component, pageProps }) {
+  const [user, setuser] = useState(null);
+  let decode = null;
+  let allowed = false;
   const router = useRouter();
-  const route = router.route.slice(1,6);
+  const route = router.route.slice(1, 6);
+  useEffect(() => {
+    const data = localStorage.getItem("token");
+    if(data){
+      decode =  jwt_decode(data);
+    }    
+    setuser(decode);
+  }, []);
+  if (user) {
+    allowed = false;
+  }
+  if (router.pathname.startsWith("/confirm-address")) {
+    allowed = false;
+  }
   return (
     <>
       <Head>
@@ -18,16 +38,17 @@ function MyApp({ Component, pageProps }) {
           crossorigin="anonymous"
         ></script>
         <meta name="theme-color" content="#1e4c6b" />
-      </Head>
-      { route == 'admin' ? (
+      </Head>  
+      {/* {route == "admin" ? (
         <Component {...pageProps} />
-      ) : (
-        <> 
+      ) : (     */}
+        <>
           <NavbarComponent />
-          <Component {...pageProps} />
+          {/* {allowed ? <Component {...pageProps}/>  : <Home /> } */}
+          <Component {...pageProps}/>  
           <Footer />
         </>
-      )}
+      {/* )} */}
     </>
   );
 }
