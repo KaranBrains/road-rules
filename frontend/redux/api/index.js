@@ -37,3 +37,4 @@ export const payment = () => axios.post(paymentUrl);
 export const allUser = () => axios.get(`${url}/admin/get-users`); 
 export const allRides = () => axios.get(`${url}/all-rides`);
 export const getUserById = (id) => axios.get(`${url}/admin/get-user?id=${id}`);
+export const getRidesById = (id) => axios.get(`${url}/ride?id=${id}`)
