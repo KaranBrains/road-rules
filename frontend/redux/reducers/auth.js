@@ -14,6 +14,7 @@ import {
   ADD_ADDRESS,
   GET_USER_BY_EMAIL
 } from "../constants";
+import swal from "sweetalert";
 
 export default (state = { authData: null }, action) => {
   switch (action.type) {
@@ -47,6 +48,10 @@ export default (state = { authData: null }, action) => {
       return { ...state, authData: action?.data };
     case LOGOUT:
       localStorage.clear();
+      swal({
+        text: `You are logged out`,
+        icon: "success",
+      });
       return { ...state, authData: null };
     case PHONE_OTP:
       console.log(action?.data);

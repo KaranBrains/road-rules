@@ -1,14 +1,23 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import Navbar from "react-bootstrap/Navbar";
 import Nav from "react-bootstrap/Nav";
 import NavDropdown from "react-bootstrap/NavDropdown";
 import Link from "next/link";
 import styles from "./Navbar.module.css";
+import { useRouter } from "next/router";
+import { useDispatch } from "react-redux";
+import { LOGOUT } from "../../redux/constants";
 
 function NavbarComponent() {
-  let isLoggedIn;
+  const router = useRouter();
+  const dispatch = useDispatch();
+  const logout = () => {
+    dispatch({ type: LOGOUT });
+    router.push("/");
+  };
+  const [isLoggedIn, setisLoggedIn] = useState(null);
   useEffect(() => {
-    isLoggedIn = localStorage.getItem("token");
+    setisLoggedIn(localStorage.getItem("token"));
   }, []);
   return (
     <>
@@ -30,11 +39,11 @@ function NavbarComponent() {
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className={`${styles.mlAuto}`}>
             <Nav.Link
-              href="/"
+              href="/about"
               className="font-demi font-17 px-3 navbar-item
                 text-primaryColor text-center"
             >
-              Company
+              About
             </Nav.Link>
             <Nav.Link
               href="/contact"
@@ -43,7 +52,8 @@ function NavbarComponent() {
             >
               Contact Us
             </Nav.Link>
-            {isLoggedIn ? (
+            {console.log(isLoggedIn)}
+            {isLoggedIn != null ? (
               <NavDropdown
                 eventKey={1}
                 title={
@@ -63,9 +73,9 @@ function NavbarComponent() {
                 id="basic-nav-dropdown"
               >
                 <NavDropdown.Item>
-                  <div className="font-demi text-primaryColor">
+                  <div className="font-demi text-primaryColor" onClick={logout}>
                     <i className="fas fa-sign-out-alt mr-2"></i>
-                    Logout
+                    &nbsp;&nbsp;Logout
                   </div>
                 </NavDropdown.Item>
               </NavDropdown>
