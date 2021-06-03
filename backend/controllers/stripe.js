@@ -11,6 +11,7 @@ exports.checkout = async (req,res,next) => {
         if (slot.booking) {
             return res.status(400).json({ msg: "Slot already booked!" });
         }
+        console.log(slot);
         const session = await stripe.checkout.sessions.create({
             payment_method_types: ['card'],
             line_items: [
@@ -20,7 +21,7 @@ exports.checkout = async (req,res,next) => {
                   product_data: {
                     name: 'Road-Rules Riding Class',
                   },
-                  unit_amount: slot.price,
+                  unit_amount: Number(slot.price)*100,
                 },
                 quantity: 1,
               },
@@ -64,7 +65,7 @@ exports.confirmRideOnline = async (req,res,next) => {
                 return res.status(400).json({ msg: "Slot already booked!" });
             }
             const client = await User.findById(payment.client);
-            const address = client.address.filter(a=> a == req.query.address)[0];
+            const address = client.address.filter(a=> a._id == req.query.address)[0];
             const ride = {
                 client : client._id,
                 clientName : client.fullName,

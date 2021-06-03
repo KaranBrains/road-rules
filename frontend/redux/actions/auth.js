@@ -23,14 +23,14 @@ export const signIn = (formData, router) => async (dispatch) => {
     console.log(jwt(data.token));
     dispatch({ type: SIGN_IN, data });
     const role = jwt(data.token).role;
-    localStorage.setItem("isEmailVerified", jwt(data.token).isEmailVerified);
-    localStorage.setItem("isNumberVerified", jwt(data.token).isNumberVerified);
     swal({
       text: `You are logged in as ${role}`,
       icon: "success",
     });
-    router.push("/");
-    window.location.reload();
+    router.push("/")
+    .then(()=>{
+      window.location.reload();
+    });
   } catch (e) {
     swal({
       text: e.response?.data.msg,
@@ -280,8 +280,6 @@ export const verifyForgotEmailOtp = (otp, router) => async (dispatch) => {
     });
   }
 };
-
-
 
 // CHECKING AUTHENTICATION
 export const isAuthenticated = () => {

@@ -14,7 +14,7 @@ exports.addRideCash = async (req, res) => {
         }
         const slot = await Slot.findById(req.body.slot);
         const client = await User.findById(req.body.client);
-        const address = client.address.filter(a=> a==req.query.address)[0];
+        const address = client.address.filter(a=> a._id==req.query.address)[0];
         if (slot.booking) {
             return res.status(400).json({ msg: "Slot already booked!" });
         }

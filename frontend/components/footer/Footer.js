@@ -74,11 +74,11 @@ function Footer() {
                 style={{ fontSize: "30px" }}
               >
                 <Image
-                  src="/images/logo.png"
+                  src="/images/logo.svg"
                   alt="logo"
                   className="img-fluid logo"
                   width={300}
-                  height={200}
+                  height={300}
                 />
               </h3>
             </div>

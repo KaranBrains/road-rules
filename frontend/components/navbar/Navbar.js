@@ -72,6 +72,14 @@ function NavbarComponent() {
                 id="basic-nav-dropdown"
               >
                 <NavDropdown.Item>
+                  <Link href="/profile">
+                    <div className="font-demi text-primaryColor">
+                      <i className="fas fa-user-circle mr-2"></i>
+                      &nbsp;User Profile
+                    </div>
+                  </Link>
+                </NavDropdown.Item>
+                <NavDropdown.Item>
                   <div className="font-demi text-primaryColor" onClick={logout}>
                     <i className="fas fa-sign-out-alt mr-2"></i>
                     &nbsp;&nbsp;Logout
