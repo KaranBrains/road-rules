@@ -52,15 +52,7 @@ function NavbarComponent() {
             >
               Contact Us
             </Nav.Link>
-            {isLoggedIn ? (
-            <Nav.Link
-              className="font-demi font-17
-                  px-3 navbar-item text-primaryColor text-center navbar-desktop-hidden"
-                  onClick={logout}
-            >
-            Logout
-          </Nav.Link>
-            ) : (
+            {!isLoggedIn ? (
               <Nav.Link
               href="/auth/login"
               className="font-demi font-17
@@ -68,6 +60,40 @@ function NavbarComponent() {
             >
               Login
             </Nav.Link>
+            ) : (
+              <Nav.Link
+              href="/profile"
+              className="font-demi font-17
+                  px-3 navbar-item text-primaryColor text-center navbar-desktop-hidden"
+            >
+              User Profile
+            </Nav.Link>
+            )}
+          {isLoggedIn ? (
+            <Nav.Link
+              href="/address"
+              className="font-demi font-17
+                  px-3 navbar-item text-primaryColor text-center navbar-desktop-hidden"
+            >
+            Addresses
+          </Nav.Link>
+            ) : ''}
+          {isLoggedIn ? (
+            <Nav.Link
+              className="font-demi font-17
+                  px-3 navbar-item text-white bg-secondaryColor text-center navbar-desktop-hidden"
+                  onClick={logout}
+            >
+            Logout
+          </Nav.Link>
+            ) : (
+              <Nav.Link
+              href="/auth/signup"
+              className="font-demi font-17
+                  px-3 navbar-item text-primaryColor text-center navbar-desktop-hidden"
+            >
+            Sign Up
+          </Nav.Link>
             )}
             <hr className="navbar-desktop-hidden"></hr>
             {isLoggedIn != null ? (

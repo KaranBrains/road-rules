@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useRouter } from "next/router";
 import { GetSlotById } from "../../redux/actions/slot";
 import jwt_decode from "jwt-decode";
+import swal from "sweetalert";
 
 export default function InstructorId() {
   const dispatch = useDispatch();
@@ -28,6 +29,10 @@ export default function InstructorId() {
       if(profile){
         router.push("/confirm-address/" + id);
       }else{
+        swal({
+          text: `You need to login to continue`,
+          icon: "info",
+        });
         router.push("/auth/login");
       }
     

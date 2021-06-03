@@ -44,7 +44,7 @@ function UserProfile() {
         </div>
         <div className="container mb-5 col-lg-9 col-md-12 col-sm-12 col-12">
           <div className="row mt-5 d-flex justify-content-center">
-            <div className="col-lg-9 col-md-8 col-sm-12 col-12">
+            <div className="col-lg-9 col-md-12 col-sm-12 col-12">
               <div className="bg-tertiaryColor h-100 py-5 px-3">
                 <form>
                   <div className="input-group font-medium">

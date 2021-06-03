@@ -197,7 +197,7 @@ body {
     display: none !important;
   }
   .navbar-desktop-hidden {
-    display: flex !important;
+    display: block !important;
   }
 }
 
