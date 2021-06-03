@@ -52,7 +52,6 @@ function NavbarComponent() {
             >
               Contact Us
             </Nav.Link>
-            {console.log(isLoggedIn)}
             {isLoggedIn != null ? (
               <NavDropdown
                 eventKey={1}

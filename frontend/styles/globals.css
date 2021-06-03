@@ -466,7 +466,7 @@ table tbody{
   margin-left: 20px;
 }
 .auth-bg{
-  background: url('../public/images/auth-bg.svg');
+  background: url('../public/images/auth-bg.png');
   background-repeat: no-repeat;
   background-position:center;
   background-size: cover;
@@ -704,4 +704,51 @@ color: rgb(8, 0, 0);
 .main{
   background: var(--primaryColor);
   border-radius: 0 0 0 100px;
+}
+::placeholder{
+  font-family: Avenir-regular;
+}
+.form-control:disabled, .form-control[readonly] {
+  background-color: #e9ecef !important;
+  opacity: 1;
+}
+.user{
+  border-radius: 50%;
+  height: 150px;
+  width: 150px;
+}
+.font-25{
+  font-size: 25px;
+}
+
+.height-500{
+  height: 450px;
+}
+
+.w-45 {
+  margin-left: 3% !important;
+  width: 45%;
+}
+
+.w-50 {
+  width:48% !important;
+}
+
+.w-95 {
+  width: 99%;
+}
+
+@media(max-width: 991px){
+  .hidden-mobile-sidebar{
+      display: none
+  }
+}
+
+@media(max-width: 426px){
+  .w-45 {
+      margin-left: 3% !important;
+  }
+  .w-50 {
+      width:44% !important;
+  }
 }
