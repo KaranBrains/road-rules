@@ -14,13 +14,9 @@ const AddressSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
-  pincode: {
+  postalCode: {
     type: String,
     required: true,
-  },
-  house :{
-    type: String,
-    required: true
   },
 });
 
