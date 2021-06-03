@@ -25,7 +25,7 @@ function ModePayment() {
       dispatch(AddPayment());
     }
     if (selected === 'cash') {
-      dispatch(confirmRideCash(id));
+      dispatch(confirmRideCash(id,router));
     }
   }
 
