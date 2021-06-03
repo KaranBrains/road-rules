@@ -31,9 +31,13 @@ export const removeInstructor = (id) => axios.delete(`${url}/delete-instructor?i
 export const getInstructorById = (id) => axios.get(`${url}/instructor?id=${id}`);
 export const getSlotById = (id) => axios.get(`${url}/slot?id=${id}`)
 export const updateInstructor = (id, formdata) => axios.put(`${url}/update-instructor?id=${id}`, formdata);
+export const addAddress = (formdata , email) => axios.post(`${url}/add-address?email=${email}`, formdata);
 export const contactUs = (formData) =>
   axios.post(`${url}/contact-us`, { formData });
-
+export const getUserByEmail = (email) =>
+  axios.get(`${url}/user-email?email=${email}`);
+export const confirmRideCash = (formData,) =>
+  axios.post(`${url}/add-ride-cash`,formData);
 export const payment = () => axios.post(paymentUrl);
 export const allUser = () => axios.get(`${url}/admin/get-users`); 
 export const allRides = () => axios.get(`${url}/all-rides`);

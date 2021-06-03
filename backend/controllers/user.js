@@ -116,3 +116,23 @@ exports.loginUser = (req, res) => {
   }
 };
 
+exports.getUserByEmail = (req, res) => {
+  if (!req.query.email) {
+    return res.status(400).send({ msg: 'You need to send email' });
+  }
+
+  User.findOne({ email: req.query.email }, (err, user) => {
+    if (err) {
+      return res.status(400).send({ msg: err });
+    }
+
+    if (!user) {
+      return res.status(400).json({ msg: 'The user does not exist' });
+    }
+    return res.status(200).json({
+      user: user,
+    });
+  });
+
+};
+

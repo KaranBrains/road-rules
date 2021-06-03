@@ -11,6 +11,8 @@ import {
   PHONE_OTP,
   VERIFY_FORGOT,
   CHANGE_PASSWORD,
+  ADD_ADDRESS,
+  GET_USER_BY_EMAIL
 } from "../constants";
 
 export default (state = { authData: null }, action) => {
@@ -31,6 +33,9 @@ export default (state = { authData: null }, action) => {
     case VERIFY_PHONE:
       console.log(action?.data);
       return { ...state, authData: action?.data };
+    case ADD_ADDRESS:
+      console.log(action?.data);
+      return { ...state, authData: action?.data };
     case VERIFY_ID:
       console.log(action?.data);
       return { ...state, authData: action?.data };
@@ -48,13 +53,15 @@ export default (state = { authData: null }, action) => {
       return { ...state, authData: action?.data };
     case VERIFY_FORGOT:
       console.log(action?.data);
-      console.log("abc");
       action.data.token &&
         localStorage.setItem("forgotToken", action?.data.token);
       return { ...state, authData: action?.data };
     case CHANGE_PASSWORD:
       localStorage.clear();
       return { ...state, authData: null };
+    case GET_USER_BY_EMAIL:
+      console.log(action?.data);
+      return { ...state, authData: action?.data };
     default:
       return state;
   }
