@@ -49,11 +49,11 @@ export default (state = { authData: null }, action) => {
       return { ...state, authData: action?.data };
     case LOGOUT:
       localStorage.clear();
+      window.location.href="/";
       swal({
         text: `You are logged out`,
         icon: "success",
       });
-      window.location.reload();
       return { ...state, authData: null };
     case PHONE_OTP:
       console.log(action?.data);

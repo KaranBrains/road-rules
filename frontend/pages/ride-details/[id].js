@@ -74,6 +74,9 @@ export default function InstructorId() {
                       <div className="text-primary font-bold font-18 mt-2 mobile-hidden">
                         {ride.address}
                       </div>
+                      <div className="text-primary font-bold font-8 mt-2 desktop-hidden">
+                        {ride.address}
+                      </div>
                     </div>
                     <hr className="grey-hr-confirm" />
                     <div className="d-flex justify-content-between px-3">

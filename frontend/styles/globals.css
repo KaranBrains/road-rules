@@ -73,6 +73,9 @@ body {
 }
 
 /* Font size */
+.font-8{
+  font-size: 12px;
+}
 .font-12{
   font-size: 12px;
 }
@@ -172,6 +175,12 @@ body {
 .rbc-btn-group > button:not(:first-child):not(:last-child) {
   display: none;
 }
+.desktop-hidden{
+  display: none !important;
+}
+.navbar-desktop-hidden {
+  display: none !important;
+}
 @media(max-width: 1900px){
   .padding-left-mobile{
       padding-left: 80px !important;
@@ -183,6 +192,22 @@ body {
   .padding-left-mobile{
       padding-left: 140px !important;
       padding-right: 60px !important;
+  }
+  .navbar-hidden{
+    display: none !important;
+  }
+  .navbar-desktop-hidden {
+    display: flex !important;
+  }
+}
+
+@media(max-width: 765px){
+  .mobile-hidden{
+    display: none !important;
+  }
+  .desktop-hidden{
+    display: block !important;
+    margin-left: 20%;
   }
 }
 
@@ -198,10 +223,6 @@ body {
   }
   .rbc-toolbar{
     font-size: 14px !important;
-  }
-
-  .mobile-hidden{
-    display: none !important;
   }
 }
 @media(max-width: 376px){

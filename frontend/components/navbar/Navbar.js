@@ -52,9 +52,28 @@ function NavbarComponent() {
             >
               Contact Us
             </Nav.Link>
+            {isLoggedIn ? (
+            <Nav.Link
+              className="font-demi font-17
+                  px-3 navbar-item text-primaryColor text-center navbar-desktop-hidden"
+                  onClick={logout}
+            >
+            Logout
+          </Nav.Link>
+            ) : (
+              <Nav.Link
+              href="/auth/login"
+              className="font-demi font-17
+                  px-3 navbar-item text-primaryColor text-center navbar-desktop-hidden"
+            >
+              Login
+            </Nav.Link>
+            )}
+            <hr className="navbar-desktop-hidden"></hr>
             {isLoggedIn != null ? (
               <NavDropdown
                 eventKey={1}
+                className="navbar-hidden"
                 title={
                   <div className="pull-left text-center">
                     <img
@@ -88,6 +107,7 @@ function NavbarComponent() {
               </NavDropdown>
             ) : (
               <NavDropdown
+                className="navbar-hidden"
                 title={
                   <div className="pull-left">
                     <img

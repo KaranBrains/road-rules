@@ -23,13 +23,14 @@ export const signIn = (formData, router) => async (dispatch) => {
     console.log(jwt(data.token));
     dispatch({ type: SIGN_IN, data });
     const role = jwt(data.token).role;
+    window.location.href="/";
+    // router.push("/")
+    // .then(()=>{
+    //   window.location.reload();
+    // });
     swal({
       text: `You are logged in as ${role}`,
       icon: "success",
-    });
-    router.push("/")
-    .then(()=>{
-      window.location.reload();
     });
   } catch (e) {
     swal({
