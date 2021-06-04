@@ -173,9 +173,9 @@ export default function InstructorId() {
             <div className="font-25 text-center font-demi text-primaryColor">
                 Instructor Profile
             </div>
-            <button class="btn btn-primary" onClick={handleShow}>
+            {/* <button class="btn btn-primary" onClick={handleShow}>
                 Edit Instructor
-            </button>
+            </button> */}
           </div>
           <div className="col-lg-3 col-md-4 col-sm-12 col-12 ">
             <div className="py-3 bg-tertiaryColor">

@@ -1,5 +1,5 @@
 import * as api from "../api";
-import { CONFIRM_RIDE_CASH, GET_RIDE_BY_ID,CONFIRM_RIDE_ONLINE ,GET_MY_RIDES} from "../constants/index";
+import { CONFIRM_RIDE_CASH, GET_RIDE_BY_ID,CONFIRM_RIDE_ONLINE ,GET_MY_RIDES ,END_RIDE} from "../constants/index";
 import swal from "sweetalert";
 import jwt from "jwt-decode";
 
@@ -18,6 +18,24 @@ export const confirmRideCash = (slot ,router) => async (dispatch) => {
             icon: "success",
         });
         router.push('/ride-details/'+data._id)
+    } catch (e) {
+        console.log(e);
+        swal({
+            text: e.response?.data.msg,
+            icon: "error",
+        });
+    }
+};
+
+export const endRide = (ride ,router) => async (dispatch) => {
+    try {
+        const { data } = await api.endRide(ride);
+        dispatch({ type: END_RIDE, data });
+        swal({
+            text: "Class Ended",
+            icon: "success",
+        });
+        router.push('/admin/all-rides')
     } catch (e) {
         console.log(e);
         swal({

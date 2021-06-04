@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import { useDispatch , useSelector} from "react-redux";
 import { useRouter } from "next/router";
-import { getRideById } from "../../../redux/actions/ride";
+import { getRideById , endRide } from "../../../redux/actions/ride";
 import { GetInstructorById } from "../../../redux/actions/instructor";
 import dynamic from 'next/dynamic';
 const Sidebar = dynamic(() => import('../../../shared/sidebar/sidebar'), { ssr: false, loading: () => <div class="main-loader-div">
@@ -28,6 +28,10 @@ export default function InstructorId() {
       }
   },[id,ride?.instructor])
 
+  const endClass = () =>{
+    dispatch(endRide(id,router))
+  }
+
     return(
         <div>
             <Sidebar />
@@ -40,7 +44,7 @@ export default function InstructorId() {
                     className="card my-3 text-primaryColor text-center font-bold"
                     style={{ fontSize: "35px" }}
                     >
-                      Ride Details
+                      Class Details
                     </h2>
                   <div className="card border my-5">
                     <div className="d-flex justify-content-between px-3">
@@ -182,6 +186,17 @@ export default function InstructorId() {
                   </div>
                 </div>
               </div>
+              {ride.status!="completed"?(
+                <div className="text-center mt-3">
+                <button
+                  className="text-white bg-secondaryColor font-demi btn-blue submit-button mb-5"
+                  type="submit"
+                  onClick={endClass}
+                >
+                  End Class
+                </button>
+              </div>
+              ):''}
             </div>
           </>
             ) : ''}

@@ -80,7 +80,7 @@ export default function AllRides() {
                                 </a>
                               </Link>
                               </td>
-                              <td><div class="btn btn-danger" >Refund</div></td>
+                              <td><div class="btn btn-danger" onClick={()=>window.location.href="https://paytm.com/"}>Refund</div></td>
                           </tr>
                             )
                         })

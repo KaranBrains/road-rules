@@ -20,6 +20,7 @@ import GroupIcon from '@material-ui/icons/Group';
 import Link from "next/link";
 import BookIcon from '@material-ui/icons/Book';
 import DirectionsCarIcon from '@material-ui/icons/DirectionsCar';
+import ExitToAppIcon from '@material-ui/icons/ExitToApp';
 
 const drawerWidth = 240;
 
@@ -201,7 +202,7 @@ const useStyles = makeStyles((theme) => ({
             }}>
               <ListItemIcon>
                 <Link href="">
-                  <a><DirectionsCarIcon /></a>
+                  <a><ExitToAppIcon /></a>
                 </Link>
               </ListItemIcon>
               <Link href="">

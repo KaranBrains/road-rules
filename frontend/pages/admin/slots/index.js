@@ -351,30 +351,28 @@ export default function Slots() {
                   <th scope="col">Time</th>    
                   <th scope="col">Client Limit</th>
                   <th scope="col">Price</th>
-                  <th scope="col">Instructor</th>  
-                  <th scope="col">Bookings</th>   
+                  <th scope="col">Instructor</th>    
                   <th scope="col">Action</th>
                   <th scope="col">Remove</th>               
                 </tr>
               </thead>
               <tbody>
               {allSlots && allSlots.length>0 ? (
-                        allSlots.map(val => {
-                          i++;
-                            return (
-                              <tr className="font-demi align-middle" key={val._id}>
-                               <td>{i}</td>
-                               <td className="user-name">{val.date}</td>
-                               <td>{val.time}</td>
-                               <td>{val.clientLimit}</td>
-                               <td>{val.price}</td>
-                               <td>{val.instructorName}</td>
-                               <td>{val.bookings}</td>
-                               <td><button class="btn btn-primary" onClick={() => EditSlot(val._id, val.date, val.time, val.clientLimit ,val.price, val.instructor)}>Edit</button></td>
-                               <td><button class="btn btn-danger" onClick={() => deleteSlot(val._id)}>Remove</button></td>
-                              </tr>
-                            )
-                       })
+                allSlots.map(val => {
+                  i++;
+                    return (
+                      <tr className="font-demi align-middle" key={val._id}>
+                        <td>{i}</td>
+                        <td className="user-name">{val.date}</td>
+                        <td>{val.time}</td>
+                        <td>{val.clientLimit}</td>
+                        <td>{val.price}</td>
+                        <td>{val.instructorName}</td>
+                        <td><button class="btn btn-primary" onClick={() => EditSlot(val._id, val.date, val.time, val.clientLimit ,val.price, val.instructor)}>Edit</button></td>
+                        <td><button class="btn btn-danger" onClick={() => deleteSlot(val._id)}>Remove</button></td>
+                      </tr>
+                    )
+                })
                 ) : (
                       ''
                     )}   

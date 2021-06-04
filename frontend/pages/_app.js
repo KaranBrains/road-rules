@@ -63,7 +63,7 @@ function MyApp({ Component, pageProps }) {
               <Footer />
               </>
             ) : (
-              !allowed && route=="admin" ? (
+              !user && route=="admin" ? (
                 <>
                 <NavbarComponent />
                     <Home />

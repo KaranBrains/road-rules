@@ -36,7 +36,7 @@ function Signup() {
                   <label className="font-demi text-primaryColor mb-2">
                     City
                   </label>
-                  <select
+                  <input
                     value={formData.city}
                     onChange={(e) => {
                       setformData({
@@ -49,9 +49,10 @@ function Signup() {
                     type="text"
                     className="form-control"
                   >
-                      <option value="Torronto">Torronto</option>
-                      <option value="Vancouver">Vancouver</option>
-                    </select>
+                    </input>
+                    <label className="font-demi mb-2 font-8">
+                    *Surrey, Richmond, Langley, Delta, White Rock, Coquitlam, New Westminster, Vancouver, Burnaby
+                  </label>
                 </div>
                 <div className="mt-4">
                   <label className="font-demi text-primaryColor mb-2">Province</label>

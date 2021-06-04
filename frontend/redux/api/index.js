@@ -1,11 +1,11 @@
 import axios from "axios";
 
 // export const url = "http://localhost:8080/api";
+// export const paymentUrl = "http://localhost:8080/api/create-checkout-session";
+// export const baseUrl = "http://localhost:8080/";
 
 export const url = "https://www.pigameapp.com:1234/api";
-// export const baseUrl = "http://localhost:8080/";
 export const baseUrl = "https://www.pigameapp.com:1234/";
-// export const paymentUrl = "http://localhost:8080/api/create-checkout-session";
 export const paymentUrl = "https://www.pigameapp.com:1234/api/create-checkout-session";
 // rebuild
 
@@ -48,6 +48,8 @@ export const contactUs = (formData) =>
   axios.post(`${url}/contact-us`, { formData });
 export const getUserByEmail = (email) =>
   axios.get(`${url}/user-email?email=${email}`);
+export const endRide = (ride) =>
+  axios.get(`${url}/end-ride?ride=${ride}`);
 export const confirmRideCash = (formData,address) =>
   axios.post(`${url}/add-ride-cash?address=${address}`, formData);
 export const confirmRideOnline = (session,address) =>
