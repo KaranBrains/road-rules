@@ -1,13 +1,18 @@
-import { useEffect } from "react";
+import { useEffect,useState } from "react";
 import { useDispatch , useSelector} from "react-redux";
 import { useRouter } from "next/router";
 import { getRideById } from "../../redux/actions/ride";
 import { GetInstructorById } from "../../redux/actions/instructor";
+import { Modal } from "react-bootstrap";
+import swal from "sweetalert";
 
 export default function InstructorId() {
 
     const dispatch = useDispatch();
     const router = useRouter();
+    const initialState = { rating: 0, feedback: ""};
+    const [showModal, setShowModal] = useState(false);
+    const [formData, setformData] = useState(initialState);
     const id = router.query.id;
     let ride = useSelector(state => {return state.ride?.rideData?.ride});
     const instructorById = useSelector(state => state.instructor?.instructorById?.instructor);
@@ -23,12 +28,78 @@ export default function InstructorId() {
         }
     },[id,ride?.instructor])
 
-    const provideFeedback=()=>{
-      console.log("hello");
+    const provideFeedback=(e)=>{
+      e.preventDefault();
+      setShowModal(false);
+      swal({
+        text: "Feedback Submitted",
+        icon: "success",
+    });
+      console.log(formData);
     }
 
     return(
-        ride && instructorById ? (
+      <>
+      {showModal ? (
+        <Modal className="mt-5 modal-card" show={showModal} onHide={()=>{
+          setShowModal(false);
+        }}>
+          <Modal.Header closeButton>
+            <Modal.Title>
+              <div className="font-bold ml-1">Give Feedback</div>
+            </Modal.Title>
+          </Modal.Header>
+          <Modal.Body>
+          <form onSubmit={(e)=>provideFeedback(e)}>
+                <div className="form-group mt-4">
+                <label className="font-20 py-2">Rating</label>
+                  <input
+                    required
+                    value={formData.price}
+                    onChange={(e) => {
+                      setformData({
+                        ...formData,
+                        [e.target.name]: e.target.value,
+                      });
+                    }}
+                    name="rating"
+                    type="number"
+                    className="form-control"
+                    placeholder="Rating (out of 5)" min="1" max="5"
+                  />
+                </div>
+                <div className="form-group mt-4">
+                <label className="font-20 py-2">Feedback</label>
+                  <input
+                    required
+                    value={formData.price}
+                    onChange={(e) => {
+                      setformData({
+                        ...formData,
+                        [e.target.name]: e.target.value,
+                      });
+                    }}
+                    name="feedback"
+                    type="textarea"
+                    className="form-control"
+                    placeholder="Feedback"
+                  />
+                </div>
+                <div className="text-center mt-5">
+                  <button
+                    className="text-white bg-secondaryColor font-demi btn-blue submit-button"
+                    type="submit"
+                  >
+                    Submit
+                  </button>
+                </div>
+              </form>
+          </Modal.Body>
+        </Modal>
+      ) : (
+        ""
+      )}
+      {ride && instructorById ? (
             <>
             <div className="container">
               <div className="row d-flex justify-content-center">
@@ -184,7 +255,9 @@ export default function InstructorId() {
                 <button
                   className="text-white bg-secondaryColor font-demi btn-blue submit-button mb-5"
                   type="submit"
-                  onClick={provideFeedback}
+                  onClick={()=>{
+                    setShowModal(true);
+                  }}
                 >
                   Give Feedback
                 </button>
@@ -192,6 +265,8 @@ export default function InstructorId() {
               ):''}
             </div>
           </>
-            ) : ''
+            ) : ''}
+      </>
     )
+
 }
