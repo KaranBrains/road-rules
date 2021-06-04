@@ -11,31 +11,31 @@ const Sidebar = dynamic(() => import('../../../shared/sidebar/sidebar'), { ssr: 
 
 export default function InstructorId() {
 
-    const dispatch = useDispatch();
-    const router = useRouter();
-    const id = router.query.id;
-    const ride = useSelector(state => {return state.ride?.rideData?.ride});
-    const instructorById = useSelector(state => state.instructor?.instructorById?.instructor);
-    useEffect(() =>{
-        const id = router.query.id;
-        if(id) {
-            dispatch(getRideById(id))
-            .then(()=>{
-              if(ride) {
-                dispatch(GetInstructorById(ride.instructor))
-              }
-            })
-        }
-    },[id,ride?.instructor])
+  const dispatch = useDispatch();
+  const router = useRouter();
+  const id = router.query.id;
+  let ride = useSelector(state => {return state.ride?.rideData?.ride});
+  const instructorById = useSelector(state => state.instructor?.instructorById?.instructor);
+  useEffect(() =>{
+      const id = router.query.id;
+      if(id) {
+          dispatch(getRideById(id))
+          .then(()=>{
+            if(ride) {
+              dispatch(GetInstructorById(ride.instructor))
+            }
+          })
+      }
+  },[id,ride?.instructor])
 
     return(
         <div>
             <Sidebar />
-       { ride && instructorById ? (
+           { ride && instructorById ? (
             <>
             <div className="container">
               <div className="row d-flex justify-content-center">
-                <div className="col-lg-10 col-md-8 col-sm-2 col-12">
+                <div className="col-lg-10 col-md-12 col-sm-12 col-12">
                 <h2
                     className="card my-3 text-primaryColor text-center font-bold"
                     style={{ fontSize: "35px" }}
@@ -75,6 +75,18 @@ export default function InstructorId() {
                     </div>
                     <hr className="grey-hr-confirm" />
                     <div className="d-flex justify-content-between px-3">
+                      <div className="text-muted font-demi font-18 mt-2 mobile-hidden">
+                        Pickup
+                      </div>
+                      <div className="text-primary font-bold font-18 mt-2 mobile-hidden">
+                        {ride.address}
+                      </div>
+                      <div className="text-primary font-bold font-8 mt-2 desktop-hidden">
+                        {ride.address}
+                      </div>
+                    </div>
+                    <hr className="grey-hr-confirm" />
+                    <div className="d-flex justify-content-between px-3">
                       <div className="text-muted font-demi font-18 mt-2">
                         Instructor
                       </div>
@@ -91,10 +103,10 @@ export default function InstructorId() {
                       </div>
                     </div>
                     <div className="d-flex justify-content-between px-3">
-                      <div className="text-muted font-demi font-18 mt-2">
+                      <div className="text-muted font-demi font-18 mt-2 mobile-hidden">
                         Email
                       </div>
-                      <div className="text-primaryColor font-bold font-18 mt-2">
+                      <div className="text-primaryColor font-bold font-18 mt-2 mobile-hidden">
                       {instructorById?.email}
                       </div>
                     </div>
@@ -114,14 +126,6 @@ export default function InstructorId() {
                       </div>
                       <div className="text-green font-bold font-18 mt-2">
                       {ride?.price}
-                      </div>
-                    </div>
-                    <div className="d-flex justify-content-between px-3 mb-5">
-                      <div className="text-muted font-demi font-18 mt-2">
-                        
-                      </div>
-                      <div className="text-green font-bold font-18 mt-2">
-                      <div class="btn btn-danger" >Refund</div>
                       </div>
                     </div>
                     {/* { ride?.startedAt ? (

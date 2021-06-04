@@ -9,6 +9,7 @@ import { useRouter } from "next/router";
 import NavbarComponent from "../components/navbar/Navbar";
 import jwt_decode from "jwt-decode";
 import Home from "./index.js";
+import AdminHome from "./admin/dashboard/index";
 
 
 function MyApp({ Component, pageProps }) {
@@ -39,15 +40,31 @@ function MyApp({ Component, pageProps }) {
         ></script>
         <meta name="theme-color" content="#1e4c6b" />
       </Head>  
-      {route == "admin" ? (
+      {route == "admin" && user?.role=="admin"? (
         <Component {...pageProps} />
-      ) : (    
-        <>
+      ) : (   
+        route=="admin" && user?.role=="user" ? (
+          <>
           <NavbarComponent />
           {/* {allowed ? <Component {...pageProps}/>  : <Home /> } */}
-          <Component {...pageProps}/>  
+          <Home />  
           <Footer />
         </>
+        ) : (
+          route!="admin" && user?.role=="admin" ? (
+            <>
+                <AdminHome/>  
+            </>
+          ) : (
+            route!="admin" && user?.role=="user" ? (
+              <>
+              <NavbarComponent />
+                  <Component {...pageProps}/>
+              <Footeer />
+              </>
+            ) : ''
+          ) 
+        ) 
       )}
     </>
   );
