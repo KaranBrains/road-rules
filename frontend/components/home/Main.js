@@ -141,7 +141,7 @@ function HomeMain() {
                         }
                       }}
                     >
-                      Next
+                      Next &nbsp;&nbsp;&nbsp;
                     </button>
                   </div>
                 </div>
