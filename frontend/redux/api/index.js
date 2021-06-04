@@ -7,7 +7,7 @@ export const url = "http://ec2-15-207-72-34.ap-south-1.compute.amazonaws.com:808
 export const baseUrl = "http://ec2-15-207-72-34.ap-south-1.compute.amazonaws.com:8080/";
 // export const paymentUrl = "http://localhost:8080/api/create-checkout-session";
 export const paymentUrl = "http://ec2-15-207-72-34.ap-south-1.compute.amazonaws.com:8080/api/create-checkout-session";
-
+// rebuild
 
 export const signIn = (formData) => axios.post(`${url}/login`, formData);
 export const signUp = (formData) => axios.post(`${url}/signup`, formData);
