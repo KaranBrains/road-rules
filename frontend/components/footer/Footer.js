@@ -1,5 +1,7 @@
 import Link from "next/link";
 import Image from "next/image";
+import PhoneAndroidIcon from '@material-ui/icons/PhoneAndroid';
+import MailIcon from '@material-ui/icons/Mail';
 
 function Footer() {
   return (
@@ -32,6 +34,16 @@ function Footer() {
               <Link href="https://www.termsofservicegenerator.net/live.php?token=QzSOTrwxvy4POYCeSLGm4HhpCK1Y0j5T">
                 <div className="text-primaryColor font-demi font-15 mb-lg-3 mb-2 hoverable">
                   Term of Service
+                </div>
+              </Link>
+              <Link href="">
+                <div className="text-primaryColor font-demi font-15 mb-lg-3 mb-2 hoverable">
+                <PhoneAndroidIcon/> +1&nbsp;(778)&nbsp;889-7804
+                </div>
+              </Link>
+              <Link href="">
+                <div className="text-primaryColor font-demi font-15 mb-lg-3 mb-2 hoverable">
+                <MailIcon /> roadrulescanada@gmail.com
                 </div>
               </Link>
             </div>
@@ -83,11 +95,9 @@ function Footer() {
               </h3>
             </div>
           </div>
-          <Link href="/">
-            <div className="text-primaryColor text-center font-demi font-15 mb-lg-3 mb-2">
-              @ 2021 All rights reserved
+          <div className="text-primaryColor text-center font-demi font-15 mb-lg-3 mb-2">
+            <span>@ 2021 all rights reserved</span>
             </div>
-          </Link>
         </div>
       </div>
     </div>
