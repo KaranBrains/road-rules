@@ -40,10 +40,10 @@ function MyApp({ Component, pageProps }) {
         ></script>
         <meta name="theme-color" content="#1e4c6b" />
       </Head>  
-      {route == "admin" && user?.role=="admin"? (
+      {route == "admin" && user && user.role=="admin"? (
         <Component {...pageProps} />
       ) : (   
-        route=="admin" && user?.role=="user" ? (
+        route=="admin" && user && user.role=="user" ? (
           <>
           <NavbarComponent />
           {/* {allowed ? <Component {...pageProps}/>  : <Home /> } */}
@@ -51,18 +51,32 @@ function MyApp({ Component, pageProps }) {
           <Footer />
         </>
         ) : (
-          route!="admin" && user?.role=="admin" ? (
+          route!="admin" &&  user && user.role=="admin" ? (
             <>
                 <AdminHome/>  
             </>
           ) : (
-            route!="admin" && user?.role=="user" ? (
+            route!="admin" &&  user && user.role=="user" ? (
               <>
               <NavbarComponent />
                   <Component {...pageProps}/>
-              <Footeer />
+              <Footer />
               </>
-            ) : ''
+            ) : (
+              !allowed && route=="admin" ? (
+                <>
+                <NavbarComponent />
+                    <Home />
+                <Footer />
+                </>
+              ) : (
+              <>
+              <NavbarComponent />
+                  <Component {...pageProps}/>
+              <Footer />
+              </>
+              )
+            )
           ) 
         ) 
       )}

@@ -195,6 +195,19 @@ const useStyles = makeStyles((theme) => ({
                 <a><ListItemText primary="All Rides" /></a>
               </Link>
             </ListItem>
+            <ListItem button onClick={()=>{
+              localStorage.clear();
+              window.location.href="/auth/login";
+            }}>
+              <ListItemIcon>
+                <Link href="">
+                  <a><DirectionsCarIcon /></a>
+                </Link>
+              </ListItemIcon>
+              <Link href="">
+                <a><ListItemText primary="Logout" /></a>
+              </Link>
+            </ListItem>
             {/* <ListItem button>
               <ListItemIcon>
                 <Link onClick={()=>{
