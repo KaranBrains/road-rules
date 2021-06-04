@@ -34,7 +34,7 @@ function Signup() {
           <div className="col-lg-6 col-md-8 col-sm-12 col-12">
             <div className="card shadow px-lg-5 py-5 px-3 bg-white">
               <h1 className="text-center font-bold text-primaryColor mb-4">
-                Welcome to RideSharing, Signup here...
+                Welcome to Road-Rules, Signup here...
               </h1>
               <form onSubmit={handleSubmit}>
                 <div className="mt-4">
