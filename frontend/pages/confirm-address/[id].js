@@ -85,9 +85,7 @@ function ConfirmAddress() {
                               class="form-check-label font-regular font-bold"
                               for="flexRadioDefault1"
                             >
-                              {a.house +
-                                "," +
-                                a.street +
+                                {a.street +
                                 "," +
                                 a.province +
                                 "," +

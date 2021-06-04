@@ -14,23 +14,23 @@ function Footer() {
               >
                 Company
               </h3>
-              <Link href="/">
-                <div className="text-primaryColor font-demi font-15 mb-lg-3 mb-2">
-                  Join Our Facebook Community
+              <Link href="/about">
+                <div className="text-primaryColor font-demi font-15 mb-lg-3 mb-2 hoverable">
+                  About Us
                 </div>
               </Link>
-              <Link href="/">
-                <div className="text-primaryColor font-demi font-15 mb-lg-3 mb-2">
+              <Link href="/contact">
+                <div className="text-primaryColor font-demi font-15 mb-lg-3 mb-2 hoverable">
                   Work with us
                 </div>
               </Link>
-              <Link href="/">
-                <div className="text-primaryColor font-demi font-15 mb-lg-3 mb-2">
+              <Link href="https://www.privacypolicies.com/live/cc1b5360-1d97-42e7-9dac-321d08b592aa">
+                <div className="text-primaryColor font-demi font-15 mb-lg-3 mb-2 hoverable">
                   Privacy Notice
                 </div>
               </Link>
-              <Link href="/">
-                <div className="text-primaryColor font-demi font-15 mb-lg-3 mb-2">
+              <Link href="https://www.termsofservicegenerator.net/live.php?token=QzSOTrwxvy4POYCeSLGm4HhpCK1Y0j5T">
+                <div className="text-primaryColor font-demi font-15 mb-lg-3 mb-2 hoverable">
                   Term of Service
                 </div>
               </Link>
@@ -44,24 +44,24 @@ function Footer() {
               >
                 Support
               </h3>
-              <Link href="/">
-                <div className="text-primaryColor font-demi font-15 mb-lg-3 mb-2">
+              <Link href="/contact">
+                <div className="text-primaryColor font-demi font-15 mb-lg-3 mb-2 hoverable">
                   Help Center
                 </div>
               </Link>
 
-              <Link href="/">
-                <div className="text-primaryColor font-demi font-15 mb-lg-3 mb-2">
+              <Link href="/contact">
+                <div className="text-primaryColor font-demi font-15 mb-lg-3 mb-2 hoverable">
                   Contact Us
                 </div>
               </Link>
-              <Link href="/">
-                <div className="text-primaryColor font-demi font-15 mb-lg-3 mb-2">
+              <Link href="/contact">
+                <div className="text-primaryColor font-demi font-15 mb-lg-3 mb-2 hoverable">
                   Request a New Feature
                 </div>
               </Link>
-              <Link href="/">
-                <div className="text-primaryColor font-demi font-15 mb-lg-3 mb-2">
+              <Link href="/contact">
+                <div className="text-primaryColor font-demi font-15 mb-lg-3 mb-2 hoverable">
                   Report an Outage
                 </div>
               </Link>

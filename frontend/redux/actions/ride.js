@@ -1,5 +1,5 @@
 import * as api from "../api";
-import { CONFIRM_RIDE_CASH, GET_RIDE_BY_ID,CONFIRM_RIDE_ONLINE } from "../constants/index";
+import { CONFIRM_RIDE_CASH, GET_RIDE_BY_ID,CONFIRM_RIDE_ONLINE ,GET_MY_RIDES} from "../constants/index";
 import swal from "sweetalert";
 import jwt from "jwt-decode";
 
@@ -58,4 +58,19 @@ export const getRideById = (id) => async (dispatch) => {
         });
     }
 };
+
+export const getMyRides = () => async (dispatch) => {
+    try {
+        const user = jwt(localStorage.getItem("token"));
+        const { data } = await api.getRides(user.id);
+        dispatch({ type: GET_MY_RIDES, data });
+    } catch (e) {
+        console.log(e.response);
+        swal({
+            text: e.response?.data.msg,
+            icon: "error",
+        });
+    }
+};
+  
   

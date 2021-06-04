@@ -1,7 +1,8 @@
 import {
     CONFIRM_RIDE_CASH,
     GET_RIDE_BY_ID,
-    CONFIRM_RIDE_ONLINE
+    CONFIRM_RIDE_ONLINE,
+    GET_MY_RIDES
   } from "../constants";
   
   export default (state = { rideData: null }, action) => {
@@ -13,6 +14,9 @@ import {
         console.log(action?.data);
         return { ...state, rideData: action?.data };
     case GET_RIDE_BY_ID:
+        console.log(action?.data);
+        return { ...state, rideData: action?.data };
+    case GET_MY_RIDES:
         console.log(action?.data);
         return { ...state, rideData: action?.data };
       default:

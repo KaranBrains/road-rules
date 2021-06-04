@@ -15,8 +15,6 @@ import ListItem from "@material-ui/core/ListItem";
 import ListItemIcon from "@material-ui/core/ListItemIcon";
 import ListItemText from "@material-ui/core/ListItemText";
 import AccountCircleIcon from "@material-ui/icons/AccountCircle";
-import ViewListIcon from "@material-ui/icons/ViewList";
-import CategoryIcon from "@material-ui/icons/Category";
 import DashboardIcon from "@material-ui/icons/Dashboard";
 import GroupIcon from '@material-ui/icons/Group';
 import Link from "next/link";

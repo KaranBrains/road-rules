@@ -7,6 +7,10 @@ import styles from "./Navbar.module.css";
 import { useRouter } from "next/router";
 import { useDispatch } from "react-redux";
 import { LOGOUT } from "../../redux/constants";
+import SettingsIcon from '@material-ui/icons/Settings';
+import ClassIcon from '@material-ui/icons/Class';
+import ExitToAppIcon from '@material-ui/icons/ExitToApp';
+
 
 function NavbarComponent() {
   const router = useRouter();
@@ -78,6 +82,15 @@ function NavbarComponent() {
             Addresses
           </Nav.Link>
             ) : ''}
+            {isLoggedIn ? (
+            <Nav.Link
+              href="/ride"
+              className="font-demi font-17
+                  px-3 navbar-item text-primaryColor text-center navbar-desktop-hidden"
+            >
+            My Classes
+          </Nav.Link>
+            ) : ''}
           {isLoggedIn ? (
             <Nav.Link
               className="font-demi font-17
@@ -119,14 +132,22 @@ function NavbarComponent() {
                 <NavDropdown.Item>
                   <Link href="/profile">
                     <div className="font-demi text-primaryColor">
-                      <i className="fas fa-user-circle mr-2"></i>
+                      <SettingsIcon />
                       &nbsp;User Profile
                     </div>
                   </Link>
                 </NavDropdown.Item>
                 <NavDropdown.Item>
+                  <Link href="/ride">
+                    <div className="font-demi text-primaryColor">
+                      <ClassIcon />
+                      &nbsp;My Classes
+                    </div>
+                  </Link>
+                </NavDropdown.Item>
+                <NavDropdown.Item>
                   <div className="font-demi text-primaryColor" onClick={logout}>
-                    <i className="fas fa-sign-out-alt mr-2"></i>
+                    <ExitToAppIcon />
                     &nbsp;&nbsp;Logout
                   </div>
                 </NavDropdown.Item>

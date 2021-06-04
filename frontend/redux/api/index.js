@@ -51,4 +51,5 @@ export const payment = (formData) => axios.post(paymentUrl, formData);
 export const allUser = () => axios.get(`${url}/admin/get-users`);
 export const allRides = () => axios.get(`${url}/all-rides`);
 export const getUserById = (id) => axios.get(`${url}/admin/get-user?id=${id}`);
+export const getRides = (id) => axios.get(`${url}/my-rides?id=${id}`);
 export const getRidesById = (id) => axios.get(`${url}/ride?id=${id}`)

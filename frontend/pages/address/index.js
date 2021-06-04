@@ -3,6 +3,10 @@ import { useRouter } from "next/router";
 import { getUserByEmail } from "../../redux/actions/auth";
 import { useDispatch, useSelector } from "react-redux";
 import Link from "next/link";
+import SettingsIcon from '@material-ui/icons/Settings';
+import AccountBoxIcon from '@material-ui/icons/AccountBox';
+import HomeIcon from '@material-ui/icons/Home';
+import AddIcon from '@material-ui/icons/Add';
 
 function Address() {
   const dispatch = useDispatch();
@@ -28,7 +32,7 @@ function Address() {
                   style={{ marginLeft: "20px", fontSize: "20px" }}
                 >
                   <span className="font-bold main-heading-hover text-primaryColor">
-                    <i className="fas fa-user-cog mr-2"></i> Settings
+                    <SettingsIcon /> Settings
                   </span>
                   <hr className="white-hr"></hr>
                 </a>
@@ -37,15 +41,15 @@ function Address() {
                 className="font-demi text-primaryColor"
                 style={{ marginLeft: "20px" }}
               >
-                <Link href="/profile">
-                  <div className=" py-2 px-3">
-                    <i className="fas fa-user"></i> &nbsp;User Profile
+                <Link href="/profile" className="hoverable">
+                  <div className=" py-2 px-3 hoverable">
+                    <AccountBoxIcon /> &nbsp;User Profile
                   </div>
                 </Link>
                 <br />
-                <Link href="/address">
-                  <div className=" py-2 px-3">
-                    <i className="fas fa-map-marker-alt"></i> &nbsp;Address
+                <Link href="/address" className="hoverable">
+                  <div className=" py-2 px-3 hoverable">
+                    <HomeIcon /> &nbsp;Address
                   </div>
                 </Link>
               </div>
@@ -57,7 +61,7 @@ function Address() {
             Add Address{" "}
             <button onClick={handleChange} className="btn">
               <div className="text-primaryColor bg-white">
-                <i className="fas fa-2x fa-plus"></i>
+                <AddIcon className="icon-add"/>
               </div>
             </button>
           </h1>

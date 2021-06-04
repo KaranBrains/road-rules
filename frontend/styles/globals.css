@@ -181,6 +181,13 @@ body {
 .navbar-desktop-hidden {
   display: none !important;
 }
+.hoverable {
+  cursor: pointer;
+}
+.icon-add{
+  font-size: large;
+}
+
 @media(max-width: 1900px){
   .padding-left-mobile{
       padding-left: 80px !important;

@@ -39,16 +39,16 @@ function MyApp({ Component, pageProps }) {
         ></script>
         <meta name="theme-color" content="#1e4c6b" />
       </Head>  
-      {/* {route == "admin" ? (
+      {route == "admin" ? (
         <Component {...pageProps} />
-      ) : (     */}
+      ) : (    
         <>
           <NavbarComponent />
           {/* {allowed ? <Component {...pageProps}/>  : <Home /> } */}
           <Component {...pageProps}/>  
           <Footer />
         </>
-      {/* )} */}
+      )}
     </>
   );
 }

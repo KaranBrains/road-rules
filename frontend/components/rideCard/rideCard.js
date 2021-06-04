@@ -14,37 +14,19 @@ function RideCard(props) {
               >
                 <div className="row ">
                   <div className="col-lg-9 col-md-8 col-sm-8 col-8">
-                    <div className="font-bold text-green">
+                    <div className="font-bold text-primaryColor">
                       {props?.ride?.date} {props?.ride?.time}
                     </div>
                     <hr className="my-2" />
                     <div className="row ">
-                      <div className="col-lg-1 col-md-1 col-sm-1 col-1">
-                        <div className="circle-ride-from"></div>
-                        <div className="line-ride"></div>
-                        <div className="circle-ride-to"></div>
-                      </div>
-                      <div className="col-lg-10 col-md-10 col-sm-10 col-10 px-0">
+                      <div className="col-lg-9 col-md-8 col-sm-8 col-8 px-3">
                         <div
-                          style={{ marginTop: "-6px" }}
-                          className="text-orange"
-                        >
-                          {props?.ride?.from}
-                          <br />
-                          <div className="font-regular">
-                            {props?.ride?.pickup}
-                          </div>
-                        </div>
-                        <div></div>
-                        <div
-                          style={{ marginTop: "20px" }}
+                          style={{ marginTop: "4px" }}
                           className="text-primary"
                         >
-                          {props?.ride?.to} <br />
-                          <div className="font-regular">
-                            {props?.ride?.drop}
-                          </div>
+                          {props?.ride?.status.charAt(0).toUpperCase() + props?.ride?.status.slice(1) }
                         </div>
+                        <div></div>
                       </div>
                     </div>
                   </div>
@@ -52,8 +34,8 @@ function RideCard(props) {
                     <div className="d-flex justify-content-end text-muted">
                       &#36;{props?.ride?.price}
                     </div>
-                    <Link href={"/client/ride-details?id=" + props?.ride?._id}>
-                      <div className="text-center mt-2 d-flex justify-content-end  ">
+                    <Link href={"/ride-details/" + props?.ride?._id}>
+                      <div className="text-center mt-3 d-flex justify-content-end  ">
                         <button
                           className="text-white bg-secondaryColor font-demi rounded"
                           style={{ border: "none" }}
@@ -63,6 +45,9 @@ function RideCard(props) {
                       </div>
                     </Link>
                   </div>
+                </div>
+                <div className= "row">
+
                 </div>
               </div>
             </div>
