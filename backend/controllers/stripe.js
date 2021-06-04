@@ -1,9 +1,11 @@
 const stripe = require('stripe')('sk_test_4eC39HqLyjWDarjtT1zdp7dc');
+require('dotenv').config();
 const Payment = require("../models/Payment");
 const Slot = require("../models/Slot");
 const User = require("../models/User");
 const Ride = require("../models/Rides");
-require('dotenv').config();
+const sgMail = require('@sendgrid/mail');
+sgMail.setApiKey(process.env.SENDGRID_API_KEY);
 
 exports.checkout = async (req,res,next) => {
     try {
@@ -94,7 +96,23 @@ exports.confirmRideOnline = async (req,res,next) => {
                         if (err) {
                             return res.status(400).json({ msg: err.message });
                         }
-                        return res.status(201).json(ride);
+                        const msg = {
+                            to: client.email,
+                            from: process.env.SENDGRID_EMAIL, // Change to your verified sender
+                            subject: 'Road-Rules Class Confirmed',
+                            text: 'Class Confirmed',
+                            html: `<h1>Class Details</h1>
+                                   <pre> Date  : ${slot.date} </pre>
+                                   <pre> Time  : ${slot.time} </pre>
+                                   <pre> Mode of Payment : Online </pre>`,
+                          }
+                          sgMail.send(msg)
+                          .then(info => {
+                              return res.status(201).json(ride);
+                          })
+                          .catch(err => {
+                              res.status(400).send({msg: "Some error"})
+                          });
                     })
                 });
             })

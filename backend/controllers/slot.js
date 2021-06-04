@@ -18,9 +18,6 @@ exports.addSlot = async (req, res) => {
     }
     let newSlot = Slot(inputSlot);
     newSlot.save((err, slot) => {
-        if (err) {
-            return res.status(400).json({ msg: err.message });
-        }
         return res.status(201).json(slot);
     });
 };

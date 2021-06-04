@@ -1,7 +1,10 @@
 const Slot = require("../models/Slot");
 const User = require("../models/User");
+require('dotenv').config();
 const Ride = require("../models/Rides");
 const Instructor = require("../models/Instructor");
+const sgMail = require('@sendgrid/mail');
+sgMail.setApiKey(process.env.SENDGRID_API_KEY);
 
 exports.addRideCash = async (req, res) => {
     try {
@@ -46,7 +49,27 @@ exports.addRideCash = async (req, res) => {
                     if (err) {
                         return res.status(400).json({ msg: err.message });
                     }
-                    return res.status(201).json(ride);
+                    if (err) {
+                        return res.status(400).json({ msg: err.message });
+                    }
+                    const msg = {
+                        to: client.email,
+                        from: process.env.SENDGRID_EMAIL, // Change to your verified sender
+                        subject: 'Road-Rules Class Confirmed',
+                        text: 'Class Confirmed',
+                        html: `<h1>Class Details</h1>
+                               <pre> Date  : ${slot.date} </pre>
+                               <pre> Time  : ${slot.time} </pre>
+                               <pre> Mode of Payment : Cash </pre>`,
+                      }
+                      sgMail.send(msg)
+                      .then(info => {
+                          console.log(info)
+                          return res.status(201).json(ride);
+                      })
+                      .catch(err => {
+                          res.status(400).send({msg: "Some error"})
+                      });
                 })
             });
         })
@@ -67,6 +90,30 @@ exports.myRides = async (req, res) => {
                 return res.status(400).json({ msg: err.message });
             }
             return res.status(201).json({ myRides : rides });
+        })
+    } catch (err) {
+        return res.status(400).json({ msg: err.message });
+    }
+};
+
+exports.endRide = async (req, res) => {
+    try {
+        if (
+            !req.query.ride
+        ) {
+            return res.status(400).json({ msg: 'Invalid data' });
+        }
+        Ride.findById(req.query.ride, (err,ride)=>{
+            if (err) {
+                return res.status(400).json({ msg: err.message });
+            }
+            ride.status = "completed";
+            ride.save((err,ride)=>{
+                if (err) {
+                    return res.status(400).json({ msg: err.message });
+                }
+                return res.status(201).json({ msg : "Ride Ended" });
+            })
         })
     } catch (err) {
         return res.status(400).json({ msg: err.message });
