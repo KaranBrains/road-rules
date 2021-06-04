@@ -61,11 +61,10 @@ function Work() {
                 </div>
               </div>
               <h4 className="text-primaryColor font-20 mt-5 font-bold text-center">
-                Select a type of copy
+              Confirm your slot.
               </h4>
               <p className="text-muted text-center font-demi mb-3 mt-2 font-16">
-                Choose from headlines, blog intros, product descriptions, and
-                much more.
+                Choose from all the available slots. We accept online payment as well as cash on site .
               </p>
             </div>
             <div className="col-lg-4 mt-2 col-md-4 col-sm-12 col-12">
@@ -78,11 +77,10 @@ function Work() {
                 </div>
               </div>
               <h4 className="text-primaryColor font-20 mt-5 font-bold text-center">
-                Describe your product
+                Attend your classes.
               </h4>
               <p className="text-muted text-center font-demi mb-3 mt-2 font-16">
-                Just enter the name of your company and 1-2 sentences on what
-                you do.
+                Upon finishing class , you can provide your feedback.
               </p>
             </div>
             <div className="col-lg-4 mt-2 col-md-4 col-sm-12 col-12">
@@ -95,11 +93,10 @@ function Work() {
                 </div>
               </div>
               <h4 className="text-primaryColor font-20 mt-5 font-bold text-center">
-                Get your results and edit
+                Get your Drivers License.
               </h4>
               <p className="text-muted text-center font-demi mb-3 mt-2 font-16">
-                You’ll get 10 results at a time, and you can run the tool again
-                for more ideas.
+                99% of our students pass their test on the first attempt.
               </p>
             </div>
           </div>

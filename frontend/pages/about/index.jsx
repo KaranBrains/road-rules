@@ -1,6 +1,8 @@
 import Carousel from "react-bootstrap/Carousel";
+import { useRouter } from "next/router";
 
 function About() {
+  const router = useRouter();
   return (
     <div>
       <div className="main">
@@ -11,28 +13,34 @@ function About() {
             digital and physical workplace experiences.
           </p>
           <p className="font-medium">
-            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Animi
-            fugit quia consequatur dignissimos inventore, quae impedit dolorem
-            dolorum non repellat nulla magni eum nam laudantium assumenda omnis
-            sequi eligendi fugiat placeat expedita? Ad ut accusamus assumenda
-            facere, nostrum esse itaque quis sapiente autem nihil nesciunt
-            deserunt mollitia? Sed ipsum eos corporis molestias libero
-            accusantium vitae, magnam incidunt a aliquam voluptates illum ut
-            accusamus eius, et, at vero natus officiis? Obcaecati nesciunt
-            error, deserunt perspiciatis dolore odio quisquam minus quam id quod
-            maxime? Facilis, commodi doloribus nemo ex sit aliquam alias iure
-            nostrum veniam nesciunt cumque quod totam delectus voluptatibus
-            officiis.
+          Road Rules . 
+          The best driving school in area today. 
+          Get cheap driving lessons by Indian professional 
+          instructor. We provide excellent lessons for both manual and
+           automatic vehicles. Well-known for careful and responsible 
+           driving classes. No matter where ever you are in the city, 
+           We give you highly professional and user friendly
+            drivers. You would love to get associated with us as we make sure 
+            to give you best driving lessons that will let you 
+            start your first drive with full confidence and eventually make
+             you quite professional. There are perhaps a wide variety of 
+             services offered to all age groups as per their need and requirement. 
           </p>
           <div className="d-flex justify-content-center my-5">
             <button
               className="text-white bg-secondaryColor font-demi px-lg-5 btn-blue submit-button"
               style={{ marginRight: "20px" }}
+              onClick={()=>
+                router.push('/fullCalendar')
+              }
             >
-              Request Demo
+              View Slots
             </button>
-            <button className="text-white bg-secondaryColor font-demi px-lg-5 btn-blue submit-button">
-              Free Trial
+            <button className="text-white bg-secondaryColor font-demi px-lg-5 btn-blue submit-button"
+              onClick={()=>
+                router.push('/contact')
+              }>
+              Contact Us
             </button>
           </div>
         </div>
@@ -64,8 +72,11 @@ function About() {
           eliminate hurdles to productivity and enable exceptional workplace
           experiences.
         </p>
-        <button className="text-white bg-secondaryColor font-demi px-lg-5 btn-blue submit-button">
-          Visit Our Blog
+        <button className="text-white bg-secondaryColor font-demi px-lg-5 btn-blue submit-button"
+          onClick={()=>
+            router.push('/fullCalendar')
+          }>
+          Book your First Class
         </button>
       </div>
 
