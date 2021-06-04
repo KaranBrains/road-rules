@@ -62,7 +62,7 @@ function NavbarComponent() {
               className="font-demi font-17
                   px-3 navbar-item text-primaryColor text-center navbar-desktop-hidden"
             >
-              Login
+              Login/Signup
             </Nav.Link>
             ) : (
               <Nav.Link
@@ -99,15 +99,7 @@ function NavbarComponent() {
             >
             Logout
           </Nav.Link>
-            ) : (
-              <Nav.Link
-              href="/auth/signup"
-              className="font-demi font-17
-                  px-3 navbar-item text-primaryColor text-center navbar-desktop-hidden"
-            >
-            Sign Up
-          </Nav.Link>
-            )}
+            ) : '' }
             <hr className="navbar-desktop-hidden"></hr>
             {isLoggedIn != null ? (
               <NavDropdown
