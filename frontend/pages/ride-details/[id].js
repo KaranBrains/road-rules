@@ -23,6 +23,10 @@ export default function InstructorId() {
         }
     },[id,ride?.instructor])
 
+    const provideFeedback=()=>{
+      console.log("hello");
+    }
+
     return(
         ride && instructorById ? (
             <>
@@ -175,6 +179,17 @@ export default function InstructorId() {
                   </div>
                 </div>
               </div>
+              {ride.status=="completed"?(
+                <div className="text-center mt-3">
+                <button
+                  className="text-white bg-secondaryColor font-demi btn-blue submit-button mb-5"
+                  type="submit"
+                  onClick={provideFeedback}
+                >
+                  Give Feedback
+                </button>
+              </div>
+              ):''}
             </div>
           </>
             ) : ''
