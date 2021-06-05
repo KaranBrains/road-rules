@@ -34,7 +34,7 @@ function NavbarComponent() {
       >
         <Navbar.Brand href="/" className="mx-0">
           <img
-            src="/images/logo.svg"
+            src="/images/logo-roadrules.svg"
             alt="logo"
             className={`img-fluid py-0 my-0 ${styles.logo}`}
           />

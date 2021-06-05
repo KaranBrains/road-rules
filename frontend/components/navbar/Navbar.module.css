@@ -11,3 +11,21 @@
 .mlAuto{
     margin-left: auto;
 }
+
+@media(max-width: 536px){
+  .logo{
+    height: 60px;
+  }
+}
+
+@media(max-width: 435px){
+  .logo{
+    height: 40px;
+  }
+}
+
+@media(max-width: 342px){
+  .logo{
+    height: 30px;
+  }
+}
