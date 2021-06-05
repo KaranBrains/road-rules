@@ -188,6 +188,12 @@ body {
   font-size: large;
 }
 
+.status-button{
+  width: 100px;
+  border-radius: 3px;
+  padding-left: 4px;
+}
+
 @media(max-width: 1900px){
   .padding-left-mobile{
       padding-left: 80px !important;
@@ -230,6 +236,11 @@ body {
   }
   .rbc-toolbar{
     font-size: 14px !important;
+  }
+}
+@media(max-width: 361px){
+  .mobile-top {
+    margin-top: 30px;
   }
 }
 @media(max-width: 376px){

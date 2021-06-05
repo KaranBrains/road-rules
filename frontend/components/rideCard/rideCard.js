@@ -14,19 +14,27 @@ function RideCard(props) {
               >
                 <div className="row ">
                   <div className="col-lg-9 col-md-8 col-sm-8 col-8">
-                    <div className="font-bold text-primaryColor">
+                    <div className="font-bold text-primaryColor ride-card-font">
                       {props?.ride?.date} {props?.ride?.time}
                     </div>
                     <hr className="my-2" />
                     <div className="row ">
                       <div className="col-lg-9 col-md-8 col-sm-8 col-8 px-3">
+                        {props?.ride?.status == "completed"? (
                         <div
+                        style={{ marginTop: "4px" }}
+                        className="text-white btn-success status-button"
+                      >
+                        {props?.ride?.status.charAt(0).toUpperCase() + props?.ride?.status.slice(1) }
+                      </div>
+                        ) : (
+                          <div
                           style={{ marginTop: "4px" }}
-                          className="text-primary"
+                          className="text-white btn-primary status-button"
                         >
                           {props?.ride?.status.charAt(0).toUpperCase() + props?.ride?.status.slice(1) }
                         </div>
-                        <div></div>
+                        )}
                       </div>
                     </div>
                   </div>
@@ -37,7 +45,7 @@ function RideCard(props) {
                     <Link href={"/ride-details/" + props?.ride?._id}>
                       <div className="text-center mt-3 d-flex justify-content-end  ">
                         <button
-                          className="text-white bg-secondaryColor font-demi rounded"
+                          className="text-white bg-secondaryColor font-demi rounded mobile-top"
                           style={{ border: "none" }}
                         >
                           Details
