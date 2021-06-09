@@ -3,7 +3,8 @@ import {
     GET_RIDE_BY_ID,
     CONFIRM_RIDE_ONLINE,
     GET_MY_RIDES,
-    END_RIDE
+    END_RIDE,
+    GIVE_FEEDBACK
   } from "../constants";
   
   export default (state = { rideData: null }, action) => {
@@ -21,6 +22,9 @@ import {
         console.log(action?.data);
         return { ...state, rideData: action?.data };
     case END_RIDE:
+        console.log(action?.data);
+        return { ...state, rideData: action?.data };
+    case GIVE_FEEDBACK:
         console.log(action?.data);
         return { ...state, rideData: action?.data };
       default:

@@ -1,5 +1,5 @@
 import * as api from "../api";
-import { CONFIRM_RIDE_CASH, GET_RIDE_BY_ID,CONFIRM_RIDE_ONLINE ,GET_MY_RIDES ,END_RIDE} from "../constants/index";
+import { CONFIRM_RIDE_CASH, GET_RIDE_BY_ID,CONFIRM_RIDE_ONLINE ,GET_MY_RIDES ,END_RIDE , GIVE_FEEDBACK} from "../constants/index";
 import swal from "sweetalert";
 import jwt from "jwt-decode";
 
@@ -68,6 +68,19 @@ export const getRideById = (id) => async (dispatch) => {
     try {
         const { data } = await api.getRideById(id);
         dispatch({ type: GET_RIDE_BY_ID, data });
+    } catch (e) {
+        console.log(e.response);
+        swal({
+            text: e.response?.data.msg,
+            icon: "error",
+        });
+    }
+};
+
+export const giveFeedback = (formData,ride) => async (dispatch) => {
+    try {
+        const { data } = await api.giveFeedback(formData,ride);
+        dispatch({ type: GIVE_FEEDBACK, data });
     } catch (e) {
         console.log(e.response);
         swal({

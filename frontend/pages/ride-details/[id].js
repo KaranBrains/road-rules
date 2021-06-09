@@ -1,7 +1,7 @@
 import { useEffect,useState } from "react";
 import { useDispatch , useSelector} from "react-redux";
 import { useRouter } from "next/router";
-import { getRideById } from "../../redux/actions/ride";
+import { getRideById , giveFeedback } from "../../redux/actions/ride";
 import { GetInstructorById } from "../../redux/actions/instructor";
 import { Modal } from "react-bootstrap";
 import swal from "sweetalert";
@@ -31,11 +31,12 @@ export default function InstructorId() {
     const provideFeedback=(e)=>{
       e.preventDefault();
       setShowModal(false);
-      swal({
-        text: "Feedback Submitted",
-        icon: "success",
-    });
-      console.log(formData);
+      dispatch(giveFeedback(formData,ride._id)).then(()=>{
+        swal({
+          text: "Feedback Submitted",
+          icon: "success",
+        });
+      })
     }
 
     return(
@@ -178,6 +179,19 @@ export default function InstructorId() {
                       {instructorById?.email}
                       </div>
                     </div>
+                    {ride.rating? (
+                      <>
+                    <hr className="grey-hr-confirm" />
+                    <div className="d-flex justify-content-between px-3">
+                      <div className="text-muted font-demi font-18 mt-2">
+                        Rating
+                      </div>
+                      <div className="text-primary font-bold font-18 mt-2">
+                        {ride.rating}
+                      </div>
+                    </div>
+                    </>
+                    ) : ''}
                     <hr className="grey-hr-confirm" />
                     <div className="d-flex justify-content-between px-3">
                       <div className="text-muted font-demi font-18 mt-2">
@@ -250,7 +264,7 @@ export default function InstructorId() {
                   </div>
                 </div>
               </div>
-              {ride.status=="completed"?(
+              {ride.status=="completed" && !ride.rating?(
                 <div className="text-center mt-3">
                 <button
                   className="text-white bg-secondaryColor font-demi btn-blue submit-button mb-5"

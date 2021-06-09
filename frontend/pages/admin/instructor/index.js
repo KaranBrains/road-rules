@@ -178,8 +178,7 @@ export default function Instructor() {
                   <th scope="col">Image</th>    
                   <th scope="col">Name</th>
                   <th scope="col">Email</th>  
-                  <th scope="col">Phone</th>   
-                  <th scope="col">Ratings</th>   
+                  <th scope="col">Phone</th>     
                   <th scope="col">Action</th>  
                   <th scope="col">Remove</th>               
                 </tr>
@@ -201,7 +200,6 @@ export default function Instructor() {
                               <td className="user-name">{val.fullName}</td>
                               <td>{val.email}</td>
                               <td>{val.phone}</td>
-                              <td>Ratings</td>
                               <td>
                               <Link href={'/admin/instructor/'+val._id}>
                                 <a>

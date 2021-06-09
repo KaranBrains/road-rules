@@ -29,6 +29,7 @@ export const changePassword = (body) =>
 export const addSlot = (formdata) => axios.post(`${url}/add-slot`, formdata);
 export const allSlot = () => axios.get(`${url}/all-slots`);
 export const removeSlot = (id) => axios.delete(`${url}/delete-slot?id=${id}`);
+export const giveFeedback = (formData,id) => axios.post(`${url}/feedback?ride=${id}`,formData);
 export const updateSlotById = (id, editFormData) =>
   axios.put(`${url}/slot?id=${id}`, editFormData);
 export const addInstructor = (formdata) =>
