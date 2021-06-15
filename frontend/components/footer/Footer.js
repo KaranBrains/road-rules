@@ -9,7 +9,7 @@ function Footer() {
       <div className="container py-section">
         <div className="row">
           <div className="col-lg-4 col-md-4 col-sm-12 col-12 mt-4">
-            <div className="card px-3">
+            <div className="card footer-card px-3">
               <h3
                 className="text-primaryColor font-bold mb-4"
                 style={{ fontSize: "20px" }}
@@ -49,7 +49,7 @@ function Footer() {
             </div>
           </div>
           <div className="col-lg-4 col-md-4 col-sm-12 col-12 mt-4">
-            <div className="card px-3">
+            <div className="card footer-card px-3">
               <h3
                 className="text-primaryColor font-bold mb-4"
                 style={{ fontSize: "20px" }}
@@ -80,7 +80,7 @@ function Footer() {
             </div>
           </div>
           <div className="col-lg-4 col-md-4 col-sm-12 col-12 my-4">
-            <div className="card px-3">
+            <div className="card footer-card px-3">
               <h3
                 className="text-primaryColor font-bold mb-4"
                 style={{ fontSize: "30px" }}

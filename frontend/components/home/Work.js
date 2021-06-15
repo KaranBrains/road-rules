@@ -14,7 +14,7 @@ function Features() {
       </div>
       <div className={`container ${styles.pySection} px-4`}>
         <h2
-          className={`font-bold text-primaryColor mb-5 ${styles.mobileCenter}`}
+          className={`font-bold text-primaryColor mb-5 text-center ${styles.mobileCenter}`}
         >
           Your key to safe Driving.<br />
           {/* Smart Drivers start <br />
