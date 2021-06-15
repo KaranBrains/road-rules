@@ -43,11 +43,18 @@ function NavbarComponent() {
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className={`${styles.mlAuto}`}>
             <Nav.Link
-              href="/about"
+              href="/"
               className="font-demi font-17 px-3 navbar-item
                 text-primaryColor text-center"
             >
-              About
+              Home
+            </Nav.Link>
+            <Nav.Link
+              href="/fullCalendar"
+              className="font-demi font-17 px-3 navbar-item
+                text-primaryColor text-center"
+            >
+              Booking
             </Nav.Link>
             <Nav.Link
               href="/contact"
