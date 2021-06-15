@@ -11,7 +11,13 @@ body {
   --secondaryColor: #04B1ED;
   --tertiaryColor: #e0f6ff;
 }
-
+.animated-card {
+  transition: all 0.3s ease-in;
+  cursor: pointer;
+}
+.animated-card:hover {
+  transform: scale(1.1);
+}
 .text-shadow-white{
   text-shadow: #6ba4b4 1px 0 1px;
 }
