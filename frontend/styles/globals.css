@@ -12,6 +12,11 @@ body {
   --tertiaryColor: #e0f6ff;
 }
 
+.text-shadow-white{
+  text-shadow: #6ba4b4 1px 0 1px;
+}
+
+
 /* Srollbar */
 ::-webkit-scrollbar {
   height: 3px !important;  

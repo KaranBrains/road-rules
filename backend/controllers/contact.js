@@ -10,7 +10,7 @@ exports.contactUs = (req, res) => {
   }
   console.log(formData.email);
   const msg = {
-  to: formData.email,
+  to: "roadrulescanada@gmail.com",
   from: process.env.SENDGRID_EMAIL, // Change to your verified sender
   subject: `Query from ${formData.name} (${formData.email})`,
   text: 'Contact Message',

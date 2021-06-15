@@ -4,6 +4,7 @@ import styles from "./Home.module.css";
 import { AllSlots } from "../../redux/actions/slot";
 import Link from "next/link";
 import { useRouter } from 'next/router';
+import Navbar from "../navbar/Navbar";
 
 function HomeMain() {
   const dispatch = useDispatch();
@@ -67,7 +68,7 @@ function HomeMain() {
   return (
     <>
       <div className={`${styles.home}`}>
-        <div className="container">
+        {/* <div className="container">
           <div className="row center" style={{ minHeight: "85vh" }}>
             <div className="col-xl-7 col-lg-8 col-md-10 col-sm-12 col-12">
               <div className="card bg-white shadow py-lg-5 py-4 px-3 px-lg-5 my-5">
@@ -147,6 +148,44 @@ function HomeMain() {
                 </div>
               </div>
             </div>
+          </div>
+        </div> */}
+        <div className="container text-center font-bold text-white py-5">
+          <h1 className="pt-5 text-shadow-white mt-5">Road Rules</h1>
+          <p className="font-20 font-medium text-shadow-white" style={{marginTope: "100px !important"}}>
+            We’re passionate about creating tools that bridge the gaps between
+            digital and physical workplace experiences.
+          </p>
+          <p className="font-medium text-shadow-white font-20">
+          Road Rules . 
+          The best driving school in area today. 
+          Get cheap driving lessons by Indian professional 
+          instructor. We provide excellent lessons for both manual and
+           automatic vehicles. Well-known for careful and responsible 
+           driving classes. No matter where ever you are in the city, 
+           We give you highly professional and user friendly
+            drivers. You would love to get associated with us as we make sure 
+            to give you best driving lessons that will let you 
+            start your first drive with full confidence and eventually make
+             you quite professional. There are perhaps a wide variety of 
+             services offered to all age groups as per their need and requirement. 
+          </p>
+          <div className="d-flex justify-content-center my-5">
+            <button
+              className="text-white bg-secondaryColor font-demi px-lg-5 btn-blue submit-button"
+              style={{ marginRight: "20px" }}
+              onClick={()=>
+                router.push('/fullCalendar')
+              }
+            >
+              View Slots
+            </button>
+            <button className="text-white bg-secondaryColor font-demi px-lg-5 btn-blue submit-button"
+              onClick={()=>
+                router.push('/contact')
+              }>
+              Contact Us
+            </button>
           </div>
         </div>
       </div>
