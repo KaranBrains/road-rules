@@ -16,11 +16,11 @@ function Footer() {
               >
                 Company
               </h3>
-              <Link href="/about">
+              {/* <Link href="/about">
                 <div className="text-primaryColor font-demi font-15 mb-lg-3 mb-2 hoverable">
                   About Us
                 </div>
-              </Link>
+              </Link> */}
               <Link href="/contact">
                 <div className="text-primaryColor font-demi font-15 mb-lg-3 mb-2 hoverable">
                   Work with us

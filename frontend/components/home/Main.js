@@ -150,27 +150,12 @@ function HomeMain() {
             </div>
           </div>
         </div> */}
-        <div className="container text-center font-bold text-white py-5">
-          <h1 className="pt-5 text-shadow-white mt-5">Road Rules</h1>
-          <p className="font-20 font-medium text-shadow-white" style={{marginTope: "100px !important"}}>
-            We’re passionate about creating tools that bridge the gaps between
-            digital and physical workplace experiences.
+        <div className="container text-center font-bold py-5">
+          <h1 className=" text-shadow-white">Road Rules Driving School</h1>
+          <p className="font-20 font-medium text-shadow-white">
+          We offer a selection of ICBC driving test lessons in Surrey and neighboring cities. Each of our driving lessons is conducted with an experienced, friendly and supportive driving instructor who is ICBC accredited.
           </p>
-          <p className="font-medium text-shadow-white font-20">
-          Road Rules . 
-          The best driving school in area today. 
-          Get cheap driving lessons by Indian professional 
-          instructor. We provide excellent lessons for both manual and
-           automatic vehicles. Well-known for careful and responsible 
-           driving classes. No matter where ever you are in the city, 
-           We give you highly professional and user friendly
-            drivers. You would love to get associated with us as we make sure 
-            to give you best driving lessons that will let you 
-            start your first drive with full confidence and eventually make
-             you quite professional. There are perhaps a wide variety of 
-             services offered to all age groups as per their need and requirement. 
-          </p>
-          <div className="d-flex justify-content-center my-5">
+          {/* <div className="d-flex justify-content-center my-5">
             <button
               className="text-white bg-secondaryColor font-demi px-lg-5 btn-blue submit-button"
               style={{ marginRight: "20px" }}
@@ -186,7 +171,7 @@ function HomeMain() {
               }>
               Contact Us
             </button>
-          </div>
+          </div> */}
         </div>
       </div>
     </>
