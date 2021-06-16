@@ -50,7 +50,7 @@ function NavbarComponent() {
               Home
             </Nav.Link>
             <Nav.Link
-              href="/fullCalendar"
+              href="/booking"
               className="font-demi font-17 px-3 navbar-item
                 text-primaryColor text-center"
             >

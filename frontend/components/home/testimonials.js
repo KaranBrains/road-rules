@@ -9,7 +9,7 @@ import GavelIcon from '@material-ui/icons/Gavel';
 
 function Features() {
   return (
-    <div className="my-5">
+    <div className="my-5 auth-bg">
       <div className={`container ${styles.pySection} px-4`}>
         <h2
           className={`font-bold text-primaryColor mb-5 text-center ${styles.mobileCenter}`}

@@ -22,6 +22,17 @@ body {
   text-shadow: #6ba4b4 1px 0 1px;
 }
 
+#uncontrolled-tab-example-tab-withinSurrey{
+  color: var(--primaryColor);
+  font-size: large;
+  font-weight: bold;
+}
+#uncontrolled-tab-example-tab-outsideSurrey{
+  color: var(--primaryColor);
+  font-size: large;
+  font-weight: bold;
+}
+
 .testimonial-1{
   background-image: url('/images/testimonial-1.svg') !important;
   width: 100%;
