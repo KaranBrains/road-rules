@@ -27,7 +27,7 @@ export default function Slots() {
     time: "", 
     clientLimit: "", 
     instructor:"",
-    price: ""
+    // price: ""
   }
 
   const [editFormData, setEditFormData] = useState(setInitialState);
@@ -40,14 +40,14 @@ export default function Slots() {
 
   const handleEditShow = () => setEditModal(true);
 
-  const EditSlot = (id,date,time,clientLimit,price,instructor) => {
+  const EditSlot = (id,date,time,clientLimit,instructor) => {
     setEditFormData({ 
       id: id,
       date: date,
       time: time, 
       clientLimit: clientLimit, 
       instructor: instructor,
-      price: price
+      // price: price
     })
     handleEditShow();
   }
@@ -171,7 +171,7 @@ export default function Slots() {
                     placeholder="Client Limit"
                   />
                 </div>
-                <div className="form-group mt-4">
+                {/* <div className="form-group mt-4">
                 <label className="font-20 py-2">Price</label>
                   <input
                     required
@@ -187,7 +187,7 @@ export default function Slots() {
                     className="form-control"
                     placeholder="Price"
                   />
-                </div>
+                </div> */}
                 <div className="form-group mt-4">
                 <label className="font-20 py-2">Instructor</label>
                 <select
@@ -265,7 +265,7 @@ export default function Slots() {
                     placeholder="Time"
                   />
                 </div>
-                <div className="form-group mt-4">
+                {/* <div className="form-group mt-4">
                 <label className="font-20 py-2">Price</label>
                   <input
                     required
@@ -281,7 +281,7 @@ export default function Slots() {
                     className="form-control"
                     placeholder="Price"
                   />
-                </div>
+                </div> */}
                 <div className="form-group mt-4">
                 <label className="font-20 py-2">Client Limit</label>
                   <input
@@ -350,7 +350,7 @@ export default function Slots() {
                   <th scope="col"  onClick={sortDate}>Date &#8645;</th>
                   <th scope="col">Time</th>    
                   <th scope="col">Client Limit</th>
-                  <th scope="col">Price</th>
+                  {/* <th scope="col">Price</th> */}
                   <th scope="col">Instructor</th>    
                   <th scope="col">Action</th>
                   <th scope="col">Remove</th>               
@@ -366,9 +366,9 @@ export default function Slots() {
                         <td className="user-name">{val.date}</td>
                         <td>{val.time}</td>
                         <td>{val.clientLimit}</td>
-                        <td>{val.price}</td>
+                        {/* <td>{val.price}</td> */}
                         <td>{val.instructorName}</td>
-                        <td><button class="btn btn-primary" onClick={() => EditSlot(val._id, val.date, val.time, val.clientLimit ,val.price, val.instructor)}>Edit</button></td>
+                        <td><button class="btn btn-primary" onClick={() => EditSlot(val._id, val.date, val.time, val.clientLimit ,val.instructor)}>Edit</button></td>
                         <td><button class="btn btn-danger" onClick={() => deleteSlot(val._id)}>Remove</button></td>
                       </tr>
                     )

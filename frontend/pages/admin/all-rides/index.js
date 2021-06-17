@@ -51,7 +51,8 @@ export default function AllRides() {
                 <tr className="font-16  align-middle">
                   <th scope="col">S.No</th>
                   <th scope="col" onClick={sortDate}>Date &#8645;</th>
-                  <th scope="col">Client</th>    
+                  <th scope="col">Type</th>   
+                  <th scope="col">Client</th>   
                   <th scope="col">Instructor</th>
                   <th scope="col">Status</th>   
                   <th scope="col">Payment</th>   
@@ -68,6 +69,13 @@ export default function AllRides() {
                               <tr className="font-demi align-middle" key={val._id}>
                               <td>{i}</td>
                               <th className="user-name">{val?.date}</th>
+                              <th className="user-name">{
+                                val?.time ? (
+                                  'Single'
+                                ) : (
+                                  'Package'
+                                )
+                              }</th>
                               <td className="user-name">{val.clientName}</td>
                               <td className="user-name">{val.instructorName}</td>
                               <td>{val.status}</td>
