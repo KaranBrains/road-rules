@@ -40,7 +40,7 @@ function Features() {
             className={`col-lg-12 col-md-12 col-sm-12 col-12 p-2 ${styles.mobileCenter}`}
           >
             <div className="card animated-card  bg-white h-100" onClick={()=>{
-              router.push("/fullCalendar");
+              router.push("/booking");
             }}>
               <div className="card-body rounded shadow">
                 <h4 className="text-primaryColor mt-4 mb-3 font-22 font-bold">
