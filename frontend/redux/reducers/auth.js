@@ -14,6 +14,8 @@ import {
   ADD_ADDRESS,
   GET_USER_BY_EMAIL,
   GET_LOGGED_IN_USER,
+  ABOUT,
+  UPDATE_ABOUT
 } from "../constants";
 import swal from "sweetalert";
 
@@ -58,6 +60,9 @@ export default (state = { authData: null }, action) => {
     case PHONE_OTP:
       console.log(action?.data);
       return { ...state, authData: action?.data };
+    case UPDATE_ABOUT:
+        console.log(action?.data);
+        return { ...state, authData: action?.data };
     case VERIFY_FORGOT:
       console.log(action?.data);
       action.data.token &&
@@ -69,6 +74,9 @@ export default (state = { authData: null }, action) => {
     case GET_USER_BY_EMAIL:
       console.log(action?.data);
       return { ...state, authData: action?.data };
+    case ABOUT:
+        console.log(action?.data);
+        return { ...state, authData: action?.data };
     case GET_LOGGED_IN_USER:
       console.log(action?.data);
       action.data.token &&

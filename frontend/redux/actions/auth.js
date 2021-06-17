@@ -11,6 +11,8 @@ import {
   ADD_ADDRESS,
   GET_USER_BY_EMAIL,
   GET_LOGGED_IN_USER,
+  ABOUT,
+  UPDATE_ABOUT
 } from "../constants";
 import jwt from "jwt-decode";
 import swal from "sweetalert";
@@ -24,7 +26,7 @@ export const signIn = (formData, router) => async (dispatch) => {
     dispatch({ type: SIGN_IN, data });
     const role = jwt(data.token).role;
     if (role === 'admin') {
-      window.location.href="/admin/dashboard";
+      window.location.href="/admin/about";
       return;
     }
     window.location.href="/";
@@ -220,6 +222,34 @@ export const getUserByEmail = () => async (dispatch) => {
       formData.email
     );
     dispatch({ type: GET_USER_BY_EMAIL, data });
+  } catch (e) {
+    swal({
+      text: e.response?.data.msg,
+      icon: "error",
+    });
+  }
+};
+
+export const about = () => async (dispatch) => {
+  try {
+    const { data } = await api.about();
+    dispatch({ type: ABOUT, data });
+  } catch (e) {
+    swal({
+      text: e.response?.data.msg,
+      icon: "error",
+    });
+  }
+};
+
+export const updateAbout = (text) => async (dispatch) => {
+  try {
+    const { data } = await api.updateAbout(text);
+    dispatch({ type: UPDATE_ABOUT, data });
+    swal({
+      text: "About updated successfully!",
+      icon: "success",
+    });
   } catch (e) {
     swal({
       text: e.response?.data.msg,

@@ -4,67 +4,71 @@ import styles from "./Home.module.css";
 import { AllSlots } from "../../redux/actions/slot";
 import Link from "next/link";
 import { useRouter } from 'next/router';
+import { about } from "../../redux/actions/auth";
 import Navbar from "../navbar/Navbar";
 
 function HomeMain() {
   const dispatch = useDispatch();
   const [selected, setselected] = useState('');
   const router = useRouter()
-  let weekSlots;
+  const aboutFe = useSelector((state) => {
+    return state.main?.authData?.about;
+  });
+  // let weekSlots;
   useEffect(() => {
-    dispatch(AllSlots());
+    dispatch(about());
   }, []);
 
-  const getDay = (day) => {
-    switch (day) {
-      case "1":
-        return "Mon";
-      case "2":
-        return "Tue";
-      case "3":
-        return "Wed";
-      case "4":
-        return "Thur";
-      case "5":
-        return "Fri";
-      case "6":
-        return "Sat";
-      default:
-        return "Sun";
-    }
-  };
-  const today = new Date();
-  const weekDate = new Date(today.getTime() + 7 * 24 * 60 * 60 * 1000);
-  let allSlots = useSelector((state) => state.slot?.slotData?.slots);
-  if (allSlots) {
-    allSlots = allSlots.filter(a=>{
-      if(a.status==="scheduled") {
-        return a;
-      }
-    });
-    const filterSlots = allSlots?.filter(
-      (slot) =>
-        new Date(slot.date) >= Date.now() && new Date(slot.date) <= weekDate
-    );
-    weekSlots = filterSlots?.map(f=>{
-      return {
-        ...f,
-        date: new Date(f.date).getDate()
-      }
-    });
-    console.log(weekSlots);
-  }
+  // const getDay = (day) => {
+  //   switch (day) {
+  //     case "1":
+  //       return "Mon";
+  //     case "2":
+  //       return "Tue";
+  //     case "3":
+  //       return "Wed";
+  //     case "4":
+  //       return "Thur";
+  //     case "5":
+  //       return "Fri";
+  //     case "6":
+  //       return "Sat";
+  //     default:
+  //       return "Sun";
+  //   }
+  // };
+  // const today = new Date();
+  // const weekDate = new Date(today.getTime() + 7 * 24 * 60 * 60 * 1000);
+  // let allSlots = useSelector((state) => state.slot?.slotData?.slots);
+  // if (allSlots) {
+  //   allSlots = allSlots.filter(a=>{
+  //     if(a.status==="scheduled") {
+  //       return a;
+  //     }
+  //   });
+  //   const filterSlots = allSlots?.filter(
+  //     (slot) =>
+  //       new Date(slot.date) >= Date.now() && new Date(slot.date) <= weekDate
+  //   );
+  //   weekSlots = filterSlots?.map(f=>{
+  //     return {
+  //       ...f,
+  //       date: new Date(f.date).getDate()
+  //     }
+  //   });
+  //   console.log(weekSlots);
+  // }
 
-  const weekDates = [];
-  for (let i = 0; i < 7; i++) {
-    weekDates.push({
-      day: new Date(today.getTime() + i * 24 * 60 * 60 * 1000)
-        .getDay()
-        .toString(),
-      date: new Date(today.getTime() + i * 24 * 60 * 60 * 1000).getDate(),
-    });
-  }
-  console.log(weekDates);
+  // const weekDates = [];
+  // for (let i = 0; i < 7; i++) {
+  //   weekDates.push({
+  //     day: new Date(today.getTime() + i * 24 * 60 * 60 * 1000)
+  //       .getDay()
+  //       .toString(),
+  //     date: new Date(today.getTime() + i * 24 * 60 * 60 * 1000).getDate(),
+  //   });
+  // }
+  // console.log(weekDates);
   return (
     <>
       <div className={`${styles.home}`}>
@@ -153,7 +157,7 @@ function HomeMain() {
         <div className="container text-center font-bold py-5">
           <h1 className=" text-shadow-white">Road Rules Driving School</h1>
           <p className="font-20 font-medium text-shadow-white">
-          We offer a selection of ICBC driving test lessons in Surrey and neighboring cities. Each of our driving lessons is conducted with an experienced, friendly and supportive driving instructor who is ICBC accredited.
+          {aboutFe?.text}
           </p>
           {/* <div className="d-flex justify-content-center my-5">
             <button

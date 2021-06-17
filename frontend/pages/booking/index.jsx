@@ -12,7 +12,7 @@ function Features() {
             <h2
             className={`font-bold text-primaryColor mb-5 text-center ${styles.mobileCenter}`}
             >
-            Current Offers<br />
+              Current Offers<br />
             {/* Smart Drivers start <br />
             here */}
             </h2>

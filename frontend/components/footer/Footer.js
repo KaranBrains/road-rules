@@ -86,7 +86,7 @@ function Footer() {
                 style={{ fontSize: "30px" }}
               >
                 <Image
-                  src="/images/logo.svg"
+                  src="/images/logo-roadrules.svg"
                   alt="logo"
                   className="img-fluid logo"
                   width={300}

@@ -148,12 +148,12 @@ const useStyles = makeStyles((theme) => ({
           <List>
             <ListItem button>
               <ListItemIcon>
-                <Link href="/admin/dashboard">
+                <Link href="/admin/about">
                   <a><DashboardIcon /></a>
                 </Link>
               </ListItemIcon>
-              <Link href="/admin/dashboard">
-                <a><ListItemText primary="Dashboard" /></a>
+              <Link href="/admin/about">
+                <a><ListItemText primary="About" /></a>
               </Link>
             </ListItem>
             <ListItem button>
