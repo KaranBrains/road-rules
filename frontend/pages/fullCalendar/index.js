@@ -9,6 +9,7 @@ import { useRouter } from 'next/router';
 function MyCalendar() {
   const dispatch = useDispatch();
   const router = useRouter()
+  const location = router.query.location;
   useEffect(() => {
     dispatch(AllSlots());
   }, []);
@@ -47,7 +48,7 @@ function MyCalendar() {
         localizer={localizer}
         events={myEventsList}
         onSelectEvent={(e)=>{
-          router.push('/slot-details/'+e.id)
+          router.push('/slot-details/'+e.id + '?location=' + location)
         }}
         startAccessor="start"
         endAccessor="end"

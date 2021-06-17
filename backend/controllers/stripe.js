@@ -23,7 +23,7 @@ exports.checkout = async (req,res,next) => {
                   product_data: {
                     name: 'Road-Rules Riding Class',
                   },
-                  unit_amount: Number(slot.price)*100,
+                  unit_amount: Number(req.body.location == 'within' ? 45 : 50)*100,
                 },
                 quantity: 1,
               },
@@ -35,6 +35,50 @@ exports.checkout = async (req,res,next) => {
         let payment = Payment({
             session: session.id,
             slot: req.body.slot,
+            client: req.body.client,
+            total: req.body.location == 'within' ? 45 : 50,
+        })
+        payment.save((err, pay) => {
+            if (err) {
+                console.log(err);
+              return res.status(400).json({ msg: err.message });
+            }
+            return res.status(201).json({ id: pay.session });
+        })
+    } catch (e) {
+        console.log(e);
+        return res.status(400).send({
+            msg: e.message
+        });
+    }
+}
+
+exports.checkoutBooking = async (req,res,next) => {
+    try {
+        console.log(req.body);
+        const session = await stripe.checkout.sessions.create({
+            payment_method_types: ['card'],
+            line_items: [
+              {
+                price_data: {
+                  currency: 'cad',
+                  product_data: {
+                    name: 'Road-Rules Riding Class',
+                  },
+                  unit_amount: Number(req.body.total)*100,
+                },
+                quantity: 1,
+              },
+            ],
+            mode: 'payment',
+            success_url: process.env.FRONT_END_URL + '/confirm-payment',
+            cancel_url: process.env.FRONT_END_URL + '/cancel-payment',
+          });
+        let payment = Payment({
+            session: session.id,
+            booking: {
+                ...req.body
+            },
             client: req.body.client
         })
         payment.save((err, pay) => {
@@ -62,60 +106,96 @@ exports.confirmRideOnline = async (req,res,next) => {
           );
         if (session.payment_status == 'paid') {
             const payment = await Payment.findOne({session: req.query.id});
-            const slot = await Slot.findById(payment.slot);
-            if (slot.booking) {
-                return res.status(400).json({ msg: "Slot already booked!" });
-            }
-            const client = await User.findById(payment.client);
-            const address = client.address.filter(a=> a._id == req.query.address)[0];
-            const ride = {
-                client : client._id,
-                clientName : client.fullName,
-                instructor : slot.instructor,
-                slot : slot._id,
-                status : "scheduled",
-                modeOfPayment : "online",
-                price : slot.price,
-                time : slot.time,
-                date : slot.date,
-                instructorName: slot.instructorName,
-                address : address.street + ',' + address.province + ',' + address.city + ',' +  address.postalCode
-            }
-            slot.status = "booked";
-            slot.save((err,s)=>{
-                if (err) {
-                    return res.status(400).json({ msg: err.message });
+            if (payment.slot) {
+                const slot = await Slot.findById(payment.slot);
+                if (slot.booking) {
+                    return res.status(400).json({ msg: "Slot already booked!" });
+                }
+                const client = await User.findById(payment.client);
+                const address = client.address.filter(a=> a._id == req.query.address)[0];
+                const ride = {
+                    client : client._id,
+                    clientName : client.fullName,
+                    instructor : slot.instructor,
+                    slot : slot._id,
+                    status : "scheduled",
+                    modeOfPayment : "online",
+                    price : payment.total,
+                    time : slot.time,
+                    date : slot.date,
+                    instructorName: slot.instructorName,
+                    address : address.street + ',' + address.province + ',' + address.city + ',' +  address.postalCode
+                }
+                slot.status = "booked";
+                slot.save((err,s)=>{
+                    if (err) {
+                        return res.status(400).json({ msg: err.message });
+                    }
+                    let newRide = Ride(ride); 
+                    newRide.save((err, ride) => {
+                        if (err) {
+                            return res.status(400).json({ msg: err.message });
+                        }
+                        slot.booking = ride._id;
+                        slot.save((err, slot) => {
+                            if (err) {
+                                return res.status(400).json({ msg: err.message });
+                            }
+                            const msg = {
+                                to: client.email,
+                                from: process.env.SENDGRID_EMAIL, // Change to your verified sender
+                                subject: 'Road-Rules Class Confirmed',
+                                text: 'Class Confirmed',
+                                html: `<h1>Class Details</h1>
+                                       <pre> Date  : ${slot.date} </pre>
+                                       <pre> Time  : ${slot.time} </pre>
+                                       <pre> Mode of Payment : Online </pre>`,
+                              }
+                              sgMail.send(msg)
+                              .then(info => {
+                                  return res.status(201).json(ride);
+                              })
+                              .catch(err => {
+                                  res.status(400).send({msg: "Some error"})
+                              });
+                        })
+                    });
+                })   
+            } else {
+                const client = await User.findById(payment.client);
+                const address = client.address.filter(a=> a._id == req.query.address)[0];
+                const ride = {
+                    client : client._id,
+                    clientName : client.fullName,
+                    status : "scheduled",
+                    modeOfPayment : "online",
+                    booking : payment.booking,
+                    date : new Date(),
+                    address : address.street + ',' + address.province + ',' + address.city + ',' +  address.postalCode
                 }
                 let newRide = Ride(ride); 
                 newRide.save((err, ride) => {
                     if (err) {
                         return res.status(400).json({ msg: err.message });
                     }
-                    slot.booking = ride._id;
-                    slot.save((err, slot) => {
-                        if (err) {
-                            return res.status(400).json({ msg: err.message });
+                    const msg = {
+                        to: client.email,
+                        from: process.env.SENDGRID_EMAIL, // Change to your verified sender
+                        subject: 'Road-Rules Class Confirmed',
+                        text: 'Class Confirmed',
+                        html: `<h1>Class Details</h1>
+                                <pre> Start Date  : ${(new Date()).toDateString()} </pre>
+                                <pre> Mode of Payment : Online </pre>`,
                         }
-                        const msg = {
-                            to: client.email,
-                            from: process.env.SENDGRID_EMAIL, // Change to your verified sender
-                            subject: 'Road-Rules Class Confirmed',
-                            text: 'Class Confirmed',
-                            html: `<h1>Class Details</h1>
-                                   <pre> Date  : ${slot.date} </pre>
-                                   <pre> Time  : ${slot.time} </pre>
-                                   <pre> Mode of Payment : Online </pre>`,
-                          }
-                          sgMail.send(msg)
-                          .then(info => {
-                              return res.status(201).json(ride);
-                          })
-                          .catch(err => {
-                              res.status(400).send({msg: "Some error"})
-                          });
-                    })
+                        sgMail.send(msg)
+                        .then(info => {
+                            return res.status(201).json(ride);
+                        })
+                        .catch(err => {
+                            res.status(400).send({msg: "Some error"})
+                        });
                 });
-            })
+            }
         }
     } catch (e) {
         return res.status(400).send({

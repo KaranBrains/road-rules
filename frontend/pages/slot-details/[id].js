@@ -11,6 +11,7 @@ export default function InstructorId() {
   let decode = null;
   const router = useRouter();
   const id = router.query.id;
+  const location = router.query.location;
   const slot = useSelector((state) => {
     return state.slot?.slot?.slot;
   });
@@ -27,7 +28,7 @@ export default function InstructorId() {
   }, [id]);
   const openModal = () => {
       if(profile){
-        router.push("/confirm-address/" + id);
+        router.push("/confirm-address/" + id + '?location=' + location);
       }else{
         swal({
           text: `You need to login to continue`,
@@ -73,7 +74,9 @@ export default function InstructorId() {
               <div className="d-flex justify-content-between px-3 mt-3 mb-1">
                 <div className="text-muted font-demi font-18">Price</div>
                 <div className="text-green font-bold font-18">
-                  &#36;{slot.price}
+                  &#36;{location && location == 'within' ? (
+                    '45'
+                  ): '50'}
                 </div>
               </div>
               <hr className="grey-hr" />

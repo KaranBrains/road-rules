@@ -4,14 +4,15 @@ import { useDispatch , useSelector } from "react-redux";
 import { useRouter } from "next/router";
 import styles from "../../styles/Form.module.css";
 import { getUserByEmail } from "../../redux/actions/auth";
-import { confirmRideCash } from "../../redux/actions/ride";
-import {AddPayment} from "../../redux/actions/payment";
+import { confirmRideCash , confirmBookingCash } from "../../redux/actions/ride";
+import {AddPayment ,AddPaymentBooking} from "../../redux/actions/payment";
 
 function ModePayment() {
   const [selected, setSelected] = useState("");
   const dispatch = useDispatch();
   const router = useRouter();
   const id = router.query.id;
+  const location = router.query.location;
   useEffect(() =>{
     dispatch(getUserByEmail());
   },[id])
@@ -22,10 +23,18 @@ function ModePayment() {
       return;
     } 
     if (selected === "online") {
-      dispatch(AddPayment(id));
+      if (id=="booking") {
+        dispatch(AddPaymentBooking());
+      } else {
+        dispatch(AddPayment(id,location));
+      }
     }
     if (selected === 'cash') {
-      dispatch(confirmRideCash(id,router));
+      if (id=="booking") {
+        dispatch(confirmBookingCash(router));
+      } else {
+        dispatch(confirmRideCash(id,router,location));
+      }
     }
   }
 

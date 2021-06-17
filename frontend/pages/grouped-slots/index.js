@@ -7,39 +7,56 @@ import swal from "sweetalert";
 import Form from 'react-bootstrap/Form'
 
 export default function InstructorId() {
-//   const dispatch = useDispatch();
-//   const [profile, setprofile] = useState(null);
-//   let decode = null;
-//   const router = useRouter();
-//   const id = router.query.id;
-//   const slot = useSelector((state) => {
-//     return state.slot?.slot?.slot;
-//   });
-//   useEffect(() => {
-//     const data = localStorage.getItem("token");
-//     if (data) {
-//       decode = jwt_decode(data);
-//     }
-//     setprofile(decode);
-//     const id = router.query.id;
-//     if (id) {
-//       dispatch(GetSlotById(id));
-//     }
-//   }, [id]);
-//   const openModal = () => {
-//       if(profile){
-//         router.push("/confirm-address/" + id);
-//       }else{
-//         swal({
-//           text: `You need to login to continue`,
-//           icon: "info",
-//         });
-//         router.push("/auth/login");
-//       }
-    
-//   };
+  const dispatch = useDispatch();
+  const [profile, setprofile] = useState(null);
+  let decode = null;
+  const router = useRouter();
+  const [roadTest, setRoadTest] = useState(false);
+  const [vehicle, setVehicle] = useState(false);
+  let price ;
+  const location = router?.query?.location;
+  const type = router?.query?.type;
+  
+  if (type, location) {
+    if (type =="six") {
+      price = location=="within" ? 240 : 270;
+    } else {
+      price = location=="within" ? 450 : 500;
+    }
+    //setTotal(price);
+  }
+
+  const [total, setTotal] = useState(0);
 
   const today = (new Date()).getDate();
+  useEffect(() => {
+    const data = localStorage.getItem("token");
+    if (data) {
+      decode = jwt_decode(data);
+    }
+    setprofile(decode);
+  }, []);
+  
+  const openModal = () => {
+      const bookingDetails = {
+        type: type,
+        location: location,
+        vehicle: vehicle,
+        roadTest: roadTest,
+        total: total + price
+      }
+      console.log(bookingDetails);
+      localStorage.setItem("bookingDetails",JSON.stringify(bookingDetails));
+      if(profile){
+        router.push("/confirm-address/booking");
+      }else{
+        swal({
+          text: `You need to login to continue`,
+          icon: "info",
+        });
+        router.push("/auth/login");
+      } 
+  };
 
   return (
     <>
@@ -63,20 +80,23 @@ export default function InstructorId() {
               <div className="d-flex justify-content-between px-3 mt-3 mb-1">
                 <div className="text-muted font-demi font-18">Total Hours</div>
                 <div className="text-primaryColor font-bold font-18">
-                  6
+                  {type && type=="six" ? (
+                    '6'
+                  ): '10'}
                 </div>
               </div>
               <hr className="grey-hr" />
-              <div className="d-flex justify-content-between px-3 mt-1">
-                <div className="text-muted font-demi font-18">Instructor</div>
-                <div className="text-primaryColor font-bold font-18">
-                  Test
+              <div className="d-flex justify-content-between px-3 mt-3 mb-1">
+                <div className="text-muted font-demi font-18">Class Price</div>
+                <div className="text-green font-bold font-18">
+                    ${price}
                 </div>
               </div>
+              <hr className="grey-hr" />
               <div className="d-flex justify-content-between px-3 mt-3 mb-1">
-                <div className="text-muted font-demi font-18">Price</div>
+                <div className="text-muted font-demi font-18">Total</div>
                 <div className="text-green font-bold font-18">
-                  &#36;240
+                    ${total + price}
                 </div>
               </div>
               <hr className="grey-hr" />
@@ -84,13 +104,17 @@ export default function InstructorId() {
             <div>
             <div className="my-3 ml-2">
             <Form.Group controlId="formBasicCheckbox1">
-                <Form.Check type="checkbox" label="Add Road Test ($120)" className="ml-2"/>
+                <Form.Check type="checkbox" label="Add Road Test ($120)" className="ml-2" onClick={()=>{
+                    roadTest ? setTotal( total - 120) : setTotal( total + 120);
+                    setRoadTest(!roadTest);
+                }}/>
             </Form.Group>
             </div>
             <div className="my-3 ml-2">
             <Form.Group controlId="formBasicCheckbox2">
                 <Form.Check type="checkbox" label="Rent School Vehicle ($120)" className="ml-2" onClick={()=>{
-                    console.log("hello");
+                  vehicle ? setTotal( total - 120) : setTotal( total + 120);
+                  setVehicle(!vehicle);
                 }}/>
             </Form.Group>
             </div>
@@ -98,6 +122,7 @@ export default function InstructorId() {
             <div className="text-center mt-4 mb-5">
               <button
                 className="text-white bg-secondaryColor font-demi btn-blue submit-button"
+                onClick={openModal}
               >
                 Continue
               </button>

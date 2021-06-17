@@ -30,7 +30,7 @@ function Features() {
                 <div className="container justify-content-center w-100 d-flex">
                         <button className="text-white bg-secondaryColor font-demi px-lg-5 btn-blue submit-button"
                             onClick={()=>
-                                router.push('/contact')
+                                router.push('/booking')
                             }>
                         Book Now
                     </button>
@@ -55,7 +55,7 @@ function Features() {
                 <div className="container justify-content-center w-100 d-flex">
                         <button className="text-white bg-secondaryColor font-demi px-lg-5 btn-blue submit-button"
                             onClick={()=>
-                                router.push('/contact')
+                                router.push('/booking')
                             }>
                         Book Now
                     </button>
@@ -81,7 +81,7 @@ function Features() {
                 <div className="container justify-content-center w-100 d-flex">
                         <button className="text-white bg-secondaryColor font-demi px-lg-5 btn-blue submit-button"
                             onClick={()=>
-                                router.push('/contact')
+                                router.push('/booking')
                             }>
                         Book Now
                     </button>

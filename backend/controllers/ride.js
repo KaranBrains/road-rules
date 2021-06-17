@@ -11,7 +11,8 @@ exports.addRideCash = async (req, res) => {
         if (
             !req.body.slot ||
             !req.body.client ||
-            !req.query.address
+            !req.query.address ||
+            !req.body.location
         ) {
             return res.status(400).json({ msg: 'Invalid data' });
         }
@@ -28,7 +29,7 @@ exports.addRideCash = async (req, res) => {
             slot : slot._id,
             status : "scheduled",
             modeOfPayment : "cash",
-            price : slot.price,
+            price : req.body.location == 'within' ? 45 : 50,
             time : slot.time,
             date : slot.date,
             instructorName: slot.instructorName,
@@ -73,6 +74,53 @@ exports.addRideCash = async (req, res) => {
                 })
             });
         })
+    } catch (err) {
+        return res.status(400).json({ msg: err.message });
+    }
+};
+
+exports.addBookingCash = async (req, res) => {
+    try {
+        if (
+            !req.body.client ||
+            !req.query.address ||
+            !req.body.booking
+        ) {
+            return res.status(400).json({ msg: 'Invalid data' });
+        }
+        const client = await User.findById(req.body.client);
+        const address = client.address.filter(a=> a._id == req.query.address)[0];
+        const ride = {
+            client : client._id,
+            clientName : client.fullName,
+            status : "scheduled",
+            modeOfPayment : "cash",
+            booking : req.body.booking,
+            date : new Date(),
+            address : address.street + ',' + address.province + ',' + address.city + ',' +  address.postalCode
+        }
+        let newRide = Ride(ride); 
+        newRide.save((err, ride) => {
+            if (err) {
+                return res.status(400).json({ msg: err.message });
+            }
+            const msg = {
+                to: client.email,
+                from: process.env.SENDGRID_EMAIL, // Change to your verified sender
+                subject: 'Road-Rules Class Confirmed',
+                text: 'Class Confirmed',
+                html: `<h1>Class Details</h1>
+                        <pre> Start Date  : ${(new Date()).toDateString()} </pre>
+                        <pre> Mode of Payment : Cash </pre>`,
+                }
+                sgMail.send(msg)
+                .then(info => {
+                    return res.status(201).json(ride);
+                })
+                .catch(err => {
+                    res.status(400).send({msg: "Some error"})
+                });
+        });
     } catch (err) {
         return res.status(400).json({ msg: err.message });
     }

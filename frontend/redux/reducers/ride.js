@@ -4,7 +4,8 @@ import {
     CONFIRM_RIDE_ONLINE,
     GET_MY_RIDES,
     END_RIDE,
-    GIVE_FEEDBACK
+    GIVE_FEEDBACK,
+    CONFIRM_BOOKING_CASH
   } from "../constants";
   
   export default (state = { rideData: null }, action) => {
@@ -25,6 +26,9 @@ import {
         console.log(action?.data);
         return { ...state, rideData: action?.data };
     case GIVE_FEEDBACK:
+        console.log(action?.data);
+        return { ...state, rideData: action?.data };
+    case CONFIRM_BOOKING_CASH:
         console.log(action?.data);
         return { ...state, rideData: action?.data };
       default:

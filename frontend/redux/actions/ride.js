@@ -1,14 +1,15 @@
 import * as api from "../api";
-import { CONFIRM_RIDE_CASH, GET_RIDE_BY_ID,CONFIRM_RIDE_ONLINE ,GET_MY_RIDES ,END_RIDE , GIVE_FEEDBACK} from "../constants/index";
+import { CONFIRM_RIDE_CASH, GET_RIDE_BY_ID,CONFIRM_RIDE_ONLINE ,GET_MY_RIDES ,END_RIDE , GIVE_FEEDBACK ,CONFIRM_BOOKING_CASH} from "../constants/index";
 import swal from "sweetalert";
 import jwt from "jwt-decode";
 
-export const confirmRideCash = (slot ,router) => async (dispatch) => {
+export const confirmRideCash = (slot ,router , location) => async (dispatch) => {
     try {
         const user = jwt(localStorage.getItem("token"));
         const formData = {
             slot : slot,
-            client: user.id
+            client: user.id,
+            location: location
         }
         const address = localStorage.getItem("address");
         const { data } = await api.confirmRideCash(formData,address);
@@ -26,6 +27,32 @@ export const confirmRideCash = (slot ,router) => async (dispatch) => {
         });
     }
 };
+
+export const confirmBookingCash = (router) => async (dispatch) => {
+    try {
+        const user = jwt(localStorage.getItem("token"));
+        const bookingDetails = JSON.parse(localStorage.getItem("bookingDetails"));
+        const formData = {
+            client: user.id,
+            booking: bookingDetails
+        }
+        const address = localStorage.getItem("address");
+        const { data } = await api.confirmBookingCash(formData,address);
+        dispatch({ type: CONFIRM_BOOKING_CASH, data });
+        swal({
+            text: "Ride Booked",
+            icon: "success",
+        });
+        router.push('/ride-details/'+data._id)
+    } catch (e) {
+        console.log(e);
+        swal({
+            text: e.response?.data.msg,
+            icon: "error",
+        });
+    }
+};
+
 
 export const endRide = (ride ,router) => async (dispatch) => {
     try {

@@ -12,6 +12,7 @@ function ConfirmAddress() {
   const dispatch = useDispatch();
   const router = useRouter();
   const id = router.query.id;
+  const location = router.query.location;
   const user = useSelector((state) => {
     return state.main?.authData?.user;
   });
@@ -29,7 +30,7 @@ function ConfirmAddress() {
       return;
     }
     localStorage.setItem("address", selected);
-    router.push("/modePayment/" + id);
+    router.push("/modePayment/" + id + '?location=' + location);
   };
 
   return (

@@ -7,7 +7,11 @@ const PaymentSchema = new mongoose.Schema({
   },
   slot : {
     type: String,
-    required: true,
+  },
+  total : {
+    type: String,
+  },
+  booking : {
   },
   client : {
     type: String,

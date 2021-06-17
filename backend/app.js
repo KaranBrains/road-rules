@@ -5,19 +5,19 @@ const cors        = require('cors');
 const route       = require('./routes/router.js');
 const createAdmin = require('./migrations/migrate');
 const path        = require('path');
-const fs = require('fs');
-const https = require('https');
-const privateKey = fs.readFileSync('../../../../../etc/letsencrypt/live/pigameapp.com/privkey.pem', 'utf8');
-const certificate = fs.readFileSync('../../../../../etc/letsencrypt/live/pigameapp.com/cert.pem', 'utf8');
-const ca = fs.readFileSync('../../../../../etc/letsencrypt/live/pigameapp.com/chain.pem', 'utf8');
-const credentials = {
-	key: privateKey,
-	cert: certificate,
-	ca: ca
-};
+// const fs = require('fs');
+// const https = require('https');
+// const privateKey = fs.readFileSync('../../../../../etc/letsencrypt/live/pigameapp.com/privkey.pem', 'utf8');
+// const certificate = fs.readFileSync('../../../../../etc/letsencrypt/live/pigameapp.com/cert.pem', 'utf8');
+// const ca = fs.readFileSync('../../../../../etc/letsencrypt/live/pigameapp.com/chain.pem', 'utf8');
+// const credentials = {
+// 	key: privateKey,
+// 	cert: certificate,
+// 	ca: ca
+// };
 
 const app = express();
-const httpsServer = https.createServer(credentials, app);
+// const httpsServer = https.createServer(credentials, app);
 
 mongoose.connect(config.db, { useNewUrlParser: true, useCreateIndex: true , useUnifiedTopology: true })
 .then(()=>{
@@ -37,6 +37,6 @@ app.listen(8080,()=>{
     // createAdmin.createAdmin();
 })
 
-httpsServer.listen(1234, () => {
-    console.log("Server is running on port : 1234");
-});
+// httpsServer.listen(1234, () => {
+//     console.log("Server is running on port : 1234");
+// });

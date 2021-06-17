@@ -35,7 +35,7 @@ function Features() {
                     <div className="container justify-content-center w-100 d-flex">
                             <button className="text-white bg-secondaryColor font-demi px-lg-5 btn-blue submit-button"
                                 onClick={()=>
-                                    router.push('/fullCalendar')
+                                    router.push('/fullCalendar?location=within')
                                 }>
                             Book Now
                         </button>
@@ -60,7 +60,7 @@ function Features() {
                     <div className="container justify-content-center w-100 d-flex">
                             <button className="text-white bg-secondaryColor font-demi px-lg-5 btn-blue submit-button"
                                 onClick={()=>
-                                    router.push('/grouped-slots')
+                                    router.push('/grouped-slots?type=six&location=within')
                                 }>
                             Book Now
                         </button>
@@ -86,7 +86,7 @@ function Features() {
                     <div className="container justify-content-center w-100 d-flex">
                             <button className="text-white bg-secondaryColor font-demi px-lg-5 btn-blue submit-button"
                                 onClick={()=>
-                                    router.push('/contact')
+                                    router.push('/grouped-slots?type=ten&location=within')
                                 }>
                             Book Now
                         </button>
@@ -162,7 +162,7 @@ function Features() {
                 <div className="container justify-content-center w-100 d-flex">
                         <button className="text-white bg-secondaryColor font-demi px-lg-5 btn-blue submit-button"
                             onClick={()=>
-                                router.push('/contact')
+                                router.push('/fullCalendar?location=outside')
                             }>
                         Book Now
                     </button>
@@ -187,7 +187,7 @@ function Features() {
                 <div className="container justify-content-center w-100 d-flex">
                         <button className="text-white bg-secondaryColor font-demi px-lg-5 btn-blue submit-button"
                             onClick={()=>
-                                router.push('/contact')
+                                router.push('/grouped-slots?type=six&location=outside')
                             }>
                         Book Now
                     </button>
@@ -213,7 +213,7 @@ function Features() {
                 <div className="container justify-content-center w-100 d-flex">
                         <button className="text-white bg-secondaryColor font-demi px-lg-5 btn-blue submit-button"
                             onClick={()=>
-                                router.push('/contact')
+                                router.push('/grouped-slots?type=ten&location=outside')
                             }>
                         Book Now
                     </button>

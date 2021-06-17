@@ -11,15 +11,13 @@ const RideSchema = new mongoose.Schema({
   },
   instructor : {
     type: String,
-    required: true,
   },
+  booking: { },
   instructorName : {
     type: String,
-    required: true,
   },
   slot : {
     type: String,
-    required: true,
   },
   date : {
     type: String,
@@ -27,7 +25,6 @@ const RideSchema = new mongoose.Schema({
   },
   time : {
     type: String,
-    required: true,
   },
   status : {
     type: String,
@@ -39,7 +36,6 @@ const RideSchema = new mongoose.Schema({
   },
   price : {
     type: String,
-    required: true,
   },
   feedback : {
     type: String,
