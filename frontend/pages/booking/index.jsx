@@ -81,7 +81,7 @@ function Features() {
                     10 hours of automatic one on one driving lessons. (expires in 6 months)
                     </div>
                     <h1 className="text-primaryColor mt-4 mb-3 font-18 font-bold text-center">
-                    $450
+                    $400
                     </h1>
                     <div className="container justify-content-center w-100 d-flex">
                             <button className="text-white bg-secondaryColor font-demi px-lg-5 btn-blue submit-button"
@@ -182,7 +182,7 @@ function Features() {
                 6 hours of automatic one on one driving lessons. (expires in 6 months)
                 </div>
                 <h1 className="text-primaryColor mt-4 mb-3 font-18 font-bold text-center">
-                  $300
+                  $270
                 </h1>
                 <div className="container justify-content-center w-100 d-flex">
                         <button className="text-white bg-secondaryColor font-demi px-lg-5 btn-blue submit-button"
@@ -208,7 +208,7 @@ function Features() {
                 10 hours of automatic one on one driving lessons. (expires in 6 months)
                 </div>
                 <h1 className="text-primaryColor mt-4 mb-3 font-18 font-bold text-center">
-                  $500
+                  $450
                 </h1>
                 <div className="container justify-content-center w-100 d-flex">
                         <button className="text-white bg-secondaryColor font-demi px-lg-5 btn-blue submit-button"

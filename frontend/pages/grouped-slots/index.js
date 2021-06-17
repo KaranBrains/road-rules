@@ -21,7 +21,7 @@ export default function InstructorId() {
     if (type =="six") {
       price = location=="within" ? 240 : 270;
     } else {
-      price = location=="within" ? 450 : 500;
+      price = location=="within" ? 400 : 450;
     }
     //setTotal(price);
   }
@@ -104,10 +104,31 @@ export default function InstructorId() {
             <div>
             <div className="my-3 ml-2">
             <Form.Group controlId="formBasicCheckbox1">
-                <Form.Check type="checkbox" label="Add Road Test ($120)" className="ml-2" onClick={()=>{
+              {location=="within"? (
+                type=="six"? (
+                  <Form.Check type="checkbox" label="Add Road Test ($120)" className="ml-2" onClick={()=>{
                     roadTest ? setTotal( total - 120) : setTotal( total + 120);
                     setRoadTest(!roadTest);
                 }}/>
+                ) : (
+                  <Form.Check type="checkbox" label="Add Road Test ($110)" className="ml-2" onClick={()=>{
+                    roadTest ? setTotal( total - 110) : setTotal( total + 110);
+                    setRoadTest(!roadTest);
+                }}/>
+                )
+              ) : (
+                type=="six"? (
+                  <Form.Check type="checkbox" label="Add Road Test ($200)" className="ml-2" onClick={()=>{
+                    roadTest ? setTotal( total - 200) : setTotal( total + 200);
+                    setRoadTest(!roadTest);
+                }}/>
+                ) : (
+                  <Form.Check type="checkbox" label="Add Road Test ($190)" className="ml-2" onClick={()=>{
+                    roadTest ? setTotal( total - 190) : setTotal( total + 190);
+                    setRoadTest(!roadTest);
+                }}/>
+                )
+              )}
             </Form.Group>
             </div>
             <div className="my-3 ml-2">
