@@ -26,6 +26,7 @@ export default function InstructorId() {
       dispatch(GetSlotById(id));
     }
   }, [id]);
+  //test
   const openModal = () => {
       if(profile){
         router.push("/confirm-address/" + id + '?location=' + location);
