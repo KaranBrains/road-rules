@@ -141,6 +141,13 @@ export default function InstructorId() {
             </div>
             </div>
             <div className="text-center mt-4 mb-5">
+            <button
+                className="text-white bg-secondaryColor font-demi btn-blue submit-button"
+              >
+                <a href="/pdf/pricing.pdf" target = "_blank" className="text-white">View Pricing Policy</a>
+              </button>
+            </div>
+            <div className="text-center mt-4 mb-5">
               <button
                 className="text-white bg-secondaryColor font-demi btn-blue submit-button"
                 onClick={openModal}
