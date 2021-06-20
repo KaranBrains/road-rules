@@ -47,6 +47,7 @@ export default function InstructorId() {
       }
       console.log(bookingDetails);
       localStorage.setItem("bookingDetails",JSON.stringify(bookingDetails));
+      console.log(profile);
       if(profile){
         router.push("/confirm-address/booking");
       }else{
