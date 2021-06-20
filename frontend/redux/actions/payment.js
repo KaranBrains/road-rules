@@ -20,14 +20,18 @@ export const AddPayment = (id,location) => async (dispatch) => {
         const response = await api.payment(formData);
 
         const session = response.data;
+        console.log(session);
         localStorage.setItem("session",session.id);
+        let result;
 
         // When the customer clicks on the button, redirect them to Checkout.
-        const result = await stripe.redirectToCheckout({
+        setTimeout(async()=>{
+          result = await stripe.redirectToCheckout({
             sessionId: session.id,
         });
+        },2000)
 
-        if (result.error) {
+        if (result?.error) {
             swal({
                 text: result.error.message,
                 icon: "error",
@@ -64,12 +68,16 @@ export const AddPaymentBooking = () => async (dispatch) => {
       console.log(session);
       localStorage.setItem("session",session.id);
 
+      let result;
+
       // When the customer clicks on the button, redirect them to Checkout.
-      const result = await stripe.redirectToCheckout({
+      setTimeout(async()=>{
+        result = await stripe.redirectToCheckout({
           sessionId: session.id,
       });
+      },2000)
 
-      if (result.error) {
+      if (result?.error) {
           swal({
               text: result.error.message,
               icon: "error",
