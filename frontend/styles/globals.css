@@ -58,6 +58,10 @@ body {
   background-size: cover;
 }
 
+.testimonial-card{
+  height: 220px;
+}
+
 
 /* Srollbar */
 ::-webkit-scrollbar {
@@ -247,6 +251,21 @@ body {
 @media(max-width: 1900px){
   .padding-left-mobile{
       padding-left: 80px !important;
+  }
+}
+@media(max-width: 1024px){
+  .testimonial-card{
+    height: 250px;
+  }
+}
+@media(max-width: 769px){
+  .testimonial-card{
+    height: 300px;
+  }
+}
+@media(max-width: 375px){
+  .testimonial-card{
+    height: 400px;
   }
 }
 

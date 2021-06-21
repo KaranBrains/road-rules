@@ -30,8 +30,10 @@
     "react-otp-input": "^2.3.0",
     "react-redux": "^7.2.4",
     "react-router-dom": "^5.2.0",
+    "react-slick": "^0.28.1",
     "redux": "^4.1.0",
     "redux-thunk": "^2.3.0",
+    "slick-carousel": "^1.8.1",
     "stripe": "^8.150.0",
     "sweetalert": "^2.1.2"
   }

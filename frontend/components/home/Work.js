@@ -1,14 +1,26 @@
 import styles from "./Home.module.css";
+import { useEffect } from "react";
 import CheckBoxIcon from '@material-ui/icons/CheckBox';
 import LocalActivityIcon from '@material-ui/icons/LocalActivity';
+import { useDispatch, useSelector } from "react-redux";
 import RoomIcon from '@material-ui/icons/Room';
 import DriveEtaIcon from '@material-ui/icons/DriveEta';
 import PeopleAltIcon from '@material-ui/icons/PeopleAlt';
 import GavelIcon from '@material-ui/icons/Gavel';
+import { getAboutCards } from "../../redux/actions/aboutCards";
 
 function Features() {
+  const dispatch = useDispatch();
+  const aboutCards = useSelector((state) => {
+    return state.aboutCards?.aboutCardsData?.aboutCards;
+  });
+  console.log(aboutCards)
+  useEffect(() => {
+    dispatch(getAboutCards());
+  }, []);
   return (
-    <div className="my-5">
+    aboutCards && aboutCards.length>0 ? (
+      <div className="my-5">
       <div className="text-center my-5 container">
         <img src="/images/about.gif" alt="about" className="img-fluid" />
       </div>
@@ -31,10 +43,10 @@ function Features() {
                 <LocalActivityIcon className="text-primaryColor mb-2" fontSize="large"></LocalActivityIcon>
                 </div>
                 <h4 className="text-primaryColor mt-4 mb-3 font-18 font-bold text-center">
-                  Choice
+                  {aboutCards[0].subHeading}
                 </h4>
                 <div className="font-demi text-muted text-center mb-3">
-                We are the best in terms of services that we offer you. We ensure safety as our main priority therefore we are well equipped with professional and well trained instructors.
+                {aboutCards[0].text}
                 </div>
               </div>
             </div>
@@ -48,10 +60,10 @@ function Features() {
                   <CheckBoxIcon className="text-primaryColor mb-2" fontSize="large"></CheckBoxIcon>
                 </div>
                 <h4 className="text-primaryColor mt-4 mb-3 font-18 font-bold text-center">
-                  99% PASS RATE
+                  {aboutCards[1].subHeading}
                 </h4>
-                <div className="font-demi text-muted text-center  mb-3">
-                  Success rate of our students is very high.
+                <div className="font-demi text-muted text-center mb-3">
+                {aboutCards[1].text}
                 </div>
               </div>
             </div>
@@ -66,10 +78,10 @@ function Features() {
                 <DriveEtaIcon className="text-primaryColor mb-2" fontSize="large"></DriveEtaIcon>
                 </div>
                 <h4 className="text-primaryColor mt-4 mb-3 font-18 font-bold text-center">
-                  Best Cars
+                  {aboutCards[2].subHeading}
                 </h4>
-                <div className="font-demi text-muted text-center  mb-3">
-                Both the classroom driving classes as well as online sessions are available with a wide range of cars.
+                <div className="font-demi text-muted text-center mb-3">
+                {aboutCards[2].text}
                 </div>
               </div>
             </div>
@@ -84,11 +96,10 @@ function Features() {
                 <RoomIcon className="text-primaryColor mb-2" fontSize="large"></RoomIcon>
                 </div>
                 <h4 className="text-primaryColor mt-4 mb-3 font-18 font-bold text-center">
-                  Pickup
+                  {aboutCards[3].subHeading}
                 </h4>
-                <div className="font-demi text-muted text-center  mb-3">
-                  We provide door pickup. Literally thousands of destinations. No
-                  extra charges.
+                <div className="font-demi text-muted text-center mb-3">
+                {aboutCards[3].text}
                 </div>
               </div>
             </div>
@@ -103,10 +114,10 @@ function Features() {
                 <PeopleAltIcon className="text-primaryColor mb-2" fontSize="large"></PeopleAltIcon>
                 </div>
                 <h4 className="text-primaryColor mt-4 mb-3 font-18 font-bold text-center">
-                  We train all ages.
+                  {aboutCards[4].subHeading}
                 </h4>
-                <div className="font-demi text-muted text-center  mb-3">
-                We have driving instructors who are certified. Apart from that, they are also fit both mentally as well as physically and have many years of driving experience.
+                <div className="font-demi text-muted text-center mb-3">
+                {aboutCards[4].text}
                 </div>
               </div>
             </div>
@@ -121,10 +132,10 @@ function Features() {
                 <GavelIcon className="text-primaryColor mb-2" fontSize="large"></GavelIcon>
                 </div>
                 <h4 className="text-primaryColor mt-4 mb-3 font-18 font-bold text-center">
-                  Road Rules
+                  {aboutCards[5].subHeading}
                 </h4>
-                <div className="font-demi text-muted text-center  mb-3">
-                We will train you correctly with all road rules and regulations.
+                <div className="font-demi text-muted text-center mb-3">
+                  {aboutCards[5].text}
                 </div>
               </div>
             </div>
@@ -132,6 +143,7 @@ function Features() {
         </div>
       </div>
     </div>
+    ) : ''
   );
 }
 
