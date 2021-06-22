@@ -21,6 +21,8 @@ import Link from "next/link";
 import BookIcon from '@material-ui/icons/Book';
 import DirectionsCarIcon from '@material-ui/icons/DirectionsCar';
 import ExitToAppIcon from '@material-ui/icons/ExitToApp';
+import CardGiftcardIcon from '@material-ui/icons/CardGiftcard';
+import RecentActorsIcon from '@material-ui/icons/RecentActors';
 
 const drawerWidth = 240;
 
@@ -154,6 +156,26 @@ const useStyles = makeStyles((theme) => ({
               </ListItemIcon>
               <Link href="/admin/about">
                 <a><ListItemText primary="About" /></a>
+              </Link>
+            </ListItem>
+            <ListItem button>
+              <ListItemIcon>
+                <Link href="/admin/about-cards">
+                  <a><CardGiftcardIcon /></a>
+                </Link>
+              </ListItemIcon>
+              <Link href="/admin/about-cards">
+                <a><ListItemText primary="About Cards" /></a>
+              </Link>
+            </ListItem>
+            <ListItem button>
+              <ListItemIcon>
+                <Link href="/admin/testimonials">
+                  <a><RecentActorsIcon /></a>
+                </Link>
+              </ListItemIcon>
+              <Link href="/admin/testimonials">
+                <a><ListItemText primary="Testimonials" /></a>
               </Link>
             </ListItem>
             <ListItem button>

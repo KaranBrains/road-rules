@@ -36,7 +36,7 @@ function Phone() {
       <div className="container my-5">
         <div className="row d-flex justify-content-center mb-4">
           <div className="col-lg-10 col-sm-12 col-md-12 col-12 mb-4 font-regular px-0">
-            <Stepper
+            {/* <Stepper
               steps={[
                 { label: "Step 1" },
                 { label: "Step 2" },              
@@ -59,7 +59,7 @@ function Phone() {
                 fontWeight: 900,
               }}
               activeStep={1}
-            />
+            /> */}
           </div>
         </div>
         <div className="row d-flex justify-content-center">

@@ -7,6 +7,8 @@ import user from "./user";
 import rides from "./rides";
 import ride from "./ride";
 import aboutCards from "./aboutCards";
+import choose from "./choose";
+import testimonial from "./testimonial";
 
 const rootReducer = combineReducers({
   main,
@@ -16,7 +18,9 @@ const rootReducer = combineReducers({
   contact,
   rides,
   ride,
-  aboutCards
+  aboutCards,
+  choose,
+  testimonial
 });
 
 export default rootReducer;

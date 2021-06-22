@@ -61,9 +61,9 @@ export const signUp = (formData, router) => async (dispatch) => {
       text: "You are signed up",
       icon: "success",
     });
-    await api.getEmailOtp(formData.email);
-    localStorage.setItem("isEmailVerified", "false");
-    router.push("/auth/email");
+    // await api.getEmailOtp(formData.email);
+    // localStorage.setItem("isEmailVerified", "false");
+    router.push("/auth/phone");
   } catch (e) {
     console.log(e.response);
     swal({

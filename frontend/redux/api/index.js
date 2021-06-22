@@ -26,8 +26,16 @@ export const verifyPhoneOtp = (otp, email, phone) =>
   axios.post(`${url}/verify-phone-otp?phone=${phone}&email=${email}`, {
     verificationCode: otp,
   });
+export const updateAboutCards = (id,body) =>
+  axios.put(`${url}/update-about-cards?id=${id}`, body);  
+  export const updateTestimonial = (id,body) =>
+  axios.put(`${url}/update-testimonial?id=${id}`, body); 
 export const changePassword = (body) =>
   axios.put(`${url}/change-password`, body);
+export const getChoose = (body) =>
+  axios.get(`${url}/choose`);
+export const getTestimonial = (body) =>
+  axios.get(`${url}/testimonial`);
 
 export const addSlot = (formdata) => axios.post(`${url}/add-slot`, formdata);
 export const allSlot = () => axios.get(`${url}/all-slots`);
