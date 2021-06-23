@@ -26,9 +26,17 @@ body {
   color: var(--primaryColor);
   font-size: large;
   font-weight: bold;
+  margin-left: 40% !important;
 }
 #uncontrolled-tab-example-tab-outsideSurrey{
   color: var(--primaryColor);
+  font-size: large;
+  font-weight: bold;
+}
+
+.nav-tabs .nav-link.active {
+  background: var(--primaryColor) !important;
+  color: white !important;
   font-size: large;
   font-weight: bold;
 }
@@ -332,10 +340,16 @@ body {
   .rbc-toolbar{
     font-size: 14px !important;
   }
+  #uncontrolled-tab-example-tab-withinSurrey{
+    margin-left: 11% !important;
+  }
 }
 @media(max-width: 361px){
   .mobile-top {
     margin-top: 30px;
+  }
+  #uncontrolled-tab-example-tab-withinSurrey{
+    margin-left: 0% !important;
   }
 }
 @media(max-width: 376px){

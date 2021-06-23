@@ -13,6 +13,7 @@ function Features() {
             className={`font-bold text-primaryColor mb-5 text-center ${styles.mobileCenter}`}
             >
               Current Offers<br />
+              <span className="font-18 mt-5"> Call us at +1&nbsp;(778)&nbsp;889-7804 for special offers.</span>
             {/* Smart Drivers start <br />
             here */}
             </h2>
@@ -140,6 +141,7 @@ function Features() {
           className={`font-bold text-primaryColor mb-5 text-center ${styles.mobileCenter}`}
         >
           Current Offers<br />
+          <span className="font-18 mt-5"> Call us at +1&nbsp;(778)&nbsp;889-7804 for special offers.</span>
           {/* Smart Drivers start <br />
           here */}
         </h2>
