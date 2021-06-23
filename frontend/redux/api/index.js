@@ -1,14 +1,14 @@
 import axios from "axios";
 
-export const url = "http://localhost:8080/api";
-export const paymentUrl = "http://localhost:8080/api/create-checkout-session";
-export const paymentUrlBooking = "http://localhost:8080/api/create-checkout-session-booking";
-export const baseUrl = "http://localhost:8080/";
+// export const url = "http://localhost:8080/api";
+// export const paymentUrl = "http://localhost:8080/api/create-checkout-session";
+// export const paymentUrlBooking = "http://localhost:8080/api/create-checkout-session-booking";
+// export const baseUrl = "http://localhost:8080/";
 
-// export const url = "https://www.pigameapp.com:1234/api";
-// export const baseUrl = "https://www.pigameapp.com:1234/";
-// export const paymentUrlBooking = "https://www.pigameapp.com:1234/api/create-checkout-session-booking";
-// export const paymentUrl = "https://www.pigameapp.com:1234/api/create-checkout-session";
+export const url = "https://www.pigameapp.com:1234/api";
+export const baseUrl = "https://www.pigameapp.com:1234/";
+export const paymentUrlBooking = "https://www.pigameapp.com:1234/api/create-checkout-session-booking";
+export const paymentUrl = "https://www.pigameapp.com:1234/api/create-checkout-session";
 // rebuild
 
 export const signIn = (formData) => axios.post(`${url}/login`, formData);
@@ -26,6 +26,8 @@ export const verifyPhoneOtp = (otp, email, phone) =>
   axios.post(`${url}/verify-phone-otp?phone=${phone}&email=${email}`, {
     verificationCode: otp,
   });
+export const updateChoose = (formData,id) => 
+  axios.put(`${url}/update-choose?id=${id}`, formData); 
 export const updateAboutCards = (id,body) =>
   axios.put(`${url}/update-about-cards?id=${id}`, body);  
   export const updateTestimonial = (id,body) =>
