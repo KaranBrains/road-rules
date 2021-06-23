@@ -20,6 +20,7 @@ body {
 }
 .text-shadow-white{
   text-shadow: #6ba4b4 1px 0 1px;
+  font-size: 20px;
 }
 
 #uncontrolled-tab-example-tab-withinSurrey{
@@ -334,6 +335,10 @@ body {
   }
 }
 @media(max-width: 426px){
+  .text-shadow-white{
+    text-shadow: #6ba4b4 1px 0 1px;
+    font-size: 15px;
+  }
   .rbc-event-content{
     font-size: 12px !important;
   }

@@ -31,13 +31,16 @@
 
 @media( max-width: 516px){
     .home{
-        background-image: none;
-        background: var(--primaryColor);
+        /* background-image: none;
+        background: var(--primaryColor); */
         background-position: center;
         background-repeat: no-repeat;
         background-size: cover;
         width: 100%;
-        color: white !important;
+        color: var(--primaryColor) !important;
         min-height: 85vh;
     }
+    /* .text-shadow-white{
+        font-size: 12px !important;
+    } */
 }

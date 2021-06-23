@@ -155,8 +155,8 @@ function HomeMain() {
           </div>
         </div> */}
         <div className="container text-center font-bold py-5">
-          <h1 className=" text-shadow-white">Road Rules Driving School</h1>
-          <p className="font-20 font-medium text-shadow-white">
+          <h1 className="">Road Rules Driving School</h1>
+          <p className="font-medium text-shadow-white">
           {aboutFe?.text}
           </p>
           {/* <div className="d-flex justify-content-center my-5">
