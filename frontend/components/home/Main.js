@@ -6,7 +6,7 @@ import Link from "next/link";
 import { useRouter } from 'next/router';
 import { about } from "../../redux/actions/auth";
 import Navbar from "../navbar/Navbar";
-
+// test commit
 function HomeMain() {
   const dispatch = useDispatch();
   const [selected, setselected] = useState('');

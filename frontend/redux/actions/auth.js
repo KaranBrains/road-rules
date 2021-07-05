@@ -146,10 +146,10 @@ export const verifyEmailOtp = (otp, router) => async (dispatch) => {
 
 export const changePassword = (password, router) => async (dispatch) => {
   try {
-    const formData = JSON.parse(localStorage.getItem("userProfile"));
-    const token = localStorage.getItem("token");    
+    const formData = localStorage.getItem("email");
+    const token = localStorage.getItem("forgotToken");    
     const body = {
-      email: formData.email,
+      email: formData,
       token: token,
       pass: password,
     };
@@ -161,6 +161,7 @@ export const changePassword = (password, router) => async (dispatch) => {
     });
     router.push("/auth/login");
   } catch (e) {
+    console.log(e);
     swal({
       text: e.response?.data.msg,
       icon: "error",
