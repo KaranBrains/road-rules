@@ -3,7 +3,7 @@ import { PAYMENT , PAYMENT_BOOKING} from "../constants/index";
 import swal from "sweetalert";
 import { loadStripe } from '@stripe/stripe-js';
 import jwt from "jwt-decode";
-const stripePromise = loadStripe('pk_test_TYooMQauvdEDq54NiTphI7jx');
+const stripePromise = loadStripe('pk_live_51J5WRIIMPQ84wc9dV6ZL8vzPAxPpaA4H6JHgTWsOgaFqYbykMSWtRopXc5xJi0XqRwpLDq2ffqw83cok7WfEvIrI00AU6ZTxkL');
 
 export const AddPayment = (id,location) => async (dispatch) => {
     try {
