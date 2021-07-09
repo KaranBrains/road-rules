@@ -4,6 +4,7 @@ import { useDispatch } from "react-redux";
 import { useRouter } from "next/router";
 import { verifyForgotEmailOtp } from "../../../../redux/actions/auth";
 import swal from "sweetalert";
+import Head from "next/head";
 
 function ForgotOTP() {
   const [otp, setOtp] = useState("");
@@ -28,7 +29,10 @@ function ForgotOTP() {
 
   return (
     <div className="auth-bg">
-      <div className="container my-5">        
+      <Head>
+        <title>OTP | Roadrules </title>
+      </Head>
+      <div className="container my-5">
         <div className="row d-flex justify-content-center">
           <div className="col-lg-6 col-md-8 col-sm-12 col-12">
             <div className="card shadow px-2 px-lg-5 py-5 bg-white">

@@ -3,9 +3,9 @@ import OtpInput from "react-otp-input";
 import { useDispatch } from "react-redux";
 import { useRouter } from "next/router";
 import { phoneOtp, verifyPhoneOtp } from "../../../redux/actions/auth";
-import { Stepper } from "react-form-stepper";
 import styles from "../../../styles/Form.module.css";
 import swal from "sweetalert";
+import Head from "next/head";
 
 function Phone() {
   const [otp, setOtp] = useState("");
@@ -33,33 +33,12 @@ function Phone() {
 
   return (
     <>
+     <Head>
+        <title>Phone Verification | Roadrules </title>
+      </Head>
       <div className="container my-5">
         <div className="row d-flex justify-content-center mb-4">
           <div className="col-lg-10 col-sm-12 col-md-12 col-12 mb-4 font-regular px-0">
-            {/* <Stepper
-              steps={[
-                { label: "Step 1" },
-                { label: "Step 2" },              
-              ]}
-              connectorStateColors={true}
-              className="text-primaryColor"
-              connectorStyleConfig={{
-                activeColor: "#1e4c6b",
-                completedColor: "#1e4c6b",
-                disabledColor: "#bdbdbd",
-                size: 1,
-                stepSize: "0em",
-              }}
-              styleConfig={{
-                activeBgColor: "#00AFF5",
-                completedBgColor: "#1e4c6b",
-                labelFontSize: "1rem",
-                circleFontSize: "1rem",
-                size: "3em",
-                fontWeight: 900,
-              }}
-              activeStep={1}
-            /> */}
           </div>
         </div>
         <div className="row d-flex justify-content-center">

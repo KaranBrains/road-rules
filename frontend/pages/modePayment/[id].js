@@ -6,6 +6,7 @@ import styles from "../../styles/Form.module.css";
 import { getUserByEmail } from "../../redux/actions/auth";
 import { confirmRideCash , confirmBookingCash } from "../../redux/actions/ride";
 import {AddPayment ,AddPaymentBooking} from "../../redux/actions/payment";
+import Head from "next/head";
 
 function ModePayment() {
   const [selected, setSelected] = useState("");
@@ -21,7 +22,7 @@ function ModePayment() {
     e.preventDefault();
     if(!selected) {
       return;
-    } 
+    }
     if (selected === "online") {
       if (id=="booking") {
         dispatch(AddPaymentBooking());
@@ -40,6 +41,9 @@ function ModePayment() {
 
   return (
     <>
+     <Head>
+        <title>Payment</title>
+      </Head>
       <div className="container my-5">
         <div className="row d-flex justify-content-center mb-4">
           <div className="col-lg-10 col-sm-12 col-md-12 col-12 font-regular px-0">
@@ -75,29 +79,29 @@ function ModePayment() {
               <form>
                 <div className="mt-4">
                   <div class="form-check mb-4">
-                    <input class="form-check-input" 
-                    type="radio" 
-                    name="flexRadioDefault" 
-                    id="flexRadioDefault1" 
+                    <input class="form-check-input"
+                    type="radio"
+                    name="flexRadioDefault"
+                    id="flexRadioDefault1"
                     onClick={()=>{
                       setSelected("cash");
                     }}/>
                     <label class="form-check-label font-regular font-bold" for="flexRadioDefault1">
-                        Cash 
+                        Cash
                     </label>
                   </div>
                 </div>
                 <div className="mt-4">
                   <div class="form-check mb-4">
-                    <input class="form-check-input" 
-                    type="radio" 
-                    name="flexRadioDefault" 
-                    id="flexRadioDefault1" 
+                    <input class="form-check-input"
+                    type="radio"
+                    name="flexRadioDefault"
+                    id="flexRadioDefault1"
                     onClick={()=>{
                       setSelected("online");
                     }}/>
                     <label class="form-check-label font-regular font-bold" for="flexRadioDefault1">
-                        Pay Online 
+                        Pay Online
                     </label>
                   </div>
                 </div>

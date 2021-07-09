@@ -5,6 +5,7 @@ import Link from "next/link";
 import SettingsIcon from '@material-ui/icons/Settings';
 import AccountBoxIcon from '@material-ui/icons/AccountBox';
 import HomeIcon from '@material-ui/icons/Home';
+import Head from "next/head";
 
 function UserProfile() {
   const dispatch = useDispatch();
@@ -14,6 +15,9 @@ function UserProfile() {
   }, []);
   return (
     <>
+     <Head>
+        <title>Profile</title>
+      </Head>
       <div className="d-flex justify-content-between">
         <div className="col-lg-2 col-md-3 hidden-mobile-sidebar">
           <div>

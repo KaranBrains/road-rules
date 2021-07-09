@@ -1,14 +1,16 @@
-import { useEffect} from "react";
+import Head from "next/head";
 
 function ModePayment() {
-
   return (
     <>
+      <Head>
+        <title>Cancel Payment</title>
+      </Head>
       <div className="container my-5">
         <div className="row d-flex justify-content-center">
-        <div className="col-lg-6 col-md-8 col-sm-12 col-12 text-center text-primaryColor">
+          <div className="col-lg-6 col-md-8 col-sm-12 col-12 text-center text-primaryColor">
             <h2>You have cancelled your payment!</h2>
-        </div>
+          </div>
         </div>
       </div>
     </>

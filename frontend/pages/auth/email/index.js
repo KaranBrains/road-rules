@@ -6,6 +6,7 @@ import { useRouter } from "next/router";
 import { verifyEmailOtp, emailOtp } from "../../../redux/actions/auth";
 import styles from "../../../styles/Form.module.css";
 import swal from "sweetalert";
+import Head from "next/head";
 
 function Email() {
   const [otp, setOtp] = useState("");
@@ -35,6 +36,9 @@ function Email() {
 
   return (
     <>
+    <Head>
+        <title>Email Verification</title>
+      </Head>
       <div className="container my-5">
         <div className="row d-flex justify-content-center mb-4">
           <div className="col-lg-10 col-sm-12 col-md-12 col-12 font-regular px-0">

@@ -5,6 +5,7 @@ import { GetSlotById } from "../../redux/actions/slot";
 import jwt_decode from "jwt-decode";
 import swal from "sweetalert";
 import Form from 'react-bootstrap/Form'
+import Head from "next/head";
 
 export default function InstructorId() {
   const dispatch = useDispatch();
@@ -16,7 +17,7 @@ export default function InstructorId() {
   let price ;
   const location = router?.query?.location;
   const type = router?.query?.type;
-  
+
   if (type, location) {
     if (type =="six") {
       price = location=="within" ? 240 : 270;
@@ -36,7 +37,7 @@ export default function InstructorId() {
     }
     setprofile(decode);
   }, []);
-  
+
   const openModal = () => {
       const bookingDetails = {
         type: type,
@@ -56,11 +57,14 @@ export default function InstructorId() {
           icon: "info",
         });
         router.push("/auth/login");
-      } 
+      }
   };
 
   return (
     <>
+     <Head>
+        <title>Ride Details</title>
+      </Head>
       <div className="container">
         <div className="row d-flex justify-content-center">
           <div className="col-lg-7 col-md-8 col-sm-2 col-12">

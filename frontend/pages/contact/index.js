@@ -2,6 +2,7 @@ import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { useRouter } from "next/router";
 import { contactUs } from "../../redux/actions/contact";
+import Head from "next/head";
 
 function Contact() {
   const initialState = { name: "", email: "", message: "" };
@@ -17,6 +18,9 @@ function Contact() {
   };
   return (
     <>
+     <Head>
+        <title>Contact Us | RoadRules</title>
+      </Head>
       <div className="container my-5">
         <div className="row d-flex justify-content-center">
           <div className="col-lg-8 col-md-8 col-sm-12 col-12">

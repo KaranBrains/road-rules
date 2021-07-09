@@ -1,10 +1,14 @@
 import Carousel from "react-bootstrap/Carousel";
 import { useRouter } from "next/router";
+import Head from "next/head"
 
 function About() {
   const router = useRouter();
   return (
     <div>
+      <Head>
+        <title>About | RoadRules</title>
+      </Head>
       <div className="main">
         <div className="container text-center font-bold text-white py-5">
           <h1 className="pt-5">Road Rules</h1>
@@ -13,18 +17,18 @@ function About() {
             digital and physical workplace experiences.
           </p>
           <p className="font-medium">
-          Road Rules . 
-          The best driving school in area today. 
-          Get cheap driving lessons by Indian professional 
+          Road Rules .
+          The best driving school in area today.
+          Get cheap driving lessons by Indian professional
           instructor. We provide excellent lessons for both manual and
-           automatic vehicles. Well-known for careful and responsible 
-           driving classes. No matter where ever you are in the city, 
+           automatic vehicles. Well-known for careful and responsible
+           driving classes. No matter where ever you are in the city,
            We give you highly professional and user friendly
-            drivers. You would love to get associated with us as we make sure 
-            to give you best driving lessons that will let you 
+            drivers. You would love to get associated with us as we make sure
+            to give you best driving lessons that will let you
             start your first drive with full confidence and eventually make
-             you quite professional. There are perhaps a wide variety of 
-             services offered to all age groups as per their need and requirement. 
+             you quite professional. There are perhaps a wide variety of
+             services offered to all age groups as per their need and requirement.
           </p>
           <div className="d-flex justify-content-center my-5">
             <button

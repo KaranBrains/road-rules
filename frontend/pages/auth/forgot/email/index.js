@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { useRouter } from "next/router";
 import { forgotEmailOtp } from "../../../../redux/actions/auth";
+import Head from "next/head";
 
 function Forgot() {
   const initialState = { email: "" };
@@ -17,6 +18,9 @@ function Forgot() {
 
   return (
     <div className="auth-bg">
+      <Head>
+        <title>Forgot | Roadrules </title>
+      </Head>
       <div className="container my-5">
         <div className="row d-flex justify-content-center">
           <div className="col-lg-6 col-md-8 col-sm-12 col-12">

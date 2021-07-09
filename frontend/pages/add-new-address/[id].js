@@ -4,6 +4,7 @@ import styles from "../../styles/Form.module.css";
 import { useDispatch } from "react-redux";
 import { useRouter } from "next/router";
 import { addAddress } from "../../redux/actions/auth";
+import Head from "next/head";
 
 function Signup() {
   const initialState = {
@@ -24,6 +25,9 @@ function Signup() {
 
   return (
     <div className="auth-bg">
+      <Head>
+        <title>Add Address | Roadrules </title>
+      </Head>
       <div className="container my-5">
         <div className="row d-flex justify-content-center">
           <div className="col-lg-6 col-md-8 col-sm-12 col-12">

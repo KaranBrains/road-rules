@@ -5,6 +5,7 @@ import { getRideById , giveFeedback } from "../../redux/actions/ride";
 import { GetInstructorById } from "../../redux/actions/instructor";
 import { Modal } from "react-bootstrap";
 import swal from "sweetalert";
+import Head from "next/head";
 
 export default function InstructorId() {
 
@@ -41,6 +42,9 @@ export default function InstructorId() {
 
     return(
       <>
+      <Head>
+        <title>Ride Details | Roadrules</title>
+      </Head>
       {showModal ? (
         <Modal className="mt-5 modal-card" show={showModal} onHide={()=>{
           setShowModal(false);
@@ -256,7 +260,7 @@ export default function InstructorId() {
                         <div className="text-green font-bold font-18">
                         &#36;{myBookings ? myBookings*Number(ride?.price) + myBookings*Number(500)  : 0}
                         </div>
-                      </div>              
+                      </div>
                     </>
                     ) : (
                       <span className="mb-5">&nbsp;</span>
@@ -434,7 +438,7 @@ export default function InstructorId() {
                             <div className="text-green font-bold font-18">
                             &#36;{myBookings ? myBookings*Number(ride?.price) + myBookings*Number(500)  : 0}
                             </div>
-                          </div>              
+                          </div>
                         </>
                         ) : (
                           <span className="mb-5">&nbsp;</span>

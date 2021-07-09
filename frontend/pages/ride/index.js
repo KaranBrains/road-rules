@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import RideCard from "../../components/rideCard/rideCard";
 import { getMyRides } from "../../redux/actions/ride";
+import Head from "next/head";
 
 function MyRides() {
   const dispatch = useDispatch();
@@ -12,6 +13,9 @@ function MyRides() {
 
   return (
     <>
+     <Head>
+        <title>Ride | Roadrules</title>
+      </Head>
       <div className="container home mt-3">
         <div className="row d-flex justify-content-center">
           <div className="col-lg-7 col-md-8 col-sm-2 col-12 mb-2 mt-2">

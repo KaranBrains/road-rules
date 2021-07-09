@@ -7,6 +7,7 @@ import SettingsIcon from '@material-ui/icons/Settings';
 import AccountBoxIcon from '@material-ui/icons/AccountBox';
 import HomeIcon from '@material-ui/icons/Home';
 import AddIcon from '@material-ui/icons/Add';
+import Head from "next/head";
 
 function Address() {
   const dispatch = useDispatch();
@@ -22,6 +23,9 @@ function Address() {
   };
   return (
     <div>
+      <Head>
+        <title>Address | Roadrules </title>
+      </Head>
       <div className="d-flex justify-content-between">
         <div className="col-lg-2 col-md-3 hidden-mobile-sidebar">
           <div>
@@ -68,7 +72,7 @@ function Address() {
           <div className="row my-5 d-flex justify-content-center">
             <div className="col-lg-9 col-md-8 col-sm-12 col-12">
               <form>
-                  
+
                 {user ? user?.address.map((add) => (
                   <>
                     <div className="bg-tertiaryColor h-100 py-3 px-3 mb-4 shadow">

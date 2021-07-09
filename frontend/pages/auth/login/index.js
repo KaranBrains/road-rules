@@ -4,6 +4,7 @@ import { useDispatch } from "react-redux";
 import { useRouter } from "next/router";
 import { signIn } from "../../../redux/actions/auth";
 import styles from "../../../styles/Form.module.css";
+import Head from "next/head";
 
 function Login() {
   const initialState = { email: "", password: "" };
@@ -19,6 +20,9 @@ function Login() {
 
   return (
     <div className="auth-bg">
+       <Head>
+        <title>Login | Roadrules </title>
+      </Head>
       <div className="container my-5">
         <div className="row d-flex justify-content-center">
           <div className="col-lg-6 col-md-8 col-sm-12 col-12">
