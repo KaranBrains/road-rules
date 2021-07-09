@@ -25,20 +25,12 @@ exports.getAboutCards = (req, res) => {
     })
   };
 
-// exports.updateAboutCards = (req, res) => {
-//     AboutCards.findById("60cb7c8e85c84c4274b8c222",(err,savedAboutCards)=>{
-//         if (err) {
-//             return res.status(400).json({ msg: err.message });
-//         } 
-//         savedAboutCards.text=req.body.text;
-//         savedAboutCards.save((err,ab)=>{
-//             if (err) {
-//                 return res.status(400).json({ msg: err.message });
-//             } 
-//             return res.status(200).json({ msg: "Updated"}); 
-//         })
-//     })
-// };
+exports.updateAbout = (req, res) => {
+    AboutCards.findByIdAndUpdate(req.query.id,req.body)
+    .then((err)=>{
+      return res.status(200).json({ msg: 'Card updated successfully!' });
+    })
+};
 
 
 

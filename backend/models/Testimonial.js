@@ -1,7 +1,7 @@
   
 const mongoose = require('mongoose');
 
-const AboutCardsSchema = new mongoose.Schema({
+const TestimonialSchema = new mongoose.Schema({
   name: {
     type: String,
     required: true,
@@ -12,4 +12,4 @@ const AboutCardsSchema = new mongoose.Schema({
   }
 });
 
-module.exports = mongoose.model('AboutCards', AboutCardsSchema);
+module.exports = mongoose.model('Testimonial', TestimonialSchema);

@@ -26,7 +26,7 @@ exports.getAbout = (req, res) => {
   };
 
 exports.updateAbout = (req, res) => {
-    About.findById("60cb7c8e85c84c4274b8c222",(err,savedAbout)=>{
+    About.findById("60e30903a6a259663c3d6521",(err,savedAbout)=>{
         if (err) {
             return res.status(400).json({ msg: err.message });
         } 

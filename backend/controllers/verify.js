@@ -38,6 +38,7 @@ exports.emailOtpSend = (req, res) => {
         res.status(200).send({msg: "Otp sent successfully"})
     })
     .catch(err => {
+      console.log(err.response.body);
         res.status(400).send({msg: "Otp not sent please try again"})
     });
   })
