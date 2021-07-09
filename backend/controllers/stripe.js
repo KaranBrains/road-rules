@@ -1,5 +1,5 @@
-const stripe = require('stripe')('sk_test_4eC39HqLyjWDarjtT1zdp7dc');
 require('dotenv').config();
+const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY);
 const Payment = require("../models/Payment");
 const Slot = require("../models/Slot");
 const User = require("../models/User");
