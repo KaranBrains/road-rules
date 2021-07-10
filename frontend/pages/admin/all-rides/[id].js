@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useRouter } from "next/router";
 import { getRideById, endRide } from "../../../redux/actions/ride";
 import { GetInstructorById } from "../../../redux/actions/instructor";
+import { UserById } from "../../../redux/actions/user";
 import dynamic from "next/dynamic";
 import Head from "next/head";
 
@@ -25,6 +26,8 @@ export default function InstructorId() {
   const instructorById = useSelector(
     (state) => state.instructor?.instructorById?.instructor
   );
+  const user = useSelector((state) => state?.user?.UsersById?.user);
+  console.log("User", UserById);
   useEffect(() => {
     const id = router.query.id;
     if (id) {
@@ -32,10 +35,13 @@ export default function InstructorId() {
         if (ride && ride.instructor) {
           dispatch(GetInstructorById(ride.instructor));
         }
+        if (ride && ride.client) {
+          dispatch(UserById(ride.client));
+        }
       });
     }
     console.log(ride);
-  }, [id, ride?.instructor]);
+  }, [id, ride?.instructor, ride?.client]);
 
   const endClass = () => {
     dispatch(endRide(id, router));
@@ -305,7 +311,19 @@ export default function InstructorId() {
                       {ride.clientName}
                     </div>
                     <div className="text-primaryColor font-bold font-8 mt-2 desktop-hidden">
-                      {ride.address}
+                      {ride.clientName}
+                    </div>
+                  </div>
+                  <hr className="grey-hr-confirm" />
+                  <div className="d-flex justify-content-between px-3">
+                    <div className="text-muted font-demi font-18 mt-2 mobile-hidden">
+                      Phone
+                    </div>
+                    <div className="text-primaryColor font-bold font-18 mt-2 mobile-hidden">
+                      {user?.phone}
+                    </div>
+                    <div className="text-primaryColor font-bold font-8 mt-2 desktop-hidden">
+                      {user?.phone}
                     </div>
                   </div>
                   <hr className="grey-hr-confirm" />
