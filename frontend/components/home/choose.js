@@ -27,7 +27,7 @@ function Features() {
     
             <div className="row">
                 <div className="col-lg-4 col-md-4 col-sm-12 col-12">
-                    <img src="/images/test.jpg" style={{width:"100%"}} className="rounded mb-5"></img>
+                    <img src="/images/test.jpg" style={{width:"100%" , height:"230px"}} className="rounded mb-5"></img>
                 </div>
                 <div className="col-lg-8 col-md-8 col-sm-12 col-12 text-primaryColor font-demi">
                     <p>
