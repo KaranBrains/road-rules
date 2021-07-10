@@ -5,6 +5,8 @@ import { useRouter } from "next/router";
 import { Modal } from "react-bootstrap";
 import { getAboutCards,updateAboutCards } from "../../../redux/actions/aboutCards";
 import Link from "next/link";
+import Head from "next/head";
+
 const Sidebar = dynamic(() => import('../../../shared/sidebar/sidebar'), { ssr: false, loading: () => <div class="main-loader-div">
   <div class="loader">Loading...</div>
 </div> });
@@ -17,18 +19,18 @@ export default function AllRides() {
   const [editFormData, setEditFormData] = useState(setInitialState);
   const setInitialState = {
     id : "",
-    subHeading : "", 
+    subHeading : "",
     text : ""
   }
 
   useEffect(() =>{
     dispatch(getAboutCards());
   },[editFormData])
-  
+
   const handleEditShow = () => setEditModal(true);
 
   const EditSlot = (id,subHeading,text) => {
-    setEditFormData({ 
+    setEditFormData({
       id: id,
       subHeading: subHeading,
       text: text
@@ -56,6 +58,9 @@ export default function AllRides() {
 
   return (
       <div>
+        <Head>
+        <title>Admin | About Cards</title>
+      </Head>
         <Sidebar />
         {editModal ? (
         <Modal className="mt-5 modal-card" show={editModal} onHide={handleEditClose}>
@@ -124,7 +129,7 @@ export default function AllRides() {
                 <tr className="font-16  align-middle">
                   <th scope="col">S.No</th>
                   <th scope="col">Name</th>
-                  <th scope="col">Action</th>             
+                  <th scope="col">Action</th>
                 </tr>
               </thead>
               <tbody>
@@ -145,7 +150,7 @@ export default function AllRides() {
                         })
                     ) : (
                         ''
-                    )}   
+                    )}
               </tbody>
             </table>
           </div>
@@ -153,4 +158,3 @@ export default function AllRides() {
       </div>
     );
   }
-  
