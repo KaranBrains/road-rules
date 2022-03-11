@@ -11,12 +11,26 @@ function Features() {
         <title>Booking | Roadrules </title>
       </Head>
       <div className="my-5 auth-bg">
-        <Tabs
+      <div className={`container ${styles.pySection} px-4`}>
+              <h2
+                className={`font-bold text-primaryColor mb-5 text-center ${styles.mobileCenter}`}
+              >
+                {/* Current Offers */}
+                <br />
+                <span className="font-22 mt-5">
+                  {" "}
+                  Call us at +1&nbsp;(778)&nbsp;889-7804 for pricing.
+                </span>
+                <br />
+              </h2>
+              </div>
+
+        {/* <Tabs
           defaultActiveKey="profile"
           id="uncontrolled-tab-example"
           defaultActiveKey="withinSurrey"
-        >
-          <Tab eventKey="withinSurrey" title="Within Surrey">
+        > */}
+          {/* <Tab eventKey="withinSurrey" title="Within Surrey">
             <div className={`container ${styles.pySection} px-4`}>
               <h2
                 className={`font-bold text-primaryColor mb-5 text-center ${styles.mobileCenter}`}
@@ -28,8 +42,6 @@ function Features() {
                   Call us at +1&nbsp;(778)&nbsp;889-7804 for special offers.
                 </span>
                 <br />
-                {/* Smart Drivers start <br />
-            here */}
               </h2>
 
               <div className="row">
@@ -158,9 +170,9 @@ function Features() {
                     Check All Prices
                 </button>
             </div> */}
-            </div>
-          </Tab>
-          <Tab eventKey="outsideSurrey" title="Outside Surrey">
+            {/* </div>
+          </Tab> */} 
+          {/* <Tab eventKey="outsideSurrey" title="Outside Surrey">
             <div className={`container ${styles.pySection} px-4`}>
               <h2
                 className={`font-bold text-primaryColor mb-5 text-center ${styles.mobileCenter}`}
@@ -178,9 +190,9 @@ function Features() {
                 </span>
                 {/* Smart Drivers start <br />
           here */}
-              </h2>
+              {/* </h2> */}
 
-              <div className="row">
+              {/* <div className="row">
                 <div
                   className={`col-lg-4 col-md-4 col-sm-6 col-12 p-2 hoverable ${styles.mobileCenter}`}
                 >
@@ -270,8 +282,8 @@ function Features() {
                     </div>
                   </div>
                 </div>
-              </div>
-              <div className="row d-flex justify-content-center">
+              </div> */}
+              {/* <div className="row d-flex justify-content-center">
                 <div
                   className={`col-lg-4 col-md-4 col-sm-6 col-12 p-2 hoverable ${styles.mobileCenter}`}
                 >
@@ -297,7 +309,7 @@ function Features() {
                     </div>
                   </div>
                 </div>
-              </div>
+              </div> */}
               {/* <div className="container justify-content-center w-100 d-flex" style={{marginTop:"100px"}}>
                 <button className="text-white bg-secondaryColor font-demi px-lg-5 btn-blue submit-button"
                     onClick={()=>
@@ -306,9 +318,9 @@ function Features() {
                 Check All Prices
             </button>
         </div> */}
-            </div>
-          </Tab>
-        </Tabs>
+            {/* </div>
+          </Tab> */}
+        {/* </Tabs>  */}
       </div>
     </>
   );
